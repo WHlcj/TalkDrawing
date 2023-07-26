@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C08CD44B-FAB6-4EBD-A522-AFB174A14A82"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99BC03EE-7151-4863-BCC7-3C0A96ED6CBD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TalkDrawing/TDDrawBoardViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D63837F-8FD9-4529-B4E2-6E495652DA52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TalkDrawing/TDDrawBoardViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "TDDrawBoardViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28155C54-A44A-42A3-8AC1-F87F21767C10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TalkDrawing/TDColorGroupView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "colorBlockTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28155C54-A44A-42A3-8AC1-F87F21767C10 - 26a6891f75b3f5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TalkDrawing.TDColorGroupView.colorBlockTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "TalkDrawing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pickle/Desktop/TalkDrawing/TalkDrawing/TDColorGroupView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "28155C54-A44A-42A3-8AC1-F87F21767C10 - 26a6891f75b3f5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TalkDrawing.TDColorGroupView.colorBlockTapped(__C.UITapGestureRecognizer) -&gt; ()"
+                  moduleName = "TalkDrawing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pickle/Desktop/TalkDrawing/TalkDrawing/TDColorGroupView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

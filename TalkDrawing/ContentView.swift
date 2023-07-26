@@ -9,18 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            // background
-            Image("background")
-            
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
-            }
-            .padding()
-        }
+        DrawBoardView()
+//        ZStack {
+//            // background
+//            Image("background")
+//            
+//            VStack {
+//                Image(systemName: "globe")
+//                    .imageScale(.large)
+//                    .foregroundColor(.accentColor)
+//                Text("Hello, world!")
+//            }
+//            .padding()
+//        }
     }
 }
 
