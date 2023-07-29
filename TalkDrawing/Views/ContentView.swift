@@ -13,7 +13,8 @@ struct ContentView: View {
             MainView(path: $path)
         case .StoryChallengeView:
             StoryChallengeView()
-            
+        case .DrawBoardView:
+            DrawBoardView(path: $path)
         case .CommunityView:
             CommunityView()
             

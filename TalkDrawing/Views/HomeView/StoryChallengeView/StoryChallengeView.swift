@@ -2,8 +2,8 @@
 import SwiftUI
 
 struct StoryChallengeView: View {
-    @Environment(\.dismiss) var dismiss
     
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {

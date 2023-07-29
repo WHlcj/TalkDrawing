@@ -4,6 +4,11 @@ import SwiftUI
 
 struct DrawBoardView: UIViewControllerRepresentable {
     
+    // 全局导航
+    @Binding var path: NavigationPath
+    // 返回
+    @Environment(\.dismiss) var dismiss
+    
     let vc = VDDrawBoardVC()
     func makeUIViewController(context: Context) -> some UIViewController {
         return vc
