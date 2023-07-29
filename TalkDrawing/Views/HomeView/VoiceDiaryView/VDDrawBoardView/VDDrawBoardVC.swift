@@ -22,7 +22,9 @@ struct DrawBoardView: UIViewControllerRepresentable {
 class VDDrawBoardVC: UIViewController {
 
     var drawBoardView = VDDrawBoardView()
-    var colorGroup = VDColorGroupView()
+        
+    public var colorGroup: [UIColor] = [.red,.yellow,.blue,.orange,.purple,.black,.brown,.darkGray,.green,.white]
+    var colorGroupView = UIView()
     
     var clearButton = UIButton()
     
@@ -41,12 +43,8 @@ class VDDrawBoardVC: UIViewController {
             $0.centerY == $0.superview.centerY
         }
         
-        self.view.addSubview(colorGroup)
-        colorGroup.layout {
-//            $0.width == 120
-            $0.leading == drawBoardView.trailing + 20
-            $0.top == drawBoardView.top
-        }
+        self.view.addSubview(colorGroupView)
+        setUpColorGroup()
         
         self.view.addSubview(clearButton)
         clearButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
@@ -77,13 +75,26 @@ class VDDrawBoardVC: UIViewController {
             $0.width == 100
             $0.top == clearButton.bottom
         }
-        // Add tap gesture recognizer to each color block in colorGroup
-//        for colorBlock in colorGroup.colorBlocks {
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectColor(_:)))
-//            colorBlock.addGestureRecognizer(tapGesture)
-//        }
-        // Do any additional setup after loading the view.
+        
     }
+    
+    func setUpColorGroup() {
+        for (index, color) in colorGroup.enumerated() {
+            let colorBlock = UIView()
+            colorBlock.backgroundColor = color
+            colorBlock.isUserInteractionEnabled = true
+            self.view.addSubview(colorBlock) // Add the color block to the container view
+            colorBlock.layout {
+                $0.width == 75
+                $0.height == 75
+                $0.top == drawBoardView.top + CGFloat(index * 80)
+                $0.leading == drawBoardView.trailing + 20 // Align left edge to the left edge of the container
+            }
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectColor(_:)))
+            colorBlock.addGestureRecognizer(tapGesture)
+        }
+    }
+
     
     @objc func clearDrawBoard(_ sender: Any) {
         self.drawBoardView.clear()
@@ -92,4 +103,9 @@ class VDDrawBoardVC: UIViewController {
     @objc func back(_ sender: Any) {
         self.drawBoardView.back()
     }
+    
+    @objc func selectColor(_ sender: UITapGestureRecognizer) {
+        self.drawBoardView.lineColor = sender.view?.backgroundColor ?? .black
+    }
+    
 }

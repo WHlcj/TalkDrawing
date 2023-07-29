@@ -147,6 +147,7 @@
 			);
 			path = Constents;
 			sourceTree = "<group>";
+			wrapsLines = 1;
 		};
 		8D92964A2A713C0100822EC7 /* ProfileView */ = {
 			isa = PBXGroup;
@@ -204,7 +205,6 @@
 			children = (
 				8D9296692A7234EA00822EC7 /* VDDrawBoardView.swift */,
 				8D92966B2A72350500822EC7 /* VDDrawBoardVC.swift */,
-				8D92966D2A72351E00822EC7 /* VDColorGroupView.swift */,
 			);
 			path = VDDrawBoardView;
 			sourceTree = "<group>";
@@ -302,7 +302,6 @@
 				8D92965B2A71768400822EC7 /* NSLayoutAnchor+.swift in Sources */,
 				8D9296A12A74C41700822EC7 /* StoryChallengeModel.swift in Sources */,
 				8D92966C2A72350500822EC7 /* VDDrawBoardVC.swift in Sources */,
-				8D92966E2A72351E00822EC7 /* VDColorGroupView.swift in Sources */,
 				8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */,
 				8D9296452A712A2E00822EC7 /* K.swift in Sources */,
 				8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */,
@@ -455,6 +454,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,9 +462,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing.TalkDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -484,6 +487,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,9 +495,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing.TalkDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

@@ -49,7 +49,7 @@ class VDColorGroupView: UIView {
               return
           }
         
-          let selectedColor = colorGroup[index]
+          let selectedColor = sender.view?.backgroundColor ?? .black
 //          let lineWidth = CGFloat(index + 1)
           delegate?.didSelectColor(selectedColor, lineWidth: CGFloat(5))
       }
