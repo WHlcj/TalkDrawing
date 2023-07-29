@@ -5,7 +5,7 @@ import SwiftUI
 struct TalkDrawingApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            DrawBoardView()
         }
     }
 }
