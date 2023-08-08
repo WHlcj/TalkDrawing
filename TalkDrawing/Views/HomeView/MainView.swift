@@ -40,7 +40,6 @@ extension MainView {
         VStack(alignment: .leading, spacing: 60) {
             HomeButtonItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
             HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DrawBoardView, path: $path)
-//            HomeItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
             HomeItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
         }
     }
