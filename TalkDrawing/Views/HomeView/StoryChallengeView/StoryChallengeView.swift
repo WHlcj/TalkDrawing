@@ -5,7 +5,7 @@ struct StoryChallengeView: View {
     
     // 返回上一个界面
     @Environment(\.dismiss) var dismiss
-    // App路由
+    // App导航路由
     @Binding var path: NavigationPath
     // 内容选择
     @State var selectedAges = Ages.zeroToThree
@@ -18,9 +18,8 @@ struct StoryChallengeView: View {
             Image("background")
                 .resizable()
                 .ignoresSafeArea()
-            
             VStack {
-                topSection
+                navigationBar
                 // 加Group是为了方便添加共同修饰词
                 Group {
                     modelSelection
@@ -29,7 +28,6 @@ struct StoryChallengeView: View {
                 .padding(.horizontal, 150)
                 Spacer()
             }
-            
             .padding()
         }
         .navigationBarBackButtonHidden(true)
@@ -38,12 +36,13 @@ struct StoryChallengeView: View {
 
 // Components
 extension StoryChallengeView {
-    // 顶部返回按钮和标题部分
-    var topSection: some View {
+    // 自定义导航栏
+    var navigationBar: some View {
         HStack(spacing: 300) {
-            backButton
+            // 自定义的返回按钮
+            BackButton()
             HomeItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
-            settingButton
+            SettingButton(path: $path)
         }
     }
     // 模块选择部分
@@ -60,7 +59,7 @@ extension StoryChallengeView {
         .foregroundColor(.gray)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-    // 主要内容部分
+    // StoryChallenges列表
     var mainContents: some View {
         ZStack {
             // 粉色背景
@@ -86,30 +85,8 @@ extension StoryChallengeView {
         .padding(40)
     }
     
-    // 返回按钮
-    var backButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image("backBar")
-                .resizable()
-                .frame(width: 98, height: 68)
-        }
-    }
-    
-    // 设置按钮
-    var settingButton: some View {
-        Button {
-            path.append(AppRouter.SettingView)
-        } label: {
-            Image("settingItem")
-        }
-    }
-    
-
     // 模块年龄选择按钮
     struct AgesButton: View {
-        
         @Binding var ages: Ages
         let title: String
         let turnToage: Ages

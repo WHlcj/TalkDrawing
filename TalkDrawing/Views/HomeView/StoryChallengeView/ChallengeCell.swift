@@ -1,25 +1,22 @@
-//
-//  ChallengeCell.swift
-//  TalkDrawing
-//
-//  Created by Changjun Li on 2023/7/29.
-//
 
 import SwiftUI
 
 struct ChallengeCell: View {
     
+    // APP导航路由
     @Binding var path: NavigationPath
     let challenge: StoryChallengeModel
     
     var body: some View {
         Button {
-            path.append(AppRouter.StoriesListView)
+            // 这里按钮无作用，只是把下面的NAvigationStack修饰成按钮的形式----点击后有点击效果。
         } label: {
             VStack {
-                ZStack {
-                    Image(challenge.title)
-                    Image(challenge.isLocked ? "imageLock" : "imageUlock")
+                NavigationLink(destination: StoriesListView(path: $path, storyChallengeModel: challenge)) {
+                    ZStack {
+                        Image(challenge.title)
+                        Image(challenge.isLocked ? K.AppIcon.StoryChallengeIsLocked : K.AppIcon.StoryChallengeIsUnLock)
+                    }
                 }
                 Text(challenge.title)
                     .font(.system(size: 35).bold())

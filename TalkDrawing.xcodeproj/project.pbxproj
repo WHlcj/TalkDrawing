@@ -36,6 +36,7 @@
 		8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A92A824F5A00822EC7 /* StoryCell.swift */; };
 		8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AC2A82552F00822EC7 /* StoryView.swift */; };
 		8D9296B02A8295A200822EC7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AF2A8295A200822EC7 /* SettingView.swift */; };
+		8D9296B22A838FC400822EC7 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296B12A838FC400822EC7 /* View+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		8D9296A92A824F5A00822EC7 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		8D9296AC2A82552F00822EC7 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		8D9296AF2A8295A200822EC7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		8D9296B12A838FC400822EC7 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				8D9296602A71779D00822EC7 /* UIView+.swift */,
 				8D9296622A7232BA00822EC7 /* UILayoutGuide+.swift */,
 				8D9296642A72332D00822EC7 /* UIColor+.swift */,
+				8D9296B12A838FC400822EC7 /* View+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				8D9296652A72332D00822EC7 /* UIColor+.swift in Sources */,
 				8D92965B2A71768400822EC7 /* NSLayoutAnchor+.swift in Sources */,
 				8D9296A12A74C41700822EC7 /* StoryChallengeModel.swift in Sources */,
+				8D9296B22A838FC400822EC7 /* View+.swift in Sources */,
 				8D92966C2A72350500822EC7 /* VDDrawBoardVC.swift in Sources */,
 				8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */,
 				8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */,
@@ -416,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -470,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

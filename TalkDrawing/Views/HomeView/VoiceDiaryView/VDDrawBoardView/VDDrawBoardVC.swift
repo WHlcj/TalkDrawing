@@ -4,9 +4,9 @@ import SwiftUI
 
 struct DrawBoardView: UIViewControllerRepresentable {
     
-    // 全局导航
+    // APP导航路由
     @Binding var path: NavigationPath
-    // 返回
+    // 返回上一界面
     @Environment(\.dismiss) var dismiss
     
     let vc = VDDrawBoardVC()

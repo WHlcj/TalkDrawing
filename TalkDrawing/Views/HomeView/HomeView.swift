@@ -3,6 +3,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var currentSelected = Tab.home
+    // APP导航路由
     @State var path = NavigationPath()
     
     var body: some View {
@@ -18,6 +19,7 @@ struct HomeView: View {
                         ContentView(view: AppRouter.ProfileView, path: $path)
                     }
                 }
+                .padding(.top, -100)
                 .ignoresSafeArea()
                 .navigationDestination(for: AppRouter.self) { page in
                     ContentView(view: page, path: $path)

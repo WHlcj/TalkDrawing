@@ -12,19 +12,28 @@ struct MyTabBar: View {
                     Button {
                         currentSelectedTab = tabItem
                     } label: {
-                        Image(tabItem.icon)
-                            //.renderingMode(.template)
-                            .resizable()
-                            .frame(width: tabItem == .home ? 105 : 80, height: 80)
-                            .opacity(currentSelectedTab == tabItem ? 1 : 0.5)
+                        HStack {
+                            // tabBar的图标
+                            Image(tabItem.icon)
+                                //.renderingMode(.template)
+                                .resizable()
+                                // 设置选中时图标大小和颜色
+                                .frame(width: currentSelectedTab == tabItem ? (tabItem == .home ? 105 : 80) : (tabItem == .home ? 80 : 64), height: currentSelectedTab == tabItem ? 80 : 64)
+                                .opacity(currentSelectedTab == tabItem ? 1 : 0.5)
+                            // tabBar的标题
+                            Text(tabItem.icon)
+                                .font(.system(size: currentSelectedTab == tabItem ? 60 : 45).bold())
+                                .foregroundColor(K.AppColor.tabBarTitleColor)
+                                .opacity(currentSelectedTab == tabItem ? 1 : 0.5)
+                        }
                     }
                     .frame(maxWidth: .infinity)
                 }
             }
-            .padding([.top, .horizontal])
+            .padding(10)
             .background {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(K.AppColor.tabBar)
+                    .fill(K.AppColor.tabBarBackground)
                     .ignoresSafeArea()
                     .opacity(0.8)
             }

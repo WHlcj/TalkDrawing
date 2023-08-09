@@ -1,6 +1,7 @@
 
 import Foundation
 
+// TabBar常量
 enum Tab: CaseIterable {
     case home
     case community
@@ -10,11 +11,11 @@ enum Tab: CaseIterable {
         
         switch self {
         case .home:
-            return "home"
+            return "主页"
         case .community:
-            return "community"
+            return "社区广场"
         case .profile:
-            return "profile"
+            return "我的"
         }
     }
 }

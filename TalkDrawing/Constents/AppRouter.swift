@@ -1,14 +1,14 @@
 
 import SwiftUI
 
-// 页面导航
+// 页面导航常量
 enum AppRouter: String {
     
     case HomeView
     case MainView
     // 故事闯关涂鸦
     case StoryChallengeView
-    case StoriesListView
+    //case StoriesListView
     case StoryView
     
     case DrawBoardView

@@ -1,5 +1,3 @@
-//TO DO
-// 1-3,4-6,7+的儿童英文
 
 import Foundation
 
@@ -28,7 +26,7 @@ struct StoryChallengeModel: Identifiable {
             Story(title: "小燕子", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ]),
-        StoryChallengeModel(title: "童话寓言", age: .zeroToThree),
+        StoryChallengeModel(title: "童话寓言", age: .zeroToThree, isLocked: false),
         StoryChallengeModel(title: "国学诗词", age: .foreToSix),
         StoryChallengeModel(title: "历史人文", age: .foreToSix),
         StoryChallengeModel(title: "传统文化", age: .foreToSix),

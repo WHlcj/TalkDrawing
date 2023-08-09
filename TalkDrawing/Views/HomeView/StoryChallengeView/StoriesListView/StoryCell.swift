@@ -1,10 +1,8 @@
-// TO DO
-// 1.页面跳转
 
 import SwiftUI
 
 struct StoryCell: View {
-    // App路由
+    // App导航路由
     @Binding var path: NavigationPath
     // 两种排列顺序确定
     let order: Int
@@ -27,7 +25,7 @@ struct StoryCell: View {
                 Text(story.title)
                     .font(.system(size: 40).bold())
                 
-                Image("star")
+                Image(K.AppIcon.star)
                     .renderingMode(.template)
                     .foregroundColor(story.isFinished ? .yellow : .gray)
                 

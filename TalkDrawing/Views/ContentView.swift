@@ -1,9 +1,10 @@
 // TO DO
-// StoriesListView
+// 1.视图之间传递信息
 import SwiftUI
 
 struct ContentView: View {
     @State var view: AppRouter
+    // APP导航路由
     @Binding var path: NavigationPath
     
     var body: some View {
@@ -15,11 +16,8 @@ struct ContentView: View {
         // 故事闯关涂鸦
         case .StoryChallengeView:
             StoryChallengeView(path: $path)
-        case .StoriesListView:
-            StoriesListView(path: $path, storyChallengeModel: StoryChallengeModel.storyChallenges[0])
         case .StoryView:
             StoryView()
-        
             
         case .DrawBoardView:
             DrawBoardView(path: $path)
@@ -28,8 +26,7 @@ struct ContentView: View {
             CommunityView()
         // 个人主页
         case .ProfileView:
-            ProfileView()
-        
+            ProfileView(path: $path)
         // 设置页面
         case .SettingView:
             SettingView()

@@ -3,6 +3,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var currentSelected = Tab.home
+    // APP导航路由
     @Binding var path: NavigationPath
     
     var body: some View {
@@ -23,9 +24,10 @@ struct MainView: View {
                     // 左侧Item
                     leftItems
                     // 右侧推荐栏
-                    rightItems
+                    SelectedPictureBooks
                 }
                 .frame(maxWidth: .infinity)
+                .frame(maxHeight: 640)
             }
             .padding(.bottom, 100)
         }
@@ -44,13 +46,15 @@ extension MainView {
         }
     }
     
-    var rightItems: some View {
+    var SelectedPictureBooks: some View {
         VStack {
             Text("精选绘本")
                 .font(.system(size: 70).bold())
-            Image("preview")
-                .resizable()
-                .frame(width: 395, height: 350)
+            ScrollView {
+                ForEach(K.AppIcon.SelectedPictureBooks, id: \.self) { book in
+                    Image(book)
+                }
+            }
         }
     }
     
@@ -58,6 +62,7 @@ extension MainView {
         var image: String
         var title: String
         var destination: AppRouter
+        // App导航路由
         @Binding var path: NavigationPath
         var body: some View {
             Button {
