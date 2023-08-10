@@ -3,6 +3,12 @@ import SwiftUI
 
 // App通用数据常量
 class K {
+    
+    //屏幕尺寸
+    class ScreenSize {
+        static let screenSize = UIScreen.main.bounds.size
+    }
+    
     class AppColor {
         // 主题按钮色用于返回按钮,设置按钮等
         static let ThemeButtonColor = Color(red: 0.90, green: 0.40, blue: 0.70)

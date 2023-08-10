@@ -1,30 +1,57 @@
 import UIKit
 import SwiftUI
+import SwiftUI
 
-struct DrawBoardView: UIViewControllerRepresentable {
-    
+struct DrawBoardView: View {
     // APP导航路由
     @Binding var path: NavigationPath
     // 返回上一界面
     @Environment(\.dismiss) var dismiss
     
-    let vc = VDDrawBoardVC()
-    func makeUIViewController(context: Context) -> some UIViewController {
+    var body: some View {
+        ZStack {
+            Background().frame(width: K.ScreenSize.screenSize.width,height: K.ScreenSize.screenSize.height)
+            VStack {
+                navigationBar
+                UIViewControllerWrapper(vc: VDDrawBoardVC()) // Wrapping the UIKit VC
+            }.navigationBarBackButtonHidden(true)
+        }
+//            .background(Color.clear)
+//
+    }
+//    
+    var navigationBar: some View {
+        HStack(spacing: 300) {
+            // 自定义的返回按钮
+            BackButton()
+            HomeItem(image: K.AppIcon.HomeItemUnlock, title: "故事画板")
+            SettingButton(path: $path)
+        }
+    }
+}
+
+// UIViewRepresentable to wrap the UIKit UIViewController
+struct UIViewControllerWrapper: UIViewControllerRepresentable {
+    typealias UIViewControllerType = UIViewController
+    
+    let vc: UIViewController
+    
+    func makeUIViewController(context: Context) -> UIViewController {
         return vc
     }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
+    u
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // You can perform any updates if needed
     }
-    
 }
+
 class VDDrawBoardVC: UIViewController {
 
     var drawBoardView = VDDrawBoardView()
-    var whenBoardView = VDDrawBoardView() //何时
-    var whereBoardView = VDDrawBoardView() //何地
-    var whoBoardView = VDDrawBoardView() //何人
-    var whatBoardView = VDDrawBoardView() //何事
+//    var whenBoardView = VDDrawBoardView() //何时
+//    var whereBoardView = VDDrawBoardView() //何地
+//    var whoBoardView = VDDrawBoardView() //何人
+//    var whatBoardView = VDDrawBoardView() //何事
 
     public var colorGroup: [UIColor] = [.red,.yellow,.blue,.orange,.purple,.black,.brown,.darkGray,.green,.white]
     var colorGroupView = UIView()
@@ -53,8 +80,8 @@ class VDDrawBoardVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.layer.contents = UIImage(named:"background")?.cgImage
+        self.view.backgroundColor = .clear
+//        self.view.layer.contents = UIImage(named:"background")?.cgImage
         self.view.addSubview(drawBoardView)
         drawBoardView.backgroundColor = .white.withAlphaComponent(0.7)
         drawBoardView.layout {
