@@ -1,15 +1,14 @@
-//
-//  View+.swift
-//  TalkDrawing
-//
-//  Created by Changjun Li on 2023/8/9.
-//
 
 import SwiftUI
 
-extension View {
+// 大部分页面背景
+struct Background: View {
+    var body: some View {
+        Image("background")
+            .resizable()
+            .ignoresSafeArea()
+    }
 }
-
 
 // 粉色箭头返回按钮
 struct BackButton: View {

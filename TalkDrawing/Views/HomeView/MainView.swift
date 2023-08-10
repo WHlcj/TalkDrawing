@@ -10,9 +10,7 @@ struct MainView: View {
         
         ZStack {
             // background
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            Background()
             
             VStack {
                 // 妙语生画logo
