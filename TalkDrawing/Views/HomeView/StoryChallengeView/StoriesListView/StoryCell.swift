@@ -30,6 +30,7 @@ struct StoryCell: View {
                     .foregroundColor(story.isFinished ? .yellow : .gray)
                 
                 Button {
+                    // 目前是做死的跳转，任意点击一个故事都跳转到门前到桥下的StoryView
                     path.append(AppRouter.StoryView)
                 } label: {
                     Image(story.title)

@@ -15,9 +15,7 @@ struct StoryChallengeView: View {
     var body: some View {
         ZStack {
             // background
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            Background()
             VStack {
                 navigationBar
                 // 加Group是为了方便添加共同修饰词

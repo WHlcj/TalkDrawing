@@ -14,9 +14,7 @@ struct StoriesListView: View {
     var body: some View {
         ZStack {
             // background
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            Background()
             // 内容空白背景
             VStack {
                 navigationBar
