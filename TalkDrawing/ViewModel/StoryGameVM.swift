@@ -13,7 +13,11 @@ class StoryGameVM: ObservableObject {
         StoryGameModel()
     }
     
-    private var videoURL = Bundle.main.url(forResource: "", withExtension: "mp4")!
+    var challenges: [StoryChallenge] {
+        model.challenges
+    }
+    
+    private var videoURL: URL?
     
     init() {
     }
@@ -22,22 +26,23 @@ class StoryGameVM: ObservableObject {
     // 选择挑战模块
     func chooseChallenge(challenge: StoryChallenge) {
         model.ChooseChallenge(challenge: challenge)
-        print("调用VM的模块选择成功")
     }
     // 选择故事
     func chooseStory(story: Story) {
         model.ChooseStory(story: story)
-        print("调用VM的故事选择成功")
+        initVideoPlayer()
     }
     // 进入故事模块
     func initVideoPlayer() {
         // 获取资源文件的 URL
         if let challengeIndex = model.indexOfSelectedChallenge, let storyIndex = model.indexOfSelectedStory {
-              videoURL = StoryGameModel.storyChallenges[challengeIndex].stories[storyIndex].url ?? Bundle.main.url(forResource: "", withExtension: "mp4")!
-            print("获取视频资源成功")
-            player = AVPlayer(url: videoURL)
+            if let videoURL = challenges[challengeIndex].stories[storyIndex].url {
+                player = AVPlayer(url: videoURL)
+                player.pause()
+            } else {
+                self.player = AVPlayer()
+            }
           }
-        
     }
 
     // 播放视频
@@ -55,7 +60,4 @@ class StoryGameVM: ObservableObject {
         model.FinishStory()
     }
 
-    
-    
-    
 }

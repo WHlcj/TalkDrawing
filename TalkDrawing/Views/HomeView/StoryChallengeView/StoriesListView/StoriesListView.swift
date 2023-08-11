@@ -64,6 +64,6 @@ struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
         @StateObject var vm = StoryGameVM()
-        StoriesListView(path: $path, vm: vm, challenge: StoryGameModel.storyChallenges[0])
+        StoriesListView(path: $path, vm: vm, challenge: vm.challenges[0])
     }
 }

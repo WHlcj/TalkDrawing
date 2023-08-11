@@ -28,7 +28,6 @@ struct StoryView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            vm.initVideoPlayer()
             vm.chooseStory(story: story)
         }
     }
