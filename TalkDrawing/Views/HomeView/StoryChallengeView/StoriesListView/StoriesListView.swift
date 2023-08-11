@@ -4,11 +4,13 @@ import SwiftUI
 struct StoriesListView: View {
     // APP导航路由
     @Binding var path: NavigationPath
+    // 故事闯关模块的ViewModel
+    @ObservedObject var vm: StoryGameVM
     
-    let storyChallengeModel: StoryChallengeModel
+    let challenge: StoryChallenge
     
     var stories: [Story] {
-        storyChallengeModel.stories
+        challenge.stories
     }
     
     var body: some View {
@@ -22,6 +24,9 @@ struct StoriesListView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            vm.chooseChallenge(challenge: challenge)
+        }
     }
 }
 
@@ -32,7 +37,7 @@ extension StoriesListView {
     var navigationBar: some View {
         HStack(alignment: .bottom) {
             BackButton()
-            Text(storyChallengeModel.title)
+            Text(challenge.title)
                 .font(.system(size: 50).bold())
                 .foregroundColor(K.AppColor.ThemeButtonColor)
             Spacer()
@@ -47,8 +52,7 @@ extension StoriesListView {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 500, maximum: 700))]) {
                 ForEach(0..<stories.count, id: \.self) { number in
-                    StoryCell(path: $path, order: number, story: stories[number])
-
+                    StoryCell(path: $path, order: number, story: stories[number], vm: vm)
                 }
             }
             .padding(.horizontal, 90)
@@ -59,6 +63,7 @@ extension StoriesListView {
 struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
-        StoriesListView(path: $path, storyChallengeModel: StoryChallengeModel.storyChallenges[0])
+        @StateObject var vm = StoryGameVM()
+        StoriesListView(path: $path, vm: vm, challenge: StoryGameModel.storyChallenges[0])
     }
 }

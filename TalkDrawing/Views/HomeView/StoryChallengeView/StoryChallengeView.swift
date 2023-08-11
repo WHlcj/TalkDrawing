@@ -9,9 +9,11 @@ struct StoryChallengeView: View {
     @Binding var path: NavigationPath
     // 内容选择
     @State var selectedAges = Ages.zeroToThree
-    
-    @State var challenges = StoryChallengeModel.storyChallenges
-    
+    // 模块内容填充
+    @State var challenges = StoryGameModel.storyChallenges
+    // 故事闯关模块的ViewModel
+    @StateObject var vm = StoryGameVM()
+        
     var body: some View {
         ZStack {
             // background
@@ -74,8 +76,13 @@ extension StoryChallengeView {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 256, maximum: 300))], spacing: 50) {
                 ForEach(challenges) { challenge in
-                    if challenge.age == selectedAges {
-                        ChallengeCell(path: $path, challenge: challenge)
+                    if challenge.age.contains(selectedAges) {
+                        ChallengeCell(path: $path, challenge: challenge, vm: vm)
+//                            .onTapGesture {
+//                                withAnimation {
+//                                    vm.chooseChallenge(challenge: challenge)
+//                                }
+//                            }
                         }
                 }
             }

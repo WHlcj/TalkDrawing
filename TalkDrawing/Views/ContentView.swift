@@ -16,9 +16,9 @@ struct ContentView: View {
         // 故事闯关涂鸦
         case .StoryChallengeView:
             StoryChallengeView(path: $path)
-        case .StoryView:
-            StoryView()
-            
+//        case .StoryView:
+//            StoryView()
+//            
         case .DrawBoardView:
             DrawBoardView(path: $path)
         // 社区广场

@@ -27,9 +27,7 @@
 		8D9296652A72332D00822EC7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296642A72332D00822EC7 /* UIColor+.swift */; };
 		8D92966A2A7234EA00822EC7 /* VDDrawBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296692A7234EA00822EC7 /* VDDrawBoardView.swift */; };
 		8D92966C2A72350500822EC7 /* VDDrawBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92966B2A72350500822EC7 /* VDDrawBoardVC.swift */; };
-		8D9296962A74B93F00822EC7 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296952A74B93F00822EC7 /* Story.swift */; };
-		8D9296982A74BA6200822EC7 /* draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296972A74BA6200822EC7 /* draft.swift */; };
-		8D9296A12A74C41700822EC7 /* StoryChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A02A74C41700822EC7 /* StoryChallengeModel.swift */; };
+		8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296952A74B93F00822EC7 /* StoryGameModel.swift */; };
 		8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A22A7504C900822EC7 /* ChallengeCell.swift */; };
 		8D9296A52A8227FE00822EC7 /* 门前大桥下.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */; };
 		8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A72A824B5600822EC7 /* StoriesListView.swift */; };
@@ -39,7 +37,9 @@
 		8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CD2A84DE0300822EC7 /* Structs.swift */; };
 		8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */; };
 		8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D12A84EEAA00822EC7 /* ColorCell.swift */; };
-		8D9296D52A84F69500822EC7 /* StoryChallengeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D42A84F69500822EC7 /* StoryChallengeVM.swift */; };
+		8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */; };
+		8D9296DA2A8632D300822EC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296D92A8632D300822EC7 /* Realm */; };
+		8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296DB2A8632D300822EC7 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,9 +64,7 @@
 		8D9296642A72332D00822EC7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		8D9296692A7234EA00822EC7 /* VDDrawBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDDrawBoardView.swift; sourceTree = "<group>"; };
 		8D92966B2A72350500822EC7 /* VDDrawBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDDrawBoardVC.swift; sourceTree = "<group>"; };
-		8D9296952A74B93F00822EC7 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		8D9296972A74BA6200822EC7 /* draft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draft.swift; sourceTree = "<group>"; };
-		8D9296A02A74C41700822EC7 /* StoryChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryChallengeModel.swift; sourceTree = "<group>"; };
+		8D9296952A74B93F00822EC7 /* StoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameModel.swift; sourceTree = "<group>"; };
 		8D9296A22A7504C900822EC7 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "门前大桥下.mp4"; sourceTree = "<group>"; };
 		8D9296A72A824B5600822EC7 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
@@ -76,7 +74,7 @@
 		8D9296CD2A84DE0300822EC7 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsCell.swift; sourceTree = "<group>"; };
 		8D9296D12A84EEAA00822EC7 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
-		8D9296D42A84F69500822EC7 /* StoryChallengeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryChallengeVM.swift; sourceTree = "<group>"; };
+		8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */,
+				8D9296DA2A8632D300822EC7 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +118,6 @@
 				8D9296372A70DD7D00822EC7 /* Assets.xcassets */,
 				8D9296992A74BAA700822EC7 /* Resources */,
 				8D9296392A70DD7D00822EC7 /* Preview Content */,
-				8D9296972A74BA6200822EC7 /* draft.swift */,
 			);
 			path = TalkDrawing;
 			sourceTree = "<group>";
@@ -200,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				8D9296A62A824B4000822EC7 /* StoriesListView */,
-				8D9296AB2A82551900822EC7 /* StoryView */,
 				8D92964E2A713D3900822EC7 /* StoryChallengeView.swift */,
 				8D9296A22A7504C900822EC7 /* ChallengeCell.swift */,
 			);
@@ -234,8 +232,7 @@
 		8D9296942A74B92600822EC7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D9296952A74B93F00822EC7 /* Story.swift */,
-				8D9296A02A74C41700822EC7 /* StoryChallengeModel.swift */,
+				8D9296952A74B93F00822EC7 /* StoryGameModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +250,7 @@
 			children = (
 				8D9296A72A824B5600822EC7 /* StoriesListView.swift */,
 				8D9296A92A824F5A00822EC7 /* StoryCell.swift */,
+				8D9296AB2A82551900822EC7 /* StoryView */,
 			);
 			path = StoriesListView;
 			sourceTree = "<group>";
@@ -278,7 +276,7 @@
 		8D9296D32A84F49500822EC7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8D9296D42A84F69500822EC7 /* StoryChallengeVM.swift */,
+				8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -299,6 +297,10 @@
 			dependencies = (
 			);
 			name = TalkDrawing;
+			packageProductDependencies = (
+				8D9296D92A8632D300822EC7 /* Realm */,
+				8D9296DB2A8632D300822EC7 /* RealmSwift */,
+			);
 			productName = TalkDrawing;
 			productReference = 8D9296302A70DD7C00822EC7 /* TalkDrawing.app */;
 			productType = "com.apple.product-type.application";
@@ -327,6 +329,9 @@
 				Base,
 			);
 			mainGroup = 8D9296272A70DD7C00822EC7;
+			packageReferences = (
+				8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 8D9296312A70DD7C00822EC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -357,24 +362,22 @@
 				8D92964F2A713D3900822EC7 /* StoryChallengeView.swift in Sources */,
 				8D9296652A72332D00822EC7 /* UIColor+.swift in Sources */,
 				8D92965B2A71768400822EC7 /* NSLayoutAnchor+.swift in Sources */,
-				8D9296A12A74C41700822EC7 /* StoryChallengeModel.swift in Sources */,
 				8D92966C2A72350500822EC7 /* VDDrawBoardVC.swift in Sources */,
 				8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */,
 				8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */,
 				8D9296452A712A2E00822EC7 /* K.swift in Sources */,
+				8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */,
 				8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */,
 				8D9296512A71473600822EC7 /* MyTabBar.swift in Sources */,
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
-				8D9296962A74B93F00822EC7 /* Story.swift in Sources */,
+				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
 				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
 				8D92965D2A7176EE00822EC7 /* NSLayoutDimension+.swift in Sources */,
 				8D9296472A713BB600822EC7 /* ContentView.swift in Sources */,
 				8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */,
 				8D9296612A71779D00822EC7 /* UIView+.swift in Sources */,
-				8D9296D52A84F69500822EC7 /* StoryChallengeVM.swift in Sources */,
 				8D9296532A71475E00822EC7 /* Tab.swift in Sources */,
-				8D9296982A74BA6200822EC7 /* draft.swift in Sources */,
 				8D9296582A7150E300822EC7 /* MainView.swift in Sources */,
 				8D92964C2A713C4700822EC7 /* ProfileView.swift in Sources */,
 				8D9296B02A8295A200822EC7 /* SettingView.swift in Sources */,
@@ -592,6 +595,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.42.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8D9296D92A8632D300822EC7 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8D9296DB2A8632D300822EC7 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8D9296282A70DD7C00822EC7 /* Project object */;
 }

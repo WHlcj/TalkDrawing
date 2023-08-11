@@ -8,6 +8,7 @@ struct StoryCell: View {
     let order: Int
     // 故事内容
     let story: Story
+    @ObservedObject var vm: StoryGameVM
     
     var body: some View {
         VStack {
@@ -30,10 +31,11 @@ struct StoryCell: View {
                     .foregroundColor(story.isFinished ? .yellow : .gray)
                 
                 Button {
-                    // 目前是做死的跳转，任意点击一个故事都跳转到门前到桥下的StoryView
-                    path.append(AppRouter.StoryView)
+                    // 只是做一个点击有闪烁效果的链接导航
                 } label: {
-                    Image(story.title)
+                    NavigationLink(destination: StoryView(vm: vm, story: story)) {
+                        Image(story.title)
+                    }
                 }
             }
             .padding(.top, 150)
@@ -49,9 +51,11 @@ struct StoryCell: View {
             
             VStack {
                 Button {
-                    path.append(AppRouter.StoryView)
+                    // 只是做一个点击有闪烁效果的链接导航
                 } label: {
-                    Image(story.title)
+                    NavigationLink(destination: StoryView(vm: vm, story: story)) {
+                        Image(story.title)
+                    }
                 }
                 Text(story.title)
                     .font(.system(size: 40).bold())
@@ -73,12 +77,13 @@ struct StoryCell: View {
 struct StoryCell_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
+        @StateObject var vm = StoryGameVM()
         let story = Story(title: "门前大桥下", parentTitle: "经典儿歌")
         ZStack {
             // background
             Color.cyan
             
-            StoryCell(path: $path, order: 1, story: story)
+            StoryCell(path: $path, order: 1, story: story, vm: vm)
         }
     }
 }

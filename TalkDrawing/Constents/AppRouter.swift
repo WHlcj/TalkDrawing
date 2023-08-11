@@ -9,7 +9,7 @@ enum AppRouter: String {
     // 故事闯关涂鸦
     case StoryChallengeView
     //case StoriesListView
-    case StoryView
+    //case StoryView
     
     case DrawBoardView
     

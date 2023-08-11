@@ -5,14 +5,17 @@ struct ChallengeCell: View {
     
     // APP导航路由
     @Binding var path: NavigationPath
-    let challenge: StoryChallengeModel
+    // 选择的challenge
+    let challenge: StoryChallenge
+    // 故事闯关模块的ViewModel
+    @ObservedObject var vm: StoryGameVM
     
     var body: some View {
         Button {
-            // 这里按钮无作用，只是把下面的NAvigationStack修饰成按钮的形式----点击后有点击效果。
+            // 只是做一个点击有闪烁效果的链接导航
         } label: {
             VStack {
-                NavigationLink(destination: StoriesListView(path: $path, storyChallengeModel: challenge)) {
+                NavigationLink(destination: StoriesListView(path: $path, vm: vm, challenge: challenge)) {
                     ZStack {
                         Image(challenge.title)
                         Image(challenge.isLocked ? K.AppIcon.StoryChallengeIsLocked : K.AppIcon.StoryChallengeIsUnLock)
@@ -30,7 +33,8 @@ struct ChallengeCell: View {
 struct ChallengeCell_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
-        let model = StoryChallengeModel(title: "童话寓言", age: .zeroToThree)
-        ChallengeCell(path: $path, challenge: model)
+        @StateObject var vm = StoryGameVM()
+        let model = StoryChallenge(title: "童话寓言", age: [.zeroToThree])
+        ChallengeCell(path: $path, challenge: model, vm: vm)
     }
 }
