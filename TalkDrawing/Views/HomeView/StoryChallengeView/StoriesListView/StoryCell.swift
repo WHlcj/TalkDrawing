@@ -33,7 +33,7 @@ struct StoryCell: View {
                 Button {
                     // 只是做一个点击有闪烁效果的链接导航
                 } label: {
-                    NavigationLink(destination: StoryView(vm: vm, story: story)) {
+                    NavigationLink(destination: StoryView(path: $path, vm: vm, story: story)) {
                         Image(story.title)
                     }
                 }
@@ -53,7 +53,7 @@ struct StoryCell: View {
                 Button {
                     // 只是做一个点击有闪烁效果的链接导航
                 } label: {
-                    NavigationLink(destination: StoryView(vm: vm, story: story)) {
+                    NavigationLink(destination: StoryView(path: $path, vm: vm, story: story)) {
                         Image(story.title)
                     }
                 }

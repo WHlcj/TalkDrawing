@@ -61,6 +61,15 @@ class K {
         static let downloadButton = "downloadButton"
         // 星星⭐️
         static let star = "star"
+        // 左箭头
+        static let leftArrow = "leftArrow"
+        // 右箭头
+        static let rightArrow = "rightArrow"
+        // 完成游戏图标
+        static let finishGame = "finishGame"
+        // 返回首页图标
+        static let backHome = "backHome"
+        
         // ProfileView
         // 用户头像
         static let ProfileAccountAvatar = "avatar"

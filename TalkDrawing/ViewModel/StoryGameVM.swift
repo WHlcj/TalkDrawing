@@ -5,7 +5,8 @@ import AVKit
 class StoryGameVM: ObservableObject {
     
     // 媒体播放器
-    @Published var player = AVPlayer()
+    @Published var videoPlayer = AVPlayer()
+    @Published var voicePlayer = AVAudioPlayer()
     // 游戏模组
     @Published var model = createStoryGame()
     
@@ -30,6 +31,7 @@ class StoryGameVM: ObservableObject {
     // 选择故事
     func chooseStory(story: Story) {
         model.ChooseStory(story: story)
+        // 选择好故事后，初始化视频播放器
         initVideoPlayer()
     }
     // 进入故事模块
@@ -37,22 +39,30 @@ class StoryGameVM: ObservableObject {
         // 获取资源文件的 URL
         if let challengeIndex = model.indexOfSelectedChallenge, let storyIndex = model.indexOfSelectedStory {
             if let videoURL = challenges[challengeIndex].stories[storyIndex].url {
-                player = AVPlayer(url: videoURL)
-                player.pause()
+                videoPlayer = AVPlayer(url: videoURL)
             } else {
-                self.player = AVPlayer()
+                self.videoPlayer = AVPlayer()
             }
           }
     }
 
-    // 播放视频
+    // 播放动画
     func playVideo() {
-        player.play()
+        videoPlayer.play()
     }
-    
-    // 停止播放
+    // 停止播放动画
     func stopVideo() {
-        player.pause()
+        videoPlayer.pause()
+    }
+    // 播放提示音
+    func playSound(sound: String) {
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
+        do {
+            voicePlayer = try AVAudioPlayer(contentsOf: url)
+            voicePlayer.play()
+        } catch let error {
+            print(error)
+        }
     }
     
     // MARK: - 游戏完成控制

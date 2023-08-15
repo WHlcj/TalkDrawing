@@ -1,5 +1,6 @@
 
 import Foundation
+import SwiftUI
 
 // 年龄分段
 enum Ages: String {
@@ -25,7 +26,7 @@ struct StoryGameModel {
     // 当前游戏主要内容
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 3),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 4.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", finishGameSound: "A-完成"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "小燕子", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
@@ -80,7 +81,19 @@ struct Story: Identifiable {
     // 故事视频资源URL
     private(set) var url: URL?
     // 故事视频暂停点
-    var pauseSeconds = 4
+    var pauseSeconds = 4.0
+    // 故事语音关键词口令
+    var keyWord = ""
+    // 故事动物
+    var targetAnimal = ""
+    // 动物上色颜色
+    var targetColor = Color(red: 0.98, green: 0.87, blue: 0.30) // 黄
+    // 游戏开始提示音
+    var welcomeSound = ""
+    // 游戏动作提示音
+    var actionTintSound = ""
+    // 游戏完成提示音
+    var finishGameSound = ""
 }
 
 struct StoryChallenge: Identifiable {

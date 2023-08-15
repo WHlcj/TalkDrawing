@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */; };
+		8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */; };
+		8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
 		8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296352A70DD7C00822EC7 /* HomeView.swift */; };
 		8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296372A70DD7D00822EC7 /* Assets.xcassets */; };
@@ -40,9 +43,14 @@
 		8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */; };
 		8D9296DA2A8632D300822EC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296D92A8632D300822EC7 /* Realm */; };
 		8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296DB2A8632D300822EC7 /* RealmSwift */; };
+		8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296E12A89FF9700822EC7 /* SwiftSpeech */; };
+		8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296EA2A8A470200822EC7 /* VictoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-河流上有什么.mp3"; sourceTree = "<group>"; };
+		8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-拖拽.mp3"; sourceTree = "<group>"; };
+		8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-完成.mp3"; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9296332A70DD7C00822EC7 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		8D9296352A70DD7C00822EC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -75,6 +83,8 @@
 		8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsCell.swift; sourceTree = "<group>"; };
 		8D9296D12A84EEAA00822EC7 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameVM.swift; sourceTree = "<group>"; };
+		8D9296E32A8A042300822EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D9296EA2A8A470200822EC7 /* VictoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */,
+				8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */,
 				8D9296DA2A8632D300822EC7 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +101,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D6A0AE02A8A57BD007554E4 /* StoryGame */ = {
+			isa = PBXGroup;
+			children = (
+				8D6A0AE12A8A57CA007554E4 /* 门前大桥下 */,
+			);
+			path = StoryGame;
+			sourceTree = "<group>";
+		};
+		8D6A0AE12A8A57CA007554E4 /* 门前大桥下 */ = {
+			isa = PBXGroup;
+			children = (
+				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
+				8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */,
+				8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */,
+				8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */,
+			);
+			path = "门前大桥下";
+			sourceTree = "<group>";
+		};
 		8D9296272A70DD7C00822EC7 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +139,7 @@
 		8D9296322A70DD7C00822EC7 /* TalkDrawing */ = {
 			isa = PBXGroup;
 			children = (
+				8D9296E32A8A042300822EC7 /* Info.plist */,
 				8D9296332A70DD7C00822EC7 /* AppEntry.swift */,
 				8D9296942A74B92600822EC7 /* Model */,
 				8D9296D32A84F49500822EC7 /* ViewModel */,
@@ -240,7 +271,7 @@
 		8D9296992A74BAA700822EC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */,
+				8D6A0AE02A8A57BD007554E4 /* StoryGame */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -261,6 +292,7 @@
 				8D9296AC2A82552F00822EC7 /* StoryView.swift */,
 				8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */,
 				8D9296D12A84EEAA00822EC7 /* ColorCell.swift */,
+				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 			);
 			path = StoryView;
 			sourceTree = "<group>";
@@ -300,6 +332,7 @@
 			packageProductDependencies = (
 				8D9296D92A8632D300822EC7 /* Realm */,
 				8D9296DB2A8632D300822EC7 /* RealmSwift */,
+				8D9296E12A89FF9700822EC7 /* SwiftSpeech */,
 			);
 			productName = TalkDrawing;
 			productReference = 8D9296302A70DD7C00822EC7 /* TalkDrawing.app */;
@@ -331,6 +364,7 @@
 			mainGroup = 8D9296272A70DD7C00822EC7;
 			packageReferences = (
 				8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */,
 			);
 			productRefGroup = 8D9296312A70DD7C00822EC7 /* Products */;
 			projectDirPath = "";
@@ -346,9 +380,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */,
 				8D9296A52A8227FE00822EC7 /* 门前大桥下.mp4 in Resources */,
 				8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */,
 				8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */,
+				8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */,
+				8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +414,7 @@
 				8D9296472A713BB600822EC7 /* ContentView.swift in Sources */,
 				8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */,
 				8D9296612A71779D00822EC7 /* UIView+.swift in Sources */,
+				8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */,
 				8D9296532A71475E00822EC7 /* Tab.swift in Sources */,
 				8D9296582A7150E300822EC7 /* MainView.swift in Sources */,
 				8D92964C2A713C4700822EC7 /* ProfileView.swift in Sources */,
@@ -518,6 +556,9 @@
 				DEVELOPMENT_TEAM = DADW9Q983Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkDrawing/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the mircrophone to record audio for speech recognition.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert your speech into text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,6 +592,9 @@
 				DEVELOPMENT_TEAM = DADW9Q983Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkDrawing/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the mircrophone to record audio for speech recognition.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert your speech into text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -605,6 +649,14 @@
 				minimumVersion = 10.42.0;
 			};
 		};
+		8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cay-Zhang/SwiftSpeech";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -617,6 +669,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		8D9296E12A89FF9700822EC7 /* SwiftSpeech */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */;
+			productName = SwiftSpeech;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
