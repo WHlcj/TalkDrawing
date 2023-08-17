@@ -42,3 +42,19 @@ struct SettingButton: View {
         }
     }
 }
+
+// 颜色选择区
+struct ColorChosenSection: View {
+    // 绑定的颜色选择
+    @Binding var selectedColor: Color
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                ForEach(K.AppColor.colors, id: \.self) { color in
+                    ColorCell(selectedColor: $selectedColor, color: color)
+                }
+            }
+        }
+    }
+}

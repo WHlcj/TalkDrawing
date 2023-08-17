@@ -12,7 +12,7 @@ struct VictoryView: View {
         ZStack{
             // background
             K.AppColor.ThemeButtonColor
-                .opacity(0.15)
+                .opacity(0.3)
                 .ignoresSafeArea()
             
             // content
@@ -27,9 +27,6 @@ struct VictoryView: View {
                     backHomeButton
                     backToStoryListButton
                     nextStoryButton
-//                    VictoryItem(icon: K.AppIcon.backHome, title: "主页")
-//                    VictoryItem(icon: K.AppIcon.leftArrow, title: "返回")
-//                    VictoryItem(icon: K.AppIcon.rightArrow, title: "下一关")
                 }
             }
         }

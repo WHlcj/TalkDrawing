@@ -46,6 +46,7 @@
 		8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296E12A89FF9700822EC7 /* SwiftSpeech */; };
 		8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296EA2A8A470200822EC7 /* VictoryView.swift */; };
 		8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */; };
+		8DEB16DA2A8E19B200A4DF1C /* DialogDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		8D9296E32A8A042300822EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D9296EA2A8A470200822EC7 /* VictoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryView.swift; sourceTree = "<group>"; };
 		8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-数鸭子.mp3"; sourceTree = "<group>"; };
+		8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogDrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 		8D9296672A72343E00822EC7 /* VoiceDiaryView */ = {
 			isa = PBXGroup;
 			children = (
+				8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */,
 				8D92966F2A72353100822EC7 /* VDDrawBoardView */,
 			);
 			path = VoiceDiaryView;
@@ -423,6 +426,7 @@
 				8D9296582A7150E300822EC7 /* MainView.swift in Sources */,
 				8D92964C2A713C4700822EC7 /* ProfileView.swift in Sources */,
 				8D9296B02A8295A200822EC7 /* SettingView.swift in Sources */,
+				8DEB16DA2A8E19B200A4DF1C /* DialogDrawingView.swift in Sources */,
 				8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */,
 				8D92966A2A7234EA00822EC7 /* VDDrawBoardView.swift in Sources */,
 				8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */,

@@ -52,7 +52,7 @@ class K {
         static let StoryChallengeIsLocked = "imageLock"
         static let StoryChallengeIsUnLock = "imageUnlock"
         // 动物
-        static let animals = ["deer", "pig",  "horse", "frog", "sheep", "duck", "chicken"]
+        static let animals = ["pig",  "horse", "frog", "sheep", "duck", "chicken"]//"deer", 
         // 精选绘本
         static let SelectedPictureBooks = ["SelectedPictureBookOne" , "SelectedPictureBookTwo", "SelectedPictureBookThree"]
         // 返回按钮

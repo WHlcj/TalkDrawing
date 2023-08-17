@@ -16,11 +16,9 @@ struct ContentView: View {
         // 故事闯关涂鸦
         case .StoryChallengeView:
             StoryChallengeView(path: $path)
-//        case .StoryView:
-//            StoryView()
-//            
         case .DrawBoardView:
-            DrawBoardView(path: $path)
+            DialogDrawingView(path: $path)
+//            DrawBoardView(path: $path, selectedColor: <#Binding<Color>#>)
         // 社区广场
         case .CommunityView:
             CommunityView()

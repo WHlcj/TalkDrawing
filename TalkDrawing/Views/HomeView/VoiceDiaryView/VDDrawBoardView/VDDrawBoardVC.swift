@@ -6,10 +6,13 @@ struct DrawBoardView: UIViewControllerRepresentable {
     
     // APP导航路由
     @Binding var path: NavigationPath
+    // 选择的颜色
+    @Binding var selectedColor: Color
     // 返回上一界面
     @Environment(\.dismiss) var dismiss
     
     let vc = VDDrawBoardVC()
+    
     func makeUIViewController(context: Context) -> some UIViewController {
         return vc
     }
@@ -19,12 +22,14 @@ struct DrawBoardView: UIViewControllerRepresentable {
     }
     
 }
+
+
 class VDDrawBoardVC: UIViewController {
 
     var drawBoardView = VDDrawBoardView()
         
-    public var colorGroup: [UIColor] = [.red,.yellow,.blue,.orange,.purple,.black,.brown,.darkGray,.green,.white]
-    var colorGroupView = UIView()
+//    public var colorGroup = K.AppColor.colors
+//    var colorGroupView = UIView()
     
     var clearButton = UIButton()
     
@@ -33,7 +38,7 @@ class VDDrawBoardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layer.contents = UIImage(named:"background")?.cgImage
+        //self.view.layer.contents = UIImage(named:"background")?.cgImage
         self.view.addSubview(drawBoardView)
         drawBoardView.backgroundColor = .lightGray
         drawBoardView.layout {
@@ -43,8 +48,9 @@ class VDDrawBoardVC: UIViewController {
             $0.centerY == $0.superview.centerY
         }
         
-        self.view.addSubview(colorGroupView)
-        setUpColorGroup()
+//        self.view.addSubview(colorGroupView)
+//
+//        setUpColorGroup()
         
         self.view.addSubview(clearButton)
         clearButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
@@ -78,22 +84,22 @@ class VDDrawBoardVC: UIViewController {
         
     }
     
-    func setUpColorGroup() {
-        for (index, color) in colorGroup.enumerated() {
-            let colorBlock = UIView()
-            colorBlock.backgroundColor = color
-            colorBlock.isUserInteractionEnabled = true
-            self.view.addSubview(colorBlock) // Add the color block to the container view
-            colorBlock.layout {
-                $0.width == 75
-                $0.height == 75
-                $0.top == drawBoardView.top + CGFloat(index * 80)
-                $0.leading == drawBoardView.trailing + 20 // Align left edge to the left edge of the container
-            }
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectColor(_:)))
-            colorBlock.addGestureRecognizer(tapGesture)
-        }
-    }
+//    func setUpColorGroup() {
+//        for (index, color) in K.AppColor.colors.enumerated() {
+//            let colorBlock = UIView()
+//            colorBlock.backgroundColor = UIColor(color)  // 将K中的color转化为UIColor
+//            colorBlock.isUserInteractionEnabled = true
+//            self.view.addSubview(colorBlock) // Add the color block to the container view
+//            colorBlock.layout {
+//                $0.width == 100
+//                $0.height == 100
+//                $0.top == drawBoardView.top + CGFloat(index * 100)
+//                $0.leading == drawBoardView.trailing + 20 // Align left edge to the left edge of the container
+//            }
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectColor(_:)))
+//            colorBlock.addGestureRecognizer(tapGesture)
+//        }
+//    }
 
     
     @objc func clearDrawBoard(_ sender: Any) {
@@ -104,8 +110,12 @@ class VDDrawBoardVC: UIViewController {
         self.drawBoardView.back()
     }
     
-    @objc func selectColor(_ sender: UITapGestureRecognizer) {
-        self.drawBoardView.lineColor = sender.view?.backgroundColor ?? .black
-    }
+//        @objc func selectColor(_ sender: UITapGestureRecognizer) {
+//            self.drawBoardView.lineColor = sender.view?.backgroundColor ?? .black
+//        }
+    
+//    @objc func selectColor(_ sender: UITapGestureRecognizer) {
+//        self.drawBoardView.lineColor = sender.view?.backgroundColor ?? .black
+//    }
     
 }
