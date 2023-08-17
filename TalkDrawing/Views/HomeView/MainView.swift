@@ -16,18 +16,21 @@ struct MainView: View {
                 // 妙语生画logo
                 Image("title")
                     .resizable()
-                    .frame(width: 647, height: 195)
+                    .frame(width: 500, height: 160)
                     .padding(.leading, 100)
-                HStack(spacing: 200) {
+                HStack {
+                    Spacer()
                     // 左侧Item
                     leftItems
+                    Spacer()
+                    Spacer()
                     // 右侧推荐栏
                     SelectedPictureBooks
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: 640)
+                .frame(maxHeight: 500)
             }
-            .padding(.bottom, 100)
+            .padding()
         }
     }
 }
@@ -37,20 +40,26 @@ struct MainView: View {
 extension MainView {
     
     var leftItems: some View {
-        VStack(alignment: .leading, spacing: 60) {
+        VStack {
+            Spacer()
             HomeButtonItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
+            Spacer()
             HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DrawBoardView, path: $path)
+            Spacer()
             HomeItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
+            Spacer()
         }
     }
-    
+    /// 精选绘本栏
     var SelectedPictureBooks: some View {
         VStack {
             Text("精选绘本")
-                .font(.system(size: 70).bold())
+                .font(.system(size: 35).bold())
             ScrollView {
                 ForEach(K.AppIcon.SelectedPictureBooks, id: \.self) { book in
                     Image(book)
+                        .resizable()
+                        .frame(width: 300, height: 250)
                 }
             }
         }
@@ -67,24 +76,24 @@ extension MainView {
                 path.append(destination)
             } label: {
                 HStack {
-                    RoundedRectangle(cornerRadius: 40)
+                    RoundedRectangle(cornerRadius: 35)
                         .fill(K.AppColor.HomeViewItemBackgroundColor)
                         .shadow(color: K.AppColor.HomeViewItemShadow, radius:4, x: 4, y: 8)
-                        .frame(width: 150, height: 150)
+                        .frame(width: 120, height: 120)
                     
                         .overlay {
-                            RoundedRectangle(cornerRadius: 70)
+                            RoundedRectangle(cornerRadius: 60)
                                 .fill(K.AppColor.HomeViewItemBackgroundCircleColor)
-                                .frame(width: 145, height: 145)
+                                .frame(width: 115, height: 115)
                                 .overlay {
                                     Image(image)
                                         .resizable()
-                                        .frame(width: image != "pencil" ? 130 : 100, height: image != "pencil" ? 130 : 100)
+                                        .frame(width: image != "pencil" ? 100 : 80, height: image != "pencil" ? 100 : 80)
                                 }
                         }
                         .padding(.trailing, 20)
                     Text(title)
-                        .font(.system(size: 50).bold())
+                        .font(.system(size: 45).bold())
                         .foregroundColor(.black)
                 }
             }
@@ -97,23 +106,23 @@ struct HomeItem: View {
     var title: String
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 40)
+            RoundedRectangle(cornerRadius: 35)
                 .fill(K.AppColor.HomeViewItemBackgroundColor)
                 .shadow(color: K.AppColor.HomeViewItemShadow, radius:4, x: 4, y: 8)
-                .frame(width: 150, height: 150)
+                .frame(width: 120, height: 120)
                 .overlay {
-                    RoundedRectangle(cornerRadius: 70)
+                    RoundedRectangle(cornerRadius: 60)
                         .fill(K.AppColor.HomeViewItemBackgroundCircleColor)
-                        .frame(width: 145, height: 145)
+                        .frame(width: 115, height: 115)
                         .overlay {
                             Image(image)
                                 .resizable()
-                                .frame(width: image != "pencil" ? 130 : 100, height: image != "pencil" ? 130 : 100)
+                                .frame(width: image != "pencil" ? 100 : 80, height: image != "pencil" ? 100 : 80)
                         }
                 }
                 .padding(.trailing, 20)
             Text(title)
-                .font(.system(size: 50).bold())
+                .font(.system(size: 45).bold())
             
         }
     }

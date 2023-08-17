@@ -4,8 +4,10 @@ import SwiftUI
 // App通用数据常量
 class K {
     class AppColor {
-        // 主题按钮色用于返回按钮,设置按钮等
-        static let ThemeButtonColor = Color(red: 0.90, green: 0.40, blue: 0.70)
+        // 主题按钮色用于返回按钮,设置按钮,一些场景底色背景(区别是透明度不同): 故事闯关模块选择背景、语音日记涂鸦副标题栏背景、故事演说家作品栏背景色
+        static let ThemeButtonColor = Color(red: 1.00, green: 0.41, blue: 0.71) //#FF69B4
+        // 语音日记副标题栏汉字背景色、故事演说家板块选择背景色
+        static let ThemeColor = Color(red: 1.00, green: 0.08, blue: 0.58) //#FF1493
         // HomeView
         static let HomeViewItemBackgroundColor = Color(red: 1.00, green: 0.41, blue: 0.78, opacity: 0.7)
         static let HomeViewItemBackgroundCircleColor = Color(red: 0.91, green: 0.13, blue: 0.53)
@@ -13,7 +15,7 @@ class K {
         // TabBar
         static let tabBarBackground = Color(red: 1, green: 1, blue: 1, opacity: 0.5)
         static let tabBarTitleColor = Color(red: 1.00, green: 0.30, blue: 0.80)
-        // StoryChallengeView
+        // StoryGameColor
         static let StoryChallengeViewContentColor = Color(red: 0.98, green: 0.72, blue: 0.92, opacity: 0.3)
         // 涂鸦🎨
         static let colors = [
@@ -46,7 +48,7 @@ class K {
         static let HomeItemPencil = "pencil"
         static let HomeItemUnlock = "unlock"
         static let HomeItemMicrophone = "microphone"
-        // StoryChallengeView
+        // StoryGameIcon
         static let StoryChallengeIsLocked = "imageLock"
         static let StoryChallengeIsUnLock = "imageUnlock"
         // 动物
@@ -57,8 +59,8 @@ class K {
         static let backButton = "backButton"
         // 设置按钮
         static let settingButton = "settingButton"
-        // 下载按钮
-        static let downloadButton = "downloadButton"
+        // 故事讲述按钮
+        static let storySpeaker = "storySpeaker"
         // 星星⭐️
         static let star = "star"
         // 左箭头
@@ -69,6 +71,20 @@ class K {
         static let finishGame = "finishGame"
         // 返回首页图标
         static let backHome = "backHome"
+        
+        // DialogDrawingGameIcon
+        // 保存下载
+        static let download = "download"
+        // 删除按钮
+        static let trashbin = "trashbin"
+        // 绘笔
+        static let drawingPencil = "drawingPencil"
+        // 橡皮擦
+        static let eraser = "eraser"
+        // 喷墨笔
+        static let inkjetPen = "inkjetPen"
+        // 油彩桶
+        static let paintBucket = "paintBucket"
         
         // ProfileView
         // 用户头像

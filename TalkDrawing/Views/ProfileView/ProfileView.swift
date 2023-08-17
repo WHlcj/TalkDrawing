@@ -8,16 +8,13 @@ struct ProfileView: View {
     var body: some View {
         ZStack {
             // background
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            Background()
             // content
             VStack(spacing: 35) {
                 navigationBar
                 profileInfo
             }
         }
-        .padding(.top, -100)
     }
 }
 
@@ -39,7 +36,7 @@ extension ProfileView {
                 sectionOne
                 sectionTwo
             }
-            .padding(.horizontal, 180)
+            .padding(.horizontal, 100)
         }
     }
     
@@ -70,10 +67,10 @@ extension ProfileView {
                 // 账户信息
                 RoundedRectangle(cornerRadius: 30)
                     .fill(K.AppColor.ThemeButtonColor)
-                    .frame(width: 160, height: 70)
+                    .frame(width: 140, height: 60)
                     .overlay(
                         Text("账户信息")
-                            .font(.system(size: 30))
+                            .font(.system(size: 25))
                             .foregroundColor(.white)
                     )
                 // 星星数量信息
@@ -101,8 +98,7 @@ extension ProfileView {
                 VStack {
                     Image(item)
                     Text(item)
-                        .font(.system(size: 35))
-                        .frame(maxWidth: 212)
+                        .font(.system(size: 25))
                 }
                 
             }
@@ -122,7 +118,7 @@ extension ProfileView {
                             .frame(width: 320, height: 116)
                             .overlay(
                                 Text(item)
-                                    .font(.system(size: 32))
+                                    .font(.system(size: 25))
                             )
                             
                     }

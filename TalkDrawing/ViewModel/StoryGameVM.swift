@@ -5,7 +5,9 @@ import AVKit
 class StoryGameVM: ObservableObject {
     
     // 媒体播放器
+    /// 播放故事视频
     @Published var videoPlayer = AVPlayer()
+    /// 播放故事提示音
     @Published var voicePlayer = AVAudioPlayer()
     // 游戏模组
     @Published var model = createStoryGame()
@@ -46,16 +48,26 @@ class StoryGameVM: ObservableObject {
           }
     }
 
-    // 播放动画
+    /// 播放动画
     func playVideo() {
         videoPlayer.play()
     }
-    // 停止播放动画
+    /// 停止播放动画
     func stopVideo() {
         videoPlayer.pause()
     }
-    // 播放提示音
+    /// 停止播放声音
+    func stopSound() {
+        voicePlayer.stop()
+    }
+    /// 继续播放声音
+    func playSound() {
+        voicePlayer.play()
+    }
+    
+    /// 播放提示音
     func playSound(sound: String) {
+        if sound == "" { return }
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
             voicePlayer = try AVAudioPlayer(contentsOf: url)

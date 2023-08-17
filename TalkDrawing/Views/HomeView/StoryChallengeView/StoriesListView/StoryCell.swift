@@ -26,8 +26,10 @@ struct StoryCell: View {
                 Text(story.title)
                     .font(.system(size: 40).bold())
                 
-                Image(K.AppIcon.star)
+                Image(K.AppIcon.star) // 原80x80
                     .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 64, height: 64)
                     .foregroundColor(story.isFinished ? .yellow : .gray)
                 
                 Button {
@@ -35,13 +37,18 @@ struct StoryCell: View {
                 } label: {
                     NavigationLink(destination: StoryView(path: $path, vm: vm, story: story)) {
                         Image(story.title)
+                            .resizable()
+                            .frame(width: 330, height: 225)
                     }
                 }
             }
-            .padding(.top, 150)
+            .padding(.top, 100)
             .zIndex(1)
             Image("竖")
-                .zIndex(0)
+                .resizable()
+                .frame(width: 225, height: 300) // 原300x400
+                .scaleEffect(0.8)
+
         }
         .padding(.trailing, -90)
     }
@@ -54,19 +61,24 @@ struct StoryCell: View {
                     // 只是做一个点击有闪烁效果的链接导航
                 } label: {
                     NavigationLink(destination: StoryView(path: $path, vm: vm, story: story)) {
-                        Image(story.title)
+                        Image(story.title)// 原440x300
+                            .resizable()
+                            .frame(width: 330, height: 225)
                     }
                 }
                 Text(story.title)
-                    .font(.system(size: 40).bold())
+                    .font(.system(size: 35).bold())
                 Image("star")
                     .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 64, height: 64)
                     .foregroundColor(story.isFinished ? .yellow : .gray)
             }
             .padding(.bottom, 150)
             .zIndex(1)
             Image("横")
-                .zIndex(0)
+                .resizable()
+                .frame(width: 300, height: 225)
         }
         .padding(.trailing, -90)
     }
@@ -83,7 +95,7 @@ struct StoryCell_Previews: PreviewProvider {
             // background
             Color.cyan
             
-            StoryCell(path: $path, order: 1, story: story, vm: vm)
+            StoryCell(path: $path, order: 0, story: story, vm: vm)
         }
     }
 }

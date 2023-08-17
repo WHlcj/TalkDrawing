@@ -45,6 +45,7 @@
 		8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296DB2A8632D300822EC7 /* RealmSwift */; };
 		8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296E12A89FF9700822EC7 /* SwiftSpeech */; };
 		8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296EA2A8A470200822EC7 /* VictoryView.swift */; };
+		8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameVM.swift; sourceTree = "<group>"; };
 		8D9296E32A8A042300822EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D9296EA2A8A470200822EC7 /* VictoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryView.swift; sourceTree = "<group>"; };
+		8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-数鸭子.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		8D6A0AE12A8A57CA007554E4 /* 门前大桥下 */ = {
 			isa = PBXGroup;
 			children = (
+				8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */,
 				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
 				8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */,
 				8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */,
@@ -380,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */,
 				8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */,
 				8D9296A52A8227FE00822EC7 /* 门前大桥下.mp4 in Resources */,
 				8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */,

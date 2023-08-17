@@ -18,11 +18,11 @@ struct MyTabBar: View {
                                 //.renderingMode(.template)
                                 .resizable()
                                 // 设置选中时图标大小和颜色
-                                .frame(width: currentSelectedTab == tabItem ? (tabItem == .home ? 105 : 80) : (tabItem == .home ? 80 : 64), height: currentSelectedTab == tabItem ? 80 : 64)
+                                .frame(width: currentSelectedTab == tabItem ? (tabItem == .home ? 80 : 60) : (tabItem == .home ? 60 : 45), height: currentSelectedTab == tabItem ? 60 : 45)
                                 .opacity(currentSelectedTab == tabItem ? 1 : 0.5)
                             // tabBar的标题
                             Text(tabItem.icon)
-                                .font(.system(size: currentSelectedTab == tabItem ? 60 : 45).bold())
+                                .font(.system(size: currentSelectedTab == tabItem ? 45 : 35).bold())
                                 .foregroundColor(K.AppColor.tabBarTitleColor)
                                 .opacity(currentSelectedTab == tabItem ? 1 : 0.5)
                         }

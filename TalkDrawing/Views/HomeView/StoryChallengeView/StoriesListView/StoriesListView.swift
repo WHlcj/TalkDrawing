@@ -38,7 +38,7 @@ extension StoriesListView {
         HStack(alignment: .bottom) {
             BackButton()
             Text(challenge.title)
-                .font(.system(size: 50).bold())
+                .font(.system(size: 35).bold())
                 .foregroundColor(K.AppColor.ThemeButtonColor)
             Spacer()
             SettingButton(path: $path)

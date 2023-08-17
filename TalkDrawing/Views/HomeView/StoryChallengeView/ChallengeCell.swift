@@ -22,7 +22,7 @@ struct ChallengeCell: View {
                     }
                 }
                 Text(challenge.title)
-                    .font(.system(size: 35).bold())
+                    .font(.system(size: 25).bold())
                     .foregroundColor(.orange)
             }
         }

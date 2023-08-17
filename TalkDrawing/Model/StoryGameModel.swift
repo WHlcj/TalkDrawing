@@ -25,19 +25,22 @@ struct StoryGameModel {
     
     // 当前游戏主要内容
     private(set) var challenges = [
-        StoryChallenge(title: "经典儿歌", age: [.zeroToThree], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 4.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", finishGameSound: "A-完成"),
+        StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false, stories: [
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 4.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", finishGameSound: "A-完成", storySpeaker: "A-数鸭子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "小燕子", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ]),
-        StoryChallenge(title: "童话寓言", age: [.zeroToThree], isLocked: false),
-        StoryChallenge(title: "国学诗词", age: [.foreToSix, .SenvenPlus]),
+        StoryChallenge(title: "童话寓言", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false),
+        StoryChallenge(title: "国学诗词", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
+        StoryChallenge(title: "传统文化", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
+        StoryChallenge(title: "自然百科", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
         StoryChallenge(title: "历史人文", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "传统文化", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "自然百科", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "地理名胜", age: [.SenvenPlus]),
-        StoryChallenge(title: "国外绘本", age: [.SenvenPlus])
+        StoryChallenge(title: "地理名胜", age: [.foreToSix, .SenvenPlus]),
+        StoryChallenge(title: "国外绘本", age: [.foreToSix, .SenvenPlus]),
+        StoryChallenge(title: "山海经", age: [.SenvenPlus]),
+        StoryChallenge(title: "风雅颂", age: [.SenvenPlus]),
+        StoryChallenge(title: "四大名著", age: [.SenvenPlus])
     ]
     
     // StoryChallengeView的模版选择
@@ -67,7 +70,7 @@ struct StoryGameModel {
 }
 
 // MARK: - 数据模型
-// 故事闯关式涂鸦的Stroy
+/// 故事闯关式涂鸦的Stroy
 struct Story: Identifiable {
     let id = UUID().uuidString
     // StoryCell标题
@@ -94,6 +97,8 @@ struct Story: Identifiable {
     var actionTintSound = ""
     // 游戏完成提示音
     var finishGameSound = ""
+    // 故事语音
+    var storySpeaker = ""
 }
 
 struct StoryChallenge: Identifiable {

@@ -16,17 +16,13 @@ struct StoryChallengeView: View {
         ZStack {
             // background
             Background()
+            // content
             VStack {
                 navigationBar
-                // 加Group是为了方便添加共同修饰词
-                Group {
-                    modelSelection
-                    mainContents
-                }
-                .padding(.horizontal, 150)
-                Spacer()
+                modelSelection
+                mainContents
             }
-            .padding()
+            .padding(.horizontal, 50)
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -36,20 +32,23 @@ struct StoryChallengeView: View {
 extension StoryChallengeView {
     // 自定义导航栏
     var navigationBar: some View {
-        HStack(spacing: 300) {
+        HStack {
             // 自定义的返回按钮
             BackButton()
+            Spacer()
             HomeItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
+            Spacer()
             SettingButton(path: $path)
         }
+        .frame(maxWidth: .infinity)
     }
     // 模块选择部分
     var modelSelection: some View {
         HStack(alignment: .bottom, spacing: 20) {
             Text("模块选择")
-                .font(.system(size: 50).bold())
+                .font(.system(size: 35).bold())
             Text("年龄 : ")
-                .font(.largeTitle.bold())
+                .font(.system(size: 25).bold())
             AgesButton(ages: $selectedAges, title: "0-3", turnToage: .zeroToThree)
             AgesButton(ages: $selectedAges, title: "4-6", turnToage: .foreToSix)
             AgesButton(ages: $selectedAges, title: "7-8+", turnToage: .SenvenPlus)
@@ -63,7 +62,6 @@ extension StoryChallengeView {
             // 粉色背景
             Rectangle()
                 .fill(K.AppColor.StoryChallengeViewContentColor)
-                .frame(width: 1200, height: 650)
                 .overlay(content: {
                         challengeModel
                 })
@@ -72,7 +70,7 @@ extension StoryChallengeView {
     
     var challengeModel: some View {
         ScrollView(.horizontal) {
-            LazyHGrid(rows: [GridItem(.adaptive(minimum: 256, maximum: 300))], spacing: 50) {
+            LazyHGrid(rows: [GridItem(.adaptive(minimum: 200, maximum: 300))], spacing: 50) {
                 ForEach(vm.challenges) { challenge in
                     if challenge.age.contains(selectedAges) {
                         ChallengeCell(path: $path, challenge: challenge, vm: vm)

@@ -22,6 +22,8 @@ struct StoryView: View {
     @State private var hasFinishedPlacingAnimal = false
     // 完成游戏弹出结算画面
     @State private var finishedGame = false
+    // 是否正在播放声音
+    @State private var isPlayingVoice = false
     
     var body: some View {
         ZStack {
@@ -49,6 +51,7 @@ struct StoryView: View {
         .onAppear {
             vm.chooseStory(story: story)
             vm.playSound(sound: story.welcomeSound)
+            isPlayingVoice = true
         }
     }
 }
@@ -60,17 +63,24 @@ extension StoryView {
         VStack {
             BackButton()
             Spacer()
-            // 下载的功能按钮
+            // 播放故事语音
             Button {
-                
+                if isPlayingVoice {
+                    vm.stopSound()
+                    isPlayingVoice = false
+                } else {
+                    // 点击播放故事
+                    vm.playSound(sound: story.storySpeaker)
+                    isPlayingVoice = true
+                }
             } label: {
-                Image(K.AppIcon.downloadButton)
+                Image(K.AppIcon.storySpeaker)
             }
         }
     }
     // 视频区域
     var videoSection: some View {
-        VStack(spacing: 50) {
+        VStack {
             ZStack {
                 // background
                 Rectangle()
@@ -86,6 +96,7 @@ extension StoryView {
                     
                 }
             }
+            Spacer()
             voiceButton
         }
         .onAppear {
@@ -123,18 +134,21 @@ extension StoryView {
     }
     // 动物选择区
     var animalChosenSection: some View {
-        VStack(spacing: 20) {
+        ScrollView { VStack(spacing: 20) {
             ForEach(K.AppIcon.animals, id: \.self) { animal in
                 AnimalsCell(animal: animal, selectedAnimal: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
             }
         }
+            
+        }
+        
         .onChange(of: hasFinishedPlacingAnimal) { newValue in
             if newValue == true && selectedAnimals == story.targetAnimal && selectedColor == story.targetColor {
                 vm.playVideo()
                 vm.playSound(sound: story.finishGameSound)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     vm.finishedGame()
-                    finishedGame = true
+                    finishedGame = true//
                 }
             }
         }
@@ -151,13 +165,13 @@ extension StoryView {
         isPlayingVideo = true
         // 异步延迟
         delay(by: story.pauseSeconds) {
-                voiceText = "按住按钮说话"
-                vm.stopVideo()
-                isPlayingVideo = false
+            voiceText = "按住按钮说话"
+            vm.stopVideo()
+            isPlayingVideo = false
         }
     }
 }
-    
+
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var vm = StoryGameVM()

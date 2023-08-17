@@ -20,7 +20,7 @@ struct BackButton: View {
             Image(K.AppIcon.backButton)
                 .renderingMode(.template)
                 .resizable()
-                .frame(width: 98, height: 68)
+                .frame(width: 78, height: 54)
                 .foregroundColor(K.AppColor.ThemeButtonColor)
         }
     }
@@ -34,8 +34,10 @@ struct SettingButton: View {
         Button {
             path.append(AppRouter.SettingView)
         } label: {
-            Image(K.AppIcon.settingButton) // 图片默认大小是64x64
+            Image(K.AppIcon.settingButton)
                 .renderingMode(.template)
+                .resizable()
+                .frame(width: 50, height: 50)//图片默认大小是64x64
                 .foregroundColor(K.AppColor.ThemeButtonColor)
         }
     }
