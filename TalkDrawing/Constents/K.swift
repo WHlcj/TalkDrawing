@@ -73,18 +73,21 @@ class K {
         static let backHome = "backHome"
         
         // DialogDrawingGameIcon
+        // 画图工具
+        static let tools = ["drawingPencil", "inkjetPen", "paintBucket"]
+        // 橡皮擦
+        static let eraser = "eraser"
         // 保存下载
         static let download = "download"
         // 删除按钮
         static let trashbin = "trashbin"
-        // 绘笔
-        static let drawingPencil = "drawingPencil"
-        // 橡皮擦
-        static let eraser = "eraser"
-        // 喷墨笔
-        static let inkjetPen = "inkjetPen"
-        // 油彩桶
-        static let paintBucket = "paintBucket"
+//        // 绘笔
+//        static let drawingPencil = "drawingPencil"
+
+//        // 喷墨笔
+//        static let inkjetPen = "inkjetPen"
+//        // 油彩桶
+//        static let paintBucket = "paintBucket"
         
         // ProfileView
         // 用户头像

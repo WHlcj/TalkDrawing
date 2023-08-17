@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-// 大部分页面背景
+/// 大部分页面背景
 struct Background: View {
     var body: some View {
         Image("background")
@@ -10,7 +10,7 @@ struct Background: View {
     }
 }
 
-// 粉色箭头返回按钮
+/// 自定义的粉色箭头返回按钮
 struct BackButton: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -26,7 +26,7 @@ struct BackButton: View {
     }
 }
 
-// 进入设置按钮
+/// 进入设置按钮
 struct SettingButton: View {
     // App导航路由
     @Binding var path: NavigationPath
@@ -43,7 +43,7 @@ struct SettingButton: View {
     }
 }
 
-// 颜色选择区
+/// 颜色选择区
 struct ColorChosenSection: View {
     // 绑定的颜色选择
     @Binding var selectedColor: Color
