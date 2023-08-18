@@ -66,19 +66,22 @@ extension StoryView {
         VStack {
             BackButton()
             Spacer()
-            // 播放故事语音
-            Button {
-                if isPlayingVoice {
-                    vm.stopSound()
-                    isPlayingVoice = false
-                } else {
-                    // 点击播放故事
-                    vm.playSound(sound: story.storySpeaker)
-                    isPlayingVoice = true
-                }
-            } label: {
-                Image(K.AppIcon.storySpeaker)
+            speakerButton
+        }
+    }
+    /// 播放故事语音
+    var speakerButton: some View {
+        Button {
+            if isPlayingVoice {
+                vm.stopSound()
+                isPlayingVoice = false
+            } else {
+                // 点击播放故事
+                vm.playSound(sound: story.storySpeaker)
+                isPlayingVoice = true
             }
+        } label: {
+            Image(K.AppIcon.storySpeaker)
         }
     }
     // 视频区域
@@ -93,7 +96,7 @@ extension StoryView {
                 // content
                 VStack {
                     VideoPlayer(player: vm.videoPlayer)
-                        .frame(maxHeight: 537)
+                        .frame(width: 960, height: 540)
                         .padding(.horizontal)
                         .disabled(true) // 隐藏视频控件
                     
@@ -130,7 +133,6 @@ extension StoryView {
                 .disabled(isPlayingVideo)
         }
     }
-
     // 动物选择区
     var animalChosenSection: some View {
 //        ScrollView {
@@ -145,9 +147,11 @@ extension StoryView {
         .onChange(of: hasFinishedPlacingAnimal) { newValue in
             if newValue == true && selectedAnimals == story.targetAnimal && selectedColor == story.targetColor {
                 vm.playVideo()
-                vm.playSound(sound: story.finishGameSound)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     vm.finishedGame()
+                    
+                    vm.playSound(sound: story.finishGameSound)
                     finishedGame = true//
                 }
             }
