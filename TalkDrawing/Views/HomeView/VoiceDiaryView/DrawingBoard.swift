@@ -23,12 +23,12 @@ struct DrawingBoard: UIViewRepresentable {
     func makeUIView(context: Context) -> PKCanvasView {
         canvas.drawingPolicy = .anyInput
         canvas.tool = isDrawing ? ink : eraser
-        
+    
         return canvas
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.tool = isDrawing ? ink : eraser
+
     }
-    
 }

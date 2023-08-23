@@ -1,14 +1,20 @@
 
 import Foundation
 
-
 class DrawingGameModel {
-    // 生成的图片链接
+    /// 画板
+    var canvas = ["何时", "何地", "何人", "何事"]
+    /// 生成的图片链接
     var img = ""
-    // 文字生成图片请求url
+    /// 文字生成图片请求url
     private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
-    // 查询生成图片请求url
+    /// 查询生成图片请求url
     private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
+    
+}
+
+// MARK: - BaiDuAlImage
+extension DrawingGameModel {
     /// 请求文字生成图片
     func performAskImage(text: String) {
         let parameters: [String: Any] = [
@@ -104,6 +110,7 @@ class DrawingGameModel {
         }
     }
 }
+
 
 // MARK: - 数据模型
 // 画图请求
