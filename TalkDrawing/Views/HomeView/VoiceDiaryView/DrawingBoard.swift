@@ -11,11 +11,13 @@ struct DrawingBoard: UIViewRepresentable {
     @Binding var tool: PKInkingTool.InkType
     // 颜色选择
     @Binding var color: Color
+    // 画笔粗细
+    @Binding var lineWidth: Double
     
     let eraser = PKEraserTool(.bitmap) // 橡皮擦
     
     var ink: PKInkingTool {
-        PKInkingTool(tool, color: UIColor(color))
+        PKInkingTool(tool, color: UIColor(color), width: lineWidth)
     }
     
     func makeUIView(context: Context) -> PKCanvasView {

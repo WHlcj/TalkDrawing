@@ -8,6 +8,7 @@ struct TalkDrawingApp: App {
         
         WindowGroup {
             HomeView()
+            //draft()
         }
     }
 }

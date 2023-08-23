@@ -78,55 +78,29 @@ extension MainView {
                 HStack {
                     RoundedRectangle(cornerRadius: 35)
                         .fill(K.AppColor.HomeViewItemBackgroundColor)
-                        .shadow(color: K.AppColor.HomeViewItemShadow, radius:4, x: 4, y: 8)
-                        .frame(width: 120, height: 120)
+                        .shadow(color: K.AppColor.HomeViewItemShadow, radius:3, x: 3, y: 6)
+                        .frame(width: 100, height: 100)
                     
                         .overlay {
-                            RoundedRectangle(cornerRadius: 60)
+                            RoundedRectangle(cornerRadius: 50)
                                 .fill(K.AppColor.HomeViewItemBackgroundCircleColor)
-                                .frame(width: 115, height: 115)
+                                .frame(width: 95, height: 95)
                                 .overlay {
                                     Image(image)
                                         .resizable()
-                                        .frame(width: image != "pencil" ? 100 : 80, height: image != "pencil" ? 100 : 80)
+                                        .frame(width: image != "pencil" ? 85 : 65, height: image != "pencil" ? 85 : 65)
                                 }
                         }
                         .padding(.trailing, 20)
                     Text(title)
-                        .font(.system(size: 45).bold())
+                        .font(.system(size: 42).bold())
                         .foregroundColor(.black)
                 }
             }
         }
     }
 }
-// HomeItem
-struct HomeItem: View {
-    var image: String
-    var title: String
-    var body: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 35)
-                .fill(K.AppColor.HomeViewItemBackgroundColor)
-                .shadow(color: K.AppColor.HomeViewItemShadow, radius:4, x: 4, y: 8)
-                .frame(width: 120, height: 120)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 60)
-                        .fill(K.AppColor.HomeViewItemBackgroundCircleColor)
-                        .frame(width: 115, height: 115)
-                        .overlay {
-                            Image(image)
-                                .resizable()
-                                .frame(width: image != "pencil" ? 100 : 80, height: image != "pencil" ? 100 : 80)
-                        }
-                }
-                .padding(.trailing, 20)
-            Text(title)
-                .font(.system(size: 45).bold())
-            
-        }
-    }
-}
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

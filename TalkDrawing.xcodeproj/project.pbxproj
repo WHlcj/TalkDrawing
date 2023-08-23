@@ -46,6 +46,10 @@
 		8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */; };
 		8DEB16DA2A8E19B200A4DF1C /* DialogDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */; };
 		8DEB171A2A8E581700A4DF1C /* DrawingBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */; };
+		8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */; };
+		8DF83EC92A94BC7B0044CE0D /* DrawingGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF83EC82A94BC7B0044CE0D /* DrawingGameVM.swift */; };
+		8DF83ECB2A94BC8D0044CE0D /* DrawingGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF83ECA2A94BC8D0044CE0D /* DrawingGameModel.swift */; };
+		8DF83ECD2A94EA150044CE0D /* draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF83ECC2A94EA150044CE0D /* draft.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +91,10 @@
 		8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-数鸭子.mp3"; sourceTree = "<group>"; };
 		8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogDrawingView.swift; sourceTree = "<group>"; };
 		8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoard.swift; sourceTree = "<group>"; };
+		8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueSlider.swift; sourceTree = "<group>"; };
+		8DF83EC82A94BC7B0044CE0D /* DrawingGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingGameVM.swift; sourceTree = "<group>"; };
+		8DF83ECA2A94BC8D0044CE0D /* DrawingGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingGameModel.swift; sourceTree = "<group>"; };
+		8DF83ECC2A94EA150044CE0D /* draft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draft.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +159,7 @@
 				8D9296412A71257C00822EC7 /* Views */,
 				8D9296372A70DD7D00822EC7 /* Assets.xcassets */,
 				8D9296992A74BAA700822EC7 /* Resources */,
-				8D9296392A70DD7D00822EC7 /* Preview Content */,
+				8DF83ECC2A94EA150044CE0D /* draft.swift */,
 			);
 			path = TalkDrawing;
 			sourceTree = "<group>";
@@ -244,6 +252,7 @@
 			children = (
 				8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */,
 				8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */,
+				8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */,
 			);
 			path = VoiceDiaryView;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				8D9296952A74B93F00822EC7 /* StoryGameModel.swift */,
+				8DF83ECA2A94BC8D0044CE0D /* DrawingGameModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +276,7 @@
 		8D9296992A74BAA700822EC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D9296392A70DD7D00822EC7 /* Preview Content */,
 				8D6A0AE02A8A57BD007554E4 /* StoryGame */,
 			);
 			path = Resources;
@@ -304,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */,
+				8DF83EC82A94BC7B0044CE0D /* DrawingGameVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -398,8 +410,12 @@
 				8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */,
 				8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */,
 				8D9296452A712A2E00822EC7 /* K.swift in Sources */,
+				8DF83EC92A94BC7B0044CE0D /* DrawingGameVM.swift in Sources */,
 				8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */,
+				8DF83ECB2A94BC8D0044CE0D /* DrawingGameModel.swift in Sources */,
+				8DF83ECD2A94EA150044CE0D /* draft.swift in Sources */,
 				8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */,
+				8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */,
 				8D9296512A71473600822EC7 /* MyTabBar.swift in Sources */,
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
@@ -548,8 +564,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TalkDrawing/Preview Content\"";
-				DEVELOPMENT_TEAM = DADW9Q983Q;
+				DEVELOPMENT_ASSET_PATHS = "\"TalkDrawing/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = K3ZFZ6NBNT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkDrawing/Info.plist;
@@ -568,7 +584,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing.TalkDrawing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -586,8 +602,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TalkDrawing/Preview Content\"";
-				DEVELOPMENT_TEAM = DADW9Q983Q;
+				DEVELOPMENT_ASSET_PATHS = "\"TalkDrawing/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = K3ZFZ6NBNT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkDrawing/Info.plist;
@@ -606,7 +622,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing.TalkDrawing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elee.TalkDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

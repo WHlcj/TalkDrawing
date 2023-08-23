@@ -57,7 +57,7 @@ struct StoryGameModel {
                 challenges[challengeIndex].stories[index].isSelected = story.id == challenges[challengeIndex].stories[index].id
             }
         } else {
-            print("选择故事失败")
+            //print("选择故事失败")
         }
     }
     

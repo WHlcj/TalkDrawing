@@ -27,6 +27,8 @@ struct StoryView: View {
     @State private var finishedGame = false
     // 是否正在播放声音
     @State private var isPlayingVoice = false
+    // 是否识别完关键词
+    @State private var recognizedKey = false
     
     var body: some View {
         ZStack {
@@ -68,6 +70,7 @@ extension StoryView {
             Spacer()
             speakerButton
         }
+        .padding(.vertical)
     }
     /// 播放故事语音
     var speakerButton: some View {
@@ -96,42 +99,43 @@ extension StoryView {
                 // content
                 VStack {
                     VideoPlayer(player: vm.videoPlayer)
-                        .frame(width: 960, height: 540)
+                        .aspectRatio(144.0/81.0, contentMode: .fit)
                         .padding(.horizontal)
                         .disabled(true) // 隐藏视频控件
-                    
                 }
             }
             Spacer()
-            //voiceButton
+            voiceButton
         }
         .onAppear {
             SwiftSpeech.requestSpeechRecognitionAuthorization()
         }
-        .onTapGesture {
-            playFirstAV()
-            vm.playSound(sound: story.actionTintSound)
-        }
+//        .onTapGesture {
+//            playFirstAV()
+//            vm.playSound(sound: story.actionTintSound)
+//        }
         
     }
     // 语音识别按钮
     var voiceButton: some View {
-        VStack(spacing: 50) {
+        VStack(spacing: 40) {
             Text(voiceText)
-                .font(.system(size: 25).bold())
+                .font(.system(size: 20).bold())
             SwiftSpeech.RecordButton()
-                .tint(selectedColor)
                 .swiftSpeechRecordOnHold(locale: Locale(identifier: "zh-CN"))
                 .onRecognizeLatest(update: $voiceText)
                 .onChange(of: voiceText) { newValue in
                     // 当检测到语音识别到故事关键词时，播放第一段动画
-                    if newValue.contains(story.keyWord) {
+                    if newValue.contains(story.keyWord) && recognizedKey != true {
+                        recognizedKey = true
                         playFirstAV()
                         vm.playSound(sound: story.actionTintSound)
                     }
                 }
+                .scaleEffect(0.8)
                 .disabled(isPlayingVideo)
         }
+        .padding(.bottom)
     }
     // 动物选择区
     var animalChosenSection: some View {

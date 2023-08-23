@@ -81,6 +81,8 @@ class K {
         static let download = "download"
         // 删除按钮
         static let trashbin = "trashbin"
+        // 画笔粗细滑条
+        static let slider = "sliderTrack"
 //        // 绘笔
 //        static let drawingPencil = "drawingPencil"
 
