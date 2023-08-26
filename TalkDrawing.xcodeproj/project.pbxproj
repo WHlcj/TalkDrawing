@@ -18,28 +18,32 @@
 		8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */; };
 		8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */; };
 		8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */; };
-		8D8349D82A99CFA500477D3F /* A-错误提醒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */; };
 		8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */; };
+		8D8349E02A9A332100477D3F /* SpeakingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349DF2A9A332100477D3F /* SpeakingCell.swift */; };
+		8D8349E22A9A339200477D3F /* SpeakingShowcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */; };
+		8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */; };
+		8D8349EA2A9A42F700477D3F /* 小燕子.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349E92A9A42F700477D3F /* 小燕子.mp4 */; };
+		8D8349EC2A9A430200477D3F /* 西游记.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349EB2A9A430200477D3F /* 西游记.mp4 */; };
+		8D8349EF2A9A6CD000477D3F /* A-小燕子.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349ED2A9A6CD000477D3F /* A-小燕子.mp3 */; };
+		8D8349F02A9A6CD000477D3F /* A-天上飞过什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349EE2A9A6CD000477D3F /* A-天上飞过什么.mp3 */; };
+		8D8349F42A9A6CED00477D3F /* A-石猴出世.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F12A9A6CED00477D3F /* A-石猴出世.mp3 */; };
+		8D8349F52A9A6CED00477D3F /* A-蹦出什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F22A9A6CED00477D3F /* A-蹦出什么.mp3 */; };
+		8D8349F62A9A6CED00477D3F /* A-仙石发生了什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F32A9A6CED00477D3F /* A-仙石发生了什么.mp3 */; };
+		8D8349F82A9A71F000477D3F /* A-错误提醒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
-		8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296352A70DD7C00822EC7 /* HomeView.swift */; };
 		8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296372A70DD7D00822EC7 /* Assets.xcassets */; };
 		8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D92963A2A70DD7D00822EC7 /* Preview Assets.xcassets */; };
 		8D9296452A712A2E00822EC7 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296442A712A2E00822EC7 /* K.swift */; };
 		8D9296472A713BB600822EC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296462A713BB600822EC7 /* ContentView.swift */; };
 		8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296482A713BC500822EC7 /* AppRouter.swift */; };
-		8D92964C2A713C4700822EC7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92964B2A713C4700822EC7 /* ProfileView.swift */; };
 		8D92964F2A713D3900822EC7 /* StoryChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92964E2A713D3900822EC7 /* StoryChallengeView.swift */; };
-		8D9296512A71473600822EC7 /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296502A71473600822EC7 /* MyTabBar.swift */; };
-		8D9296532A71475E00822EC7 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296522A71475E00822EC7 /* Tab.swift */; };
-		8D9296562A714FC900822EC7 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296552A714FC900822EC7 /* CommunityView.swift */; };
-		8D9296582A7150E300822EC7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296572A7150E300822EC7 /* MainView.swift */; };
+		8D9296582A7150E300822EC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296572A7150E300822EC7 /* HomeView.swift */; };
 		8D9296612A71779D00822EC7 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296602A71779D00822EC7 /* UIView+.swift */; };
 		8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296952A74B93F00822EC7 /* StoryGameModel.swift */; };
 		8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A22A7504C900822EC7 /* ChallengeCell.swift */; };
 		8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A72A824B5600822EC7 /* StoriesListView.swift */; };
 		8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A92A824F5A00822EC7 /* StoryCell.swift */; };
 		8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AC2A82552F00822EC7 /* StoryView.swift */; };
-		8D9296B02A8295A200822EC7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AF2A8295A200822EC7 /* SettingView.swift */; };
 		8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CD2A84DE0300822EC7 /* Structs.swift */; };
 		8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */; };
 		8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D12A84EEAA00822EC7 /* ColorCell.swift */; };
@@ -69,29 +73,33 @@
 		8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-拖拽.mp3"; sourceTree = "<group>"; };
 		8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-完成.mp3"; sourceTree = "<group>"; };
 		8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "门前大桥下.mp4"; sourceTree = "<group>"; };
-		8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-错误提醒.mp3"; sourceTree = "<group>"; };
 		8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingFunctionBar.swift; sourceTree = "<group>"; };
+		8D8349DF2A9A332100477D3F /* SpeakingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingCell.swift; sourceTree = "<group>"; };
+		8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingShowcaseView.swift; sourceTree = "<group>"; };
+		8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTrainingBaseView.swift; sourceTree = "<group>"; };
+		8D8349E92A9A42F700477D3F /* 小燕子.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "小燕子.mp4"; sourceTree = "<group>"; };
+		8D8349EB2A9A430200477D3F /* 西游记.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "西游记.mp4"; sourceTree = "<group>"; };
+		8D8349ED2A9A6CD000477D3F /* A-小燕子.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-小燕子.mp3"; sourceTree = "<group>"; };
+		8D8349EE2A9A6CD000477D3F /* A-天上飞过什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-天上飞过什么.mp3"; sourceTree = "<group>"; };
+		8D8349F12A9A6CED00477D3F /* A-石猴出世.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-石猴出世.mp3"; sourceTree = "<group>"; };
+		8D8349F22A9A6CED00477D3F /* A-蹦出什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-蹦出什么.mp3"; sourceTree = "<group>"; };
+		8D8349F32A9A6CED00477D3F /* A-仙石发生了什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-仙石发生了什么.mp3"; sourceTree = "<group>"; };
+		8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-错误提醒.mp3"; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9296332A70DD7C00822EC7 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
-		8D9296352A70DD7C00822EC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D9296372A70DD7D00822EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D92963A2A70DD7D00822EC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D9296442A712A2E00822EC7 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		8D9296462A713BB600822EC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8D9296482A713BC500822EC7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		8D92964B2A713C4700822EC7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8D92964E2A713D3900822EC7 /* StoryChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryChallengeView.swift; sourceTree = "<group>"; };
-		8D9296502A71473600822EC7 /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
-		8D9296522A71475E00822EC7 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		8D9296552A714FC900822EC7 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
-		8D9296572A7150E300822EC7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8D9296572A7150E300822EC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D9296602A71779D00822EC7 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8D9296952A74B93F00822EC7 /* StoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameModel.swift; sourceTree = "<group>"; };
 		8D9296A22A7504C900822EC7 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		8D9296A72A824B5600822EC7 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		8D9296A92A824F5A00822EC7 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		8D9296AC2A82552F00822EC7 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
-		8D9296AF2A8295A200822EC7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		8D9296CD2A84DE0300822EC7 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsCell.swift; sourceTree = "<group>"; };
 		8D9296D12A84EEAA00822EC7 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -135,6 +143,10 @@
 		8D6A0AE02A8A57BD007554E4 /* StoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */,
+				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
+				8D8349E82A9A42EC00477D3F /* 西游记 */,
+				8D8349E72A9A42E100477D3F /* 小燕子 */,
 				8D6A0AE12A8A57CA007554E4 /* 门前大桥下 */,
 			);
 			path = StoryGame;
@@ -144,13 +156,49 @@
 			isa = PBXGroup;
 			children = (
 				8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */,
-				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
 				8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */,
-				8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */,
 				8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */,
 				8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */,
 			);
 			path = "门前大桥下";
+			sourceTree = "<group>";
+		};
+		8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */,
+				8D8349E42A9A343600477D3F /* LanguageTrainingBaseView */,
+			);
+			path = SpeakingShowcaseView;
+			sourceTree = "<group>";
+		};
+		8D8349E42A9A343600477D3F /* LanguageTrainingBaseView */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */,
+			);
+			path = LanguageTrainingBaseView;
+			sourceTree = "<group>";
+		};
+		8D8349E72A9A42E100477D3F /* 小燕子 */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349E92A9A42F700477D3F /* 小燕子.mp4 */,
+				8D8349EE2A9A6CD000477D3F /* A-天上飞过什么.mp3 */,
+				8D8349ED2A9A6CD000477D3F /* A-小燕子.mp3 */,
+			);
+			path = "小燕子";
+			sourceTree = "<group>";
+		};
+		8D8349E82A9A42EC00477D3F /* 西游记 */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349F32A9A6CED00477D3F /* A-仙石发生了什么.mp3 */,
+				8D8349F12A9A6CED00477D3F /* A-石猴出世.mp3 */,
+				8D8349F22A9A6CED00477D3F /* A-蹦出什么.mp3 */,
+				8D8349EB2A9A430200477D3F /* 西游记.mp4 */,
+			);
+			path = "西游记";
 			sourceTree = "<group>";
 		};
 		8D9296272A70DD7C00822EC7 = {
@@ -198,25 +246,12 @@
 			isa = PBXGroup;
 			children = (
 				8D9296462A713BB600822EC7 /* ContentView.swift */,
-				8D9296422A71259100822EC7 /* HomeView */,
-				8D9296542A714FA900822EC7 /* CommunityView */,
-				8D92964A2A713C0100822EC7 /* ProfileView */,
-				8D9296AE2A82958700822EC7 /* SettingView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8D9296422A71259100822EC7 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				8D9296352A70DD7C00822EC7 /* HomeView.swift */,
-				8D9296502A71473600822EC7 /* MyTabBar.swift */,
-				8D9296572A7150E300822EC7 /* MainView.swift */,
+				8D9296572A7150E300822EC7 /* HomeView.swift */,
 				8D9296662A72340500822EC7 /* StoryChallengeView */,
 				8D9296672A72343E00822EC7 /* DialogDrawingView */,
 				8D9296682A72346D00822EC7 /* StoryOratorView */,
 			);
-			path = HomeView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8D9296432A712A1B00822EC7 /* Constents */ = {
@@ -224,28 +259,11 @@
 			children = (
 				8D9296442A712A2E00822EC7 /* K.swift */,
 				8D9296482A713BC500822EC7 /* AppRouter.swift */,
-				8D9296522A71475E00822EC7 /* Tab.swift */,
 				8D9296CD2A84DE0300822EC7 /* Structs.swift */,
 			);
 			path = Constents;
 			sourceTree = "<group>";
 			wrapsLines = 1;
-		};
-		8D92964A2A713C0100822EC7 /* ProfileView */ = {
-			isa = PBXGroup;
-			children = (
-				8D92964B2A713C4700822EC7 /* ProfileView.swift */,
-			);
-			path = ProfileView;
-			sourceTree = "<group>";
-		};
-		8D9296542A714FA900822EC7 /* CommunityView */ = {
-			isa = PBXGroup;
-			children = (
-				8D9296552A714FC900822EC7 /* CommunityView.swift */,
-			);
-			path = CommunityView;
-			sourceTree = "<group>";
 		};
 		8D9296592A71764500822EC7 /* Extensions */ = {
 			isa = PBXGroup;
@@ -282,6 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				8D372D562A978370006BEC70 /* StoryOratorView.swift */,
+				8D8349DF2A9A332100477D3F /* SpeakingCell.swift */,
+				8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */,
 			);
 			path = StoryOratorView;
 			sourceTree = "<group>";
@@ -324,14 +344,6 @@
 				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 			);
 			path = StoryView;
-			sourceTree = "<group>";
-		};
-		8D9296AE2A82958700822EC7 /* SettingView */ = {
-			isa = PBXGroup;
-			children = (
-				8D9296AF2A8295A200822EC7 /* SettingView.swift */,
-			);
-			path = SettingView;
 			sourceTree = "<group>";
 		};
 		8D9296D32A84F49500822EC7 /* ViewModel */ = {
@@ -410,18 +422,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D8349D82A99CFA500477D3F /* A-错误提醒.mp3 in Resources */,
 				8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */,
 				8D372D502A973BF5006BEC70 /* 何地.mp3 in Resources */,
 				8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */,
+				8D8349F62A9A6CED00477D3F /* A-仙石发生了什么.mp3 in Resources */,
+				8D8349EC2A9A430200477D3F /* 西游记.mp4 in Resources */,
+				8D8349F42A9A6CED00477D3F /* A-石猴出世.mp3 in Resources */,
 				8D372D512A973BF5006BEC70 /* 何时.mp3 in Resources */,
 				8D372D522A973BF5006BEC70 /* 何人.mp3 in Resources */,
 				8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */,
+				8D8349F02A9A6CD000477D3F /* A-天上飞过什么.mp3 in Resources */,
+				8D8349EA2A9A42F700477D3F /* 小燕子.mp4 in Resources */,
 				8D372D532A973BF5006BEC70 /* 何事.mp3 in Resources */,
+				8D8349F52A9A6CED00477D3F /* A-蹦出什么.mp3 in Resources */,
 				8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */,
 				8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */,
 				8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */,
 				8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */,
+				8D8349F82A9A71F000477D3F /* A-错误提醒.mp3 in Resources */,
+				8D8349EF2A9A6CD000477D3F /* A-小燕子.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,10 +460,10 @@
 				8DF83ECB2A94BC8D0044CE0D /* DrawingGameModel.swift in Sources */,
 				8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */,
 				8DF83ECD2A94EA150044CE0D /* draft.swift in Sources */,
-				8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */,
 				8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */,
-				8D9296512A71473600822EC7 /* MyTabBar.swift in Sources */,
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
+				8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */,
+				8D8349E02A9A332100477D3F /* SpeakingCell.swift in Sources */,
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
 				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
@@ -453,16 +472,13 @@
 				8D372D552A977ECB006BEC70 /* DrawingTools.swift in Sources */,
 				8D9296612A71779D00822EC7 /* UIView+.swift in Sources */,
 				8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */,
-				8D9296532A71475E00822EC7 /* Tab.swift in Sources */,
-				8D9296582A7150E300822EC7 /* MainView.swift in Sources */,
-				8D92964C2A713C4700822EC7 /* ProfileView.swift in Sources */,
-				8D9296B02A8295A200822EC7 /* SettingView.swift in Sources */,
+				8D9296582A7150E300822EC7 /* HomeView.swift in Sources */,
 				8DEB16DA2A8E19B200A4DF1C /* DialogDrawingView.swift in Sources */,
 				8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */,
 				8DEB171A2A8E581700A4DF1C /* DrawingBoard.swift in Sources */,
+				8D8349E22A9A339200477D3F /* SpeakingShowcaseView.swift in Sources */,
 				8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */,
 				8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */,
-				8D9296562A714FC900822EC7 /* CommunityView.swift in Sources */,
 				8D372D4A2A97348D006BEC70 /* View+.swift in Sources */,
 				8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */,
 			);

@@ -4,7 +4,7 @@ import SwiftUI
 // 页面导航常量
 enum AppRouter: String {
     
-    case HomeView
+    // 主页
     case MainView
     // 故事闯关涂鸦
     case StoryChallengeView
@@ -12,9 +12,4 @@ enum AppRouter: String {
     case DialogDrawingView
     // 我说故事演说家
     case StoryOratorView
-    // 设置页面
-    case SettingView
-    
-    case CommunityView
-    case ProfileView
 }

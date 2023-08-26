@@ -75,6 +75,7 @@ class StoryGameVM: ObservableObject {
     
     // MARK: - 游戏完成控制
     func finishedGame() {
+        playSound(sound: "A-完成")
         model.FinishStory()
     }
 

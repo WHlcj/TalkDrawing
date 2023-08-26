@@ -25,9 +25,9 @@ struct StoryGameModel {
     // 当前游戏主要内容
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 2.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", errorTintSound: "A-错误提醒", finishGameSound: "A-完成", storySpeaker: "A-数鸭子"),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetAnimal: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"), // 黄
+            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetAnimal: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
-            Story(title: "小燕子", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ]),
         StoryChallenge(title: "童话寓言", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false),
@@ -39,7 +39,9 @@ struct StoryGameModel {
         StoryChallenge(title: "国外绘本", age: [.foreToSix, .SenvenPlus]),
         StoryChallenge(title: "山海经", age: [.SenvenPlus]),
         StoryChallenge(title: "风雅颂", age: [.SenvenPlus]),
-        StoryChallenge(title: "四大名著", age: [.SenvenPlus])
+        StoryChallenge(title: "四大名著", age: [.SenvenPlus], isLocked: false, stories: [
+            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetAnimal: "monkey", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySpeaker: "A-石猴出世") // 橙
+        ])
     ]
     // StoryChallengeView的模版选择
     mutating func ChooseChallenge(challenge: StoryChallenge) {
@@ -79,22 +81,18 @@ struct Story: Identifiable {
     var isSelected = false
     // 故事视频资源URL
     private(set) var url: URL?
-    // 故事视频暂停点
-    var pauseSeconds = 4.0
     // 故事语音关键词口令
     var keyWord = ""
     // 故事动物
     var targetAnimal = ""
+    // 搭配颜色
+    var targetColor = Color(red: 0.93, green: 0.46, blue: 0.18) // 橙
     // 游戏开始提示音
-    var welcomeSound = ""
+    var welcomeSound = "" //
     // 游戏动作提示音
     var actionTintSound = ""
-    // 游戏错误提示音
-    var errorTintSound = ""
-    // 游戏完成提示音
-    var finishGameSound = ""
-    // 故事语音
-    var storySpeaker = ""
+    // 故事播放
+    var storySpeaker = "" //
 }
 
 struct StoryChallenge: Identifiable {

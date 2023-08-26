@@ -41,7 +41,7 @@ struct NavigationBar: View {
             Spacer()
             HomeItem(image: image, title: title)
             Spacer()
-            SettingButton()
+            SpeakingButton()
         }
         .frame(maxWidth: .infinity)
         .padding()
@@ -50,8 +50,7 @@ struct NavigationBar: View {
 }
 
 ///  功能介绍语音按钮
-struct SettingButton: View {
-    
+struct SpeakingButton: View {
     var body: some View {
         Button {
             
