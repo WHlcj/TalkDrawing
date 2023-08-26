@@ -22,9 +22,6 @@ class StoryGameVM: ObservableObject {
     
     private var videoURL: URL?
     
-    init() {
-    }
-    
     // MARK: - 游戏交互控制
     // 选择挑战模块
     func chooseChallenge(challenge: StoryChallenge) {
@@ -64,7 +61,6 @@ class StoryGameVM: ObservableObject {
     func playSound() {
         voicePlayer.play()
     }
-    
     /// 播放提示音
     func playSound(sound: String) {
         if sound == "" { return }

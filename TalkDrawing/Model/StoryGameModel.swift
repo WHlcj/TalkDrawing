@@ -22,11 +22,10 @@ struct StoryGameModel {
             challenges[indexOfSelectedChallenge ?? 0].stories.firstIndex(where: { $0.isSelected == true })
         }
     }
-    
     // 当前游戏主要内容
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 4.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", finishGameSound: "A-完成", storySpeaker: "A-数鸭子"),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), pauseSeconds: 2.0, keyWord: "桥", targetAnimal: "duck", welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", errorTintSound: "A-错误提醒", finishGameSound: "A-完成", storySpeaker: "A-数鸭子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "小燕子", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
@@ -42,14 +41,12 @@ struct StoryGameModel {
         StoryChallenge(title: "风雅颂", age: [.SenvenPlus]),
         StoryChallenge(title: "四大名著", age: [.SenvenPlus])
     ]
-    
     // StoryChallengeView的模版选择
     mutating func ChooseChallenge(challenge: StoryChallenge) {
         for index in challenges.indices {
             challenges[index].isSelected = challenge.id == challenges[index].id
         }
     }
-    
     // StoriesListView的故事选择
     mutating func ChooseStory(story: Story) {
         if let challengeIndex = indexOfSelectedChallenge {
@@ -60,7 +57,6 @@ struct StoryGameModel {
             //print("选择故事失败")
         }
     }
-    
     // 完成故事游戏
     mutating func FinishStory() {
         if let challengeIndex = indexOfSelectedChallenge, let storyIndex = indexOfSelectedStory {
@@ -89,12 +85,12 @@ struct Story: Identifiable {
     var keyWord = ""
     // 故事动物
     var targetAnimal = ""
-    // 动物上色颜色
-    var targetColor = Color(red: 0.98, green: 0.87, blue: 0.30) // 黄
     // 游戏开始提示音
     var welcomeSound = ""
     // 游戏动作提示音
     var actionTintSound = ""
+    // 游戏错误提示音
+    var errorTintSound = ""
     // 游戏完成提示音
     var finishGameSound = ""
     // 故事语音

@@ -26,15 +26,37 @@ struct BackButton: View {
     }
 }
 
-/// 进入设置按钮
+/// 自定义导航栏
+///
+/// - Parameter image: 标题图标
+/// - Parameter title: 标题内容
+struct NavigationBar: View {
+    
+    var image: String
+    var title: String
+    
+    var body: some View {
+        HStack {
+            BackButton()
+            Spacer()
+            HomeItem(image: image, title: title)
+            Spacer()
+            SettingButton()
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .padding(.horizontal)
+    }
+}
+
+///  功能介绍语音按钮
 struct SettingButton: View {
-    // App导航路由
-    @Binding var path: NavigationPath
+    
     var body: some View {
         Button {
-            path.append(AppRouter.SettingView)
+            
         } label: {
-            Image(K.AppIcon.settingButton)
+            Image(K.AppIcon.speaker)
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 45, height: 45)//图片默认大小是64x64

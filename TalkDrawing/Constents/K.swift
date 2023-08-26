@@ -58,9 +58,9 @@ class K {
         // 返回按钮
         static let backButton = "backButton"
         // 设置按钮
-        static let settingButton = "settingButton"
+        static let settingButton = "setting"
         // 故事讲述按钮
-        static let storySpeaker = "storySpeaker"
+        static let speaker = "speaker"
         // 星星⭐️
         static let star = "star"
         // 左箭头
@@ -83,14 +83,6 @@ class K {
         static let trashbin = "trashbin"
         // 画笔粗细滑条
         static let slider = "sliderTrack"
-//        // 绘笔
-//        static let drawingPencil = "drawingPencil"
-
-//        // 喷墨笔
-//        static let inkjetPen = "inkjetPen"
-//        // 油彩桶
-//        static let paintBucket = "paintBucket"
-        
         // ProfileView
         // 用户头像
         static let ProfileAccountAvatar = "avatar"

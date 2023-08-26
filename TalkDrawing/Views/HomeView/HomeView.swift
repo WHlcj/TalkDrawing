@@ -5,7 +5,7 @@ struct HomeView: View {
     @State private var currentSelected = Tab.home
     // APP导航路由
     @State var path = NavigationPath()
-    
+
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {

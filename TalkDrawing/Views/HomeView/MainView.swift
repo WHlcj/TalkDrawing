@@ -44,7 +44,7 @@ extension MainView {
             Spacer()
             HomeButtonItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
             Spacer()
-            HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DrawBoardView, path: $path)
+            HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView, path: $path)
             Spacer()
             HomeItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
             Spacer()

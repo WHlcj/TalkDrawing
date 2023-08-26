@@ -1,7 +1,4 @@
 
-// TODO
-// 1.增加注释信息
-
 import SwiftUI
 
 struct VictoryView: View {
@@ -11,9 +8,9 @@ struct VictoryView: View {
     @Binding var path: NavigationPath
     // 星星数量
     var number = 1
-    //
+    // 按键文本
     var title = "下一关"
-    //
+    // 按键触发动作
     var active: (() -> Void)?
     
     
@@ -28,12 +25,14 @@ struct VictoryView: View {
             VStack(spacing: 50) {
                 // 完成啦
                 Image(K.AppIcon.finishGame)
-                
+                // 星星
                 stars
-                
+                // 三个功能按键
                 functionButtons
             }
         }
+        .ignoresSafeArea()
+        .zIndex(3)
     }
 }
 
@@ -62,7 +61,11 @@ extension VictoryView {
                 dismiss()
             }
             // 功能按钮
-            VictoryItem(icon: K.AppIcon.rightArrow, title: "下一关")
+            VictoryItem(icon: K.AppIcon.rightArrow, title: title) {
+                if let action = active {
+                    action()
+                }
+            }
         }
     }
     

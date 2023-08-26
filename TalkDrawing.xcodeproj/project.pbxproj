@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D372D4A2A97348D006BEC70 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D372D492A97348D006BEC70 /* View+.swift */; };
+		8D372D502A973BF5006BEC70 /* 何地.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4C2A973BF5006BEC70 /* 何地.mp3 */; };
+		8D372D512A973BF5006BEC70 /* 何时.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4D2A973BF5006BEC70 /* 何时.mp3 */; };
+		8D372D522A973BF5006BEC70 /* 何人.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4E2A973BF5006BEC70 /* 何人.mp3 */; };
+		8D372D532A973BF5006BEC70 /* 何事.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4F2A973BF5006BEC70 /* 何事.mp3 */; };
+		8D372D552A977ECB006BEC70 /* DrawingTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D372D542A977ECB006BEC70 /* DrawingTools.swift */; };
+		8D372D572A978370006BEC70 /* StoryOratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D372D562A978370006BEC70 /* StoryOratorView.swift */; };
 		8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */; };
 		8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */; };
 		8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */; };
+		8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */; };
+		8D8349D82A99CFA500477D3F /* A-错误提醒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */; };
+		8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
 		8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296352A70DD7C00822EC7 /* HomeView.swift */; };
 		8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296372A70DD7D00822EC7 /* Assets.xcassets */; };
@@ -23,14 +33,9 @@
 		8D9296532A71475E00822EC7 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296522A71475E00822EC7 /* Tab.swift */; };
 		8D9296562A714FC900822EC7 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296552A714FC900822EC7 /* CommunityView.swift */; };
 		8D9296582A7150E300822EC7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296572A7150E300822EC7 /* MainView.swift */; };
-		8D92965B2A71768400822EC7 /* NSLayoutAnchor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92965A2A71768400822EC7 /* NSLayoutAnchor+.swift */; };
-		8D92965D2A7176EE00822EC7 /* NSLayoutDimension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92965C2A7176EE00822EC7 /* NSLayoutDimension+.swift */; };
 		8D9296612A71779D00822EC7 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296602A71779D00822EC7 /* UIView+.swift */; };
-		8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296622A7232BA00822EC7 /* UILayoutGuide+.swift */; };
-		8D9296652A72332D00822EC7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296642A72332D00822EC7 /* UIColor+.swift */; };
 		8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296952A74B93F00822EC7 /* StoryGameModel.swift */; };
 		8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A22A7504C900822EC7 /* ChallengeCell.swift */; };
-		8D9296A52A8227FE00822EC7 /* 门前大桥下.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */; };
 		8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A72A824B5600822EC7 /* StoriesListView.swift */; };
 		8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A92A824F5A00822EC7 /* StoryCell.swift */; };
 		8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AC2A82552F00822EC7 /* StoryView.swift */; };
@@ -53,9 +58,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D372D492A97348D006BEC70 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		8D372D4C2A973BF5006BEC70 /* 何地.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何地.mp3"; sourceTree = "<group>"; };
+		8D372D4D2A973BF5006BEC70 /* 何时.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何时.mp3"; sourceTree = "<group>"; };
+		8D372D4E2A973BF5006BEC70 /* 何人.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何人.mp3"; sourceTree = "<group>"; };
+		8D372D4F2A973BF5006BEC70 /* 何事.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何事.mp3"; sourceTree = "<group>"; };
+		8D372D542A977ECB006BEC70 /* DrawingTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTools.swift; sourceTree = "<group>"; };
+		8D372D562A978370006BEC70 /* StoryOratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryOratorView.swift; sourceTree = "<group>"; };
 		8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-河流上有什么.mp3"; sourceTree = "<group>"; };
 		8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-拖拽.mp3"; sourceTree = "<group>"; };
 		8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-完成.mp3"; sourceTree = "<group>"; };
+		8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "门前大桥下.mp4"; sourceTree = "<group>"; };
+		8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-错误提醒.mp3"; sourceTree = "<group>"; };
+		8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingFunctionBar.swift; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9296332A70DD7C00822EC7 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		8D9296352A70DD7C00822EC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -70,14 +85,9 @@
 		8D9296522A71475E00822EC7 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		8D9296552A714FC900822EC7 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		8D9296572A7150E300822EC7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		8D92965A2A71768400822EC7 /* NSLayoutAnchor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+.swift"; sourceTree = "<group>"; };
-		8D92965C2A7176EE00822EC7 /* NSLayoutDimension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutDimension+.swift"; sourceTree = "<group>"; };
 		8D9296602A71779D00822EC7 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		8D9296622A7232BA00822EC7 /* UILayoutGuide+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutGuide+.swift"; sourceTree = "<group>"; };
-		8D9296642A72332D00822EC7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		8D9296952A74B93F00822EC7 /* StoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameModel.swift; sourceTree = "<group>"; };
 		8D9296A22A7504C900822EC7 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
-		8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "门前大桥下.mp4"; sourceTree = "<group>"; };
 		8D9296A72A824B5600822EC7 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		8D9296A92A824F5A00822EC7 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		8D9296AC2A82552F00822EC7 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
@@ -111,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D372D4B2A973BD6006BEC70 /* DrawingGame */ = {
+			isa = PBXGroup;
+			children = (
+				8D372D4F2A973BF5006BEC70 /* 何事.mp3 */,
+				8D372D4E2A973BF5006BEC70 /* 何人.mp3 */,
+				8D372D4C2A973BF5006BEC70 /* 何地.mp3 */,
+				8D372D4D2A973BF5006BEC70 /* 何时.mp3 */,
+			);
+			path = DrawingGame;
+			sourceTree = "<group>";
+		};
 		8D6A0AE02A8A57BD007554E4 /* StoryGame */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,8 +146,9 @@
 				8DEB16D72A8DADA400A4DF1C /* A-数鸭子.mp3 */,
 				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
 				8D6A0AE42A8A5827007554E4 /* A-拖拽.mp3 */,
+				8D8349D72A99CFA500477D3F /* A-错误提醒.mp3 */,
 				8D6A0AE22A8A57DC007554E4 /* A-河流上有什么.mp3 */,
-				8D9296A42A8227FE00822EC7 /* 门前大桥下.mp4 */,
+				8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */,
 			);
 			path = "门前大桥下";
 			sourceTree = "<group>";
@@ -191,8 +213,8 @@
 				8D9296502A71473600822EC7 /* MyTabBar.swift */,
 				8D9296572A7150E300822EC7 /* MainView.swift */,
 				8D9296662A72340500822EC7 /* StoryChallengeView */,
-				8D9296672A72343E00822EC7 /* VoiceDiaryView */,
-				8D9296682A72346D00822EC7 /* StoryOrator */,
+				8D9296672A72343E00822EC7 /* DialogDrawingView */,
+				8D9296682A72346D00822EC7 /* StoryOratorView */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -228,11 +250,8 @@
 		8D9296592A71764500822EC7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8D92965A2A71768400822EC7 /* NSLayoutAnchor+.swift */,
-				8D92965C2A7176EE00822EC7 /* NSLayoutDimension+.swift */,
 				8D9296602A71779D00822EC7 /* UIView+.swift */,
-				8D9296622A7232BA00822EC7 /* UILayoutGuide+.swift */,
-				8D9296642A72332D00822EC7 /* UIColor+.swift */,
+				8D372D492A97348D006BEC70 /* View+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,21 +266,24 @@
 			path = StoryChallengeView;
 			sourceTree = "<group>";
 		};
-		8D9296672A72343E00822EC7 /* VoiceDiaryView */ = {
+		8D9296672A72343E00822EC7 /* DialogDrawingView */ = {
 			isa = PBXGroup;
 			children = (
-				8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */,
 				8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */,
+				8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */,
+				8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */,
 				8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */,
+				8D372D542A977ECB006BEC70 /* DrawingTools.swift */,
 			);
-			path = VoiceDiaryView;
+			path = DialogDrawingView;
 			sourceTree = "<group>";
 		};
-		8D9296682A72346D00822EC7 /* StoryOrator */ = {
+		8D9296682A72346D00822EC7 /* StoryOratorView */ = {
 			isa = PBXGroup;
 			children = (
+				8D372D562A978370006BEC70 /* StoryOratorView.swift */,
 			);
-			path = StoryOrator;
+			path = StoryOratorView;
 			sourceTree = "<group>";
 		};
 		8D9296942A74B92600822EC7 /* Model */ = {
@@ -276,6 +298,7 @@
 		8D9296992A74BAA700822EC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D372D4B2A973BD6006BEC70 /* DrawingGame */,
 				8D9296392A70DD7D00822EC7 /* Preview Content */,
 				8D6A0AE02A8A57BD007554E4 /* StoryGame */,
 			);
@@ -387,12 +410,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8349D82A99CFA500477D3F /* A-错误提醒.mp3 in Resources */,
 				8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */,
+				8D372D502A973BF5006BEC70 /* 何地.mp3 in Resources */,
 				8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */,
-				8D9296A52A8227FE00822EC7 /* 门前大桥下.mp4 in Resources */,
+				8D372D512A973BF5006BEC70 /* 何时.mp3 in Resources */,
+				8D372D522A973BF5006BEC70 /* 何人.mp3 in Resources */,
 				8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */,
+				8D372D532A973BF5006BEC70 /* 何事.mp3 in Resources */,
 				8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */,
 				8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */,
+				8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */,
 				8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,14 +433,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D92964F2A713D3900822EC7 /* StoryChallengeView.swift in Sources */,
-				8D9296652A72332D00822EC7 /* UIColor+.swift in Sources */,
-				8D92965B2A71768400822EC7 /* NSLayoutAnchor+.swift in Sources */,
 				8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */,
-				8D9296632A7232BA00822EC7 /* UILayoutGuide+.swift in Sources */,
 				8D9296452A712A2E00822EC7 /* K.swift in Sources */,
+				8D372D572A978370006BEC70 /* StoryOratorView.swift in Sources */,
 				8DF83EC92A94BC7B0044CE0D /* DrawingGameVM.swift in Sources */,
 				8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */,
 				8DF83ECB2A94BC8D0044CE0D /* DrawingGameModel.swift in Sources */,
+				8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */,
 				8DF83ECD2A94EA150044CE0D /* draft.swift in Sources */,
 				8D9296362A70DD7C00822EC7 /* HomeView.swift in Sources */,
 				8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */,
@@ -421,9 +448,9 @@
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
 				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
-				8D92965D2A7176EE00822EC7 /* NSLayoutDimension+.swift in Sources */,
 				8D9296472A713BB600822EC7 /* ContentView.swift in Sources */,
 				8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */,
+				8D372D552A977ECB006BEC70 /* DrawingTools.swift in Sources */,
 				8D9296612A71779D00822EC7 /* UIView+.swift in Sources */,
 				8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */,
 				8D9296532A71475E00822EC7 /* Tab.swift in Sources */,
@@ -436,6 +463,7 @@
 				8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */,
 				8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */,
 				8D9296562A714FC900822EC7 /* CommunityView.swift in Sources */,
+				8D372D4A2A97348D006BEC70 /* View+.swift in Sources */,
 				8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

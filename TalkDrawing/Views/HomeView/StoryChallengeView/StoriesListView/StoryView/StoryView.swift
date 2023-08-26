@@ -44,26 +44,21 @@ struct StoryView: View {
             }
             .padding(30)
             // 完成游戏弹窗
-            ZStack {
-                if finishedGame {
+            if finishedGame {
                     VictoryView(path: $path)
-                        .ignoresSafeArea()
-                        .zIndex(3)
-                }
             }
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
             vm.chooseStory(story: story)
             vm.playSound(sound: story.welcomeSound)
-            isPlayingVoice = true
         }
     }
 }
 
 // MARK: - Components
 extension StoryView {
-    // 最左侧按键区
+    /// 左侧按键区
     var functionButtons: some View {
         VStack {
             BackButton()
@@ -84,10 +79,10 @@ extension StoryView {
                 isPlayingVoice = true
             }
         } label: {
-            Image(K.AppIcon.storySpeaker)
+            Image(K.AppIcon.speaker)
         }
     }
-    // 视频区域
+    /// 视频语音交互区域
     var videoSection: some View {
         VStack {
             ZStack {
@@ -110,11 +105,6 @@ extension StoryView {
         .onAppear {
             SwiftSpeech.requestSpeechRecognitionAuthorization()
         }
-//        .onTapGesture {
-//            playFirstAV()
-//            vm.playSound(sound: story.actionTintSound)
-//        }
-        
     }
     // 语音识别按钮
     var voiceButton: some View {
@@ -139,25 +129,14 @@ extension StoryView {
     }
     // 动物选择区
     var animalChosenSection: some View {
-//        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(K.AppIcon.animals, id: \.self) { animal in
-                    AnimalsCell(animal: animal, selectedAnimal: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
-                }
+        VStack(spacing: 20) {
+            ForEach(K.AppIcon.animals, id: \.self) { animal in
+                AnimalsCell(animal: animal, selectedAnimal: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
             }
-       // }
-
-        
+        }
         .onChange(of: hasFinishedPlacingAnimal) { newValue in
-            if newValue == true && selectedAnimals == story.targetAnimal && selectedColor == story.targetColor {
-                vm.playVideo()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    vm.finishedGame()
-                    
-                    vm.playSound(sound: story.finishGameSound)
-                    finishedGame = true//
-                }
+            if newValue == true {
+                checkFinishGame()
             }
         }
     }
@@ -166,7 +145,7 @@ extension StoryView {
 
 // MARK: - Functions
 extension StoryView {
-    // 语音控制播放第一段动画
+    /// 语音控制播放第一段动画
     func playFirstAV() {
         vm.playVideo()
         // 禁止语音按钮，播放视频提示音
@@ -176,6 +155,22 @@ extension StoryView {
             voiceText = "按住按钮说话"
             vm.stopVideo()
             isPlayingVideo = false
+        }
+    }
+    
+    /// 完成游戏检测
+    func checkFinishGame() {
+        if selectedAnimals == story.targetAnimal {
+            if recognizedKey {
+                vm.playVideo()
+                delay(by: 3) {
+                    vm.finishedGame()
+                    vm.playSound(sound: story.finishGameSound)
+                    finishedGame = true
+                }
+            }
+        } else {
+            vm.playSound(sound: story.errorTintSound)
         }
     }
 }

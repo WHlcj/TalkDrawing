@@ -5,7 +5,6 @@ struct ColorValueSlider: View {
     
     @Binding var value: Double
 
-    
     @State var lastCoordinateValue: CGFloat = 0.0
     
     var sliderRange: ClosedRange<Double> = 1...50

@@ -1,5 +1,4 @@
-// TO DO
-// 1.视图之间传递信息
+
 import SwiftUI
 
 struct ContentView: View {
@@ -16,15 +15,18 @@ struct ContentView: View {
         // 故事闯关涂鸦
         case .StoryChallengeView:
             StoryChallengeView(path: $path)
-        case .DrawBoardView:
+        // 语音日记式涂鸦
+        case .DialogDrawingView:
             DialogDrawingView(path: $path)
-//            DrawBoardView(path: $path, selectedColor: <#Binding<Color>#>)
-        // 社区广场
+        // 我是故事演说家
+        case .StoryOratorView:
+            StoryOratorView(path: $path)
+            
         case .CommunityView:
             CommunityView()
-        // 个人主页
         case .ProfileView:
             ProfileView(path: $path)
+
         // 设置页面
         case .SettingView:
             SettingView()
@@ -35,6 +37,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
-        ContentView(view: AppRouter.HomeView, path: $path)
+        ContentView(view: AppRouter.MainView, path: $path)
     }
 }

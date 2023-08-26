@@ -24,7 +24,15 @@ extension ProfileView {
     var navigationBar: some View {
         HStack(alignment: .bottom) {
             Spacer()
-            SettingButton(path: $path)
+            Button {
+                
+            } label: {
+                Image(K.AppIcon.settingButton)
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 45, height: 45)//图片默认大小是64x64
+                    .foregroundColor(K.AppColor.ThemeButtonColor)
+            }
         }
         .padding()
         .padding(.horizontal)

@@ -23,7 +23,8 @@ struct AnimalsCell: View {
             .onEnded { (value) in
                 if (abs(value.translation.width) >= 300) {
                     //如果被拖动的视图，距离目标视图的位置较近，则将被拖动的视图，放置在目标视图的位置
-                    self.offset = CGSize(width: 0, height: -3000)
+//                    self.offset = CGSize(width: 0, height: -3000)
+                    self.offset = .zero
                     hasFinishedPlacingAnimal = true
                 }
                 else {

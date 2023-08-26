@@ -41,7 +41,7 @@ extension StoriesListView {
                 .font(.system(size: 35).bold())
                 .foregroundColor(K.AppColor.ThemeButtonColor)
             Spacer()
-            SettingButton(path: $path)
+            SettingButton()
         }
         .padding()
         .padding(.horizontal)

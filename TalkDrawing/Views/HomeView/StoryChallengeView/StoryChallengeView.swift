@@ -18,11 +18,13 @@ struct StoryChallengeView: View {
             Background()
             // content
             VStack {
-                navigationBar
-                modelSelection
-                mainContents
+                NavigationBar(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
+                VStack {
+                    modelSelection
+                    mainContents
+                }
+                .padding(.horizontal, 50)
             }
-            .padding(.horizontal, 50)
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -30,18 +32,6 @@ struct StoryChallengeView: View {
 
 // Components
 extension StoryChallengeView {
-    // 自定义导航栏
-    var navigationBar: some View {
-        HStack {
-            // 自定义的返回按钮
-            BackButton()
-            Spacer()
-            HomeItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
-            Spacer()
-            SettingButton(path: $path)
-        }
-        .frame(maxWidth: .infinity)
-    }
     // 模块选择部分
     var modelSelection: some View {
         HStack(alignment: .bottom, spacing: 20) {
