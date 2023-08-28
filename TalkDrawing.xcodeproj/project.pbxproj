@@ -30,6 +30,13 @@
 		8D8349F52A9A6CED00477D3F /* A-蹦出什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F22A9A6CED00477D3F /* A-蹦出什么.mp3 */; };
 		8D8349F62A9A6CED00477D3F /* A-仙石发生了什么.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F32A9A6CED00477D3F /* A-仙石发生了什么.mp3 */; };
 		8D8349F82A9A71F000477D3F /* A-错误提醒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */; };
+		8D8349FA2A9BB61B00477D3F /* SpeakingGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349F92A9BB61B00477D3F /* SpeakingGameModel.swift */; };
+		8D8349FC2A9BB63B00477D3F /* SpeakingGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349FB2A9BB63B00477D3F /* SpeakingGameVM.swift */; };
+		8D8349FE2A9BC1A400477D3F /* 故事闯关式涂鸦.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349FD2A9BC1A400477D3F /* 故事闯关式涂鸦.mp3 */; };
+		8D834A012A9C561B00477D3F /* 语音日记式涂鸦.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A002A9C561A00477D3F /* 语音日记式涂鸦.mp3 */; };
+		8D834A032A9C562600477D3F /* 故事真不错.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A022A9C562600477D3F /* 故事真不错.mp3 */; };
+		8D834A052A9C562B00477D3F /* B-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A042A9C562B00477D3F /* B-完成.mp3 */; };
+		8D834A082A9C77BF00477D3F /* 我是故事演说家.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
 		8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296372A70DD7D00822EC7 /* Assets.xcassets */; };
 		8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D92963A2A70DD7D00822EC7 /* Preview Assets.xcassets */; };
@@ -85,6 +92,13 @@
 		8D8349F22A9A6CED00477D3F /* A-蹦出什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-蹦出什么.mp3"; sourceTree = "<group>"; };
 		8D8349F32A9A6CED00477D3F /* A-仙石发生了什么.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-仙石发生了什么.mp3"; sourceTree = "<group>"; };
 		8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-错误提醒.mp3"; sourceTree = "<group>"; };
+		8D8349F92A9BB61B00477D3F /* SpeakingGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingGameModel.swift; sourceTree = "<group>"; };
+		8D8349FB2A9BB63B00477D3F /* SpeakingGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingGameVM.swift; sourceTree = "<group>"; };
+		8D8349FD2A9BC1A400477D3F /* 故事闯关式涂鸦.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "故事闯关式涂鸦.mp3"; sourceTree = "<group>"; };
+		8D834A002A9C561A00477D3F /* 语音日记式涂鸦.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "语音日记式涂鸦.mp3"; sourceTree = "<group>"; };
+		8D834A022A9C562600477D3F /* 故事真不错.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "故事真不错.mp3"; sourceTree = "<group>"; };
+		8D834A042A9C562B00477D3F /* B-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "B-完成.mp3"; sourceTree = "<group>"; };
+		8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "我是故事演说家.mp3"; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9296332A70DD7C00822EC7 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		8D9296372A70DD7D00822EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +146,9 @@
 		8D372D4B2A973BD6006BEC70 /* DrawingGame */ = {
 			isa = PBXGroup;
 			children = (
+				8D834A002A9C561A00477D3F /* 语音日记式涂鸦.mp3 */,
+				8D834A022A9C562600477D3F /* 故事真不错.mp3 */,
+				8D834A042A9C562B00477D3F /* B-完成.mp3 */,
 				8D372D4F2A973BF5006BEC70 /* 何事.mp3 */,
 				8D372D4E2A973BF5006BEC70 /* 何人.mp3 */,
 				8D372D4C2A973BF5006BEC70 /* 何地.mp3 */,
@@ -143,6 +160,7 @@
 		8D6A0AE02A8A57BD007554E4 /* StoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				8D8349FD2A9BC1A400477D3F /* 故事闯关式涂鸦.mp3 */,
 				8D8349F72A9A71F000477D3F /* A-错误提醒.mp3 */,
 				8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */,
 				8D8349E82A9A42EC00477D3F /* 西游记 */,
@@ -199,6 +217,14 @@
 				8D8349EB2A9A430200477D3F /* 西游记.mp4 */,
 			);
 			path = "西游记";
+			sourceTree = "<group>";
+		};
+		8D834A062A9C77AE00477D3F /* SpeakingGame */ = {
+			isa = PBXGroup;
+			children = (
+				8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */,
+			);
+			path = SpeakingGame;
 			sourceTree = "<group>";
 		};
 		8D9296272A70DD7C00822EC7 = {
@@ -311,6 +337,7 @@
 			children = (
 				8D9296952A74B93F00822EC7 /* StoryGameModel.swift */,
 				8DF83ECA2A94BC8D0044CE0D /* DrawingGameModel.swift */,
+				8D8349F92A9BB61B00477D3F /* SpeakingGameModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +345,7 @@
 		8D9296992A74BAA700822EC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D834A062A9C77AE00477D3F /* SpeakingGame */,
 				8D372D4B2A973BD6006BEC70 /* DrawingGame */,
 				8D9296392A70DD7D00822EC7 /* Preview Content */,
 				8D6A0AE02A8A57BD007554E4 /* StoryGame */,
@@ -351,6 +379,7 @@
 			children = (
 				8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */,
 				8DF83EC82A94BC7B0044CE0D /* DrawingGameVM.swift */,
+				8D8349FB2A9BB63B00477D3F /* SpeakingGameVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -423,9 +452,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DEB16D82A8DADA400A4DF1C /* A-数鸭子.mp3 in Resources */,
+				8D834A052A9C562B00477D3F /* B-完成.mp3 in Resources */,
 				8D372D502A973BF5006BEC70 /* 何地.mp3 in Resources */,
 				8D6A0AE52A8A5827007554E4 /* A-拖拽.mp3 in Resources */,
 				8D8349F62A9A6CED00477D3F /* A-仙石发生了什么.mp3 in Resources */,
+				8D834A032A9C562600477D3F /* 故事真不错.mp3 in Resources */,
 				8D8349EC2A9A430200477D3F /* 西游记.mp4 in Resources */,
 				8D8349F42A9A6CED00477D3F /* A-石猴出世.mp3 in Resources */,
 				8D372D512A973BF5006BEC70 /* 何时.mp3 in Resources */,
@@ -434,13 +465,16 @@
 				8D8349F02A9A6CD000477D3F /* A-天上飞过什么.mp3 in Resources */,
 				8D8349EA2A9A42F700477D3F /* 小燕子.mp4 in Resources */,
 				8D372D532A973BF5006BEC70 /* 何事.mp3 in Resources */,
+				8D834A012A9C561B00477D3F /* 语音日记式涂鸦.mp3 in Resources */,
 				8D8349F52A9A6CED00477D3F /* A-蹦出什么.mp3 in Resources */,
 				8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */,
 				8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */,
+				8D8349FE2A9BC1A400477D3F /* 故事闯关式涂鸦.mp3 in Resources */,
 				8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */,
 				8D6A0AE32A8A57DC007554E4 /* A-河流上有什么.mp3 in Resources */,
 				8D8349F82A9A71F000477D3F /* A-错误提醒.mp3 in Resources */,
 				8D8349EF2A9A6CD000477D3F /* A-小燕子.mp3 in Resources */,
+				8D834A082A9C77BF00477D3F /* 我是故事演说家.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +498,7 @@
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
 				8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */,
 				8D8349E02A9A332100477D3F /* SpeakingCell.swift in Sources */,
+				8D8349FA2A9BB61B00477D3F /* SpeakingGameModel.swift in Sources */,
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
 				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
@@ -480,6 +515,7 @@
 				8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */,
 				8D9296A32A7504C900822EC7 /* ChallengeCell.swift in Sources */,
 				8D372D4A2A97348D006BEC70 /* View+.swift in Sources */,
+				8D8349FC2A9BB63B00477D3F /* SpeakingGameVM.swift in Sources */,
 				8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,11 +1,18 @@
 
 import SwiftUI
+import AVFAudio
 
 struct VictoryView: View {
     
     @Environment(\.dismiss) var dismiss
     // App路由导航
     @Binding var path: NavigationPath
+    
+    // 语音播报
+    var soundName = ""
+    @State var isPlaying = false
+    @State var voicePlayer: AVAudioPlayer!
+    
     // 星星数量
     var number = 1
     // 按键文本
@@ -29,6 +36,15 @@ struct VictoryView: View {
                 stars
                 // 三个功能按键
                 functionButtons
+            }
+            .onAppear {
+                playSound(sound: soundName)
+                isPlaying = true
+            }
+            .onDisappear {
+                if isPlaying {
+                    voicePlayer.stop()
+                }
             }
         }
         .ignoresSafeArea()
@@ -87,6 +103,18 @@ extension VictoryView {
                         .foregroundColor(.black)
                 }
             }
+        }
+    }
+    /// 播放结算音频
+    func playSound(sound: String) {
+        if sound == "" { return }
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
+        do {
+            voicePlayer = try AVAudioPlayer(contentsOf: url)
+            voicePlayer.play()
+            isPlaying = true
+        } catch let error {
+            print(error)
         }
     }
 }

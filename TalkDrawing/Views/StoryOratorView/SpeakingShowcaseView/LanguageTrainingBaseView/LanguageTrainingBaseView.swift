@@ -1,9 +1,3 @@
-//
-//  LanguageTrainingBaseView.swift
-//  TalkDrawing
-//
-//  Created by Changjun Li on 2023/8/26.
-//
 
 import SwiftUI
 

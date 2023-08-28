@@ -1,5 +1,6 @@
 
 import SwiftUI
+import AVFoundation
 
 /// 大部分页面背景
 struct Background: View {
@@ -9,7 +10,6 @@ struct Background: View {
             .ignoresSafeArea()
     }
 }
-
 /// 自定义的粉色箭头返回按钮
 struct BackButton: View {
     @Environment(\.dismiss) var dismiss
@@ -29,19 +29,19 @@ struct BackButton: View {
 /// 自定义导航栏
 ///
 /// - Parameter image: 标题图标
-/// - Parameter title: 标题内容
+/// - Parameter title: 标题内容和声音播放内容
 struct NavigationBar: View {
-    
+    // Icon
     var image: String
     var title: String
-    
+
     var body: some View {
         HStack {
             BackButton()
             Spacer()
             HomeItem(image: image, title: title)
             Spacer()
-            SpeakingButton()
+            SpeakingButton(soundName: title)
         }
         .frame(maxWidth: .infinity)
         .padding()
@@ -51,15 +51,42 @@ struct NavigationBar: View {
 
 ///  功能介绍语音按钮
 struct SpeakingButton: View {
+    
+    var soundName = ""
+    @State var voicePlayer: AVAudioPlayer!
+    @State var isPlaying = false
+    
     var body: some View {
         Button {
-            
+            if isPlaying {
+                voicePlayer.stop()
+                isPlaying = false
+            } else {
+                playSound(sound: soundName)
+            }
         } label: {
             Image(K.AppIcon.speaker)
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 45, height: 45)//图片默认大小是64x64
                 .foregroundColor(K.AppColor.ThemeButtonColor)
+        }
+        .onDisappear {
+            if isPlaying {
+                voicePlayer.stop()
+            }
+        }
+    }
+    
+    func playSound(sound: String) {
+        if sound == "" { return }
+        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
+        do {
+            voicePlayer = try AVAudioPlayer(contentsOf: url)
+            voicePlayer.play()
+            isPlaying = true
+        } catch let error {
+            print(error)
         }
     }
 }
@@ -79,7 +106,6 @@ struct ColorChosenSection: View {
         }
     }
 }
-
 /// 主要功能区下的标题栏
 struct HomeItem: View {
     var image: String
@@ -107,7 +133,6 @@ struct HomeItem: View {
         }
     }
 }
-
 /// app的消息提醒弹窗
 /// - parameter text: This is the title for the alert.
 /// - parameter value: This is the binding value which control your alert presend.

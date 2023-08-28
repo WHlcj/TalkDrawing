@@ -4,13 +4,10 @@ import SwiftUI
 struct HomeView: View {
     // APP导航路由
     @State var path = NavigationPath()
-//    // 创建StoryGameVM
-//    @State var storyGame = StoryGameVM()
     
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                // background
                 Background()
                 
                 VStack {
@@ -51,7 +48,7 @@ extension HomeView {
             Spacer()
             HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView, path: $path)
             Spacer()
-            HomeItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
+            HomeButtonItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家", destination: AppRouter.StoryOratorView, path: $path)
             Spacer()
         }
     }
@@ -85,7 +82,6 @@ extension HomeView {
                         .fill(K.AppColor.HomeViewItemBackgroundColor)
                         .shadow(color: K.AppColor.HomeViewItemShadow, radius:3, x: 3, y: 6)
                         .frame(width: 100, height: 100)
-                    
                         .overlay {
                             RoundedRectangle(cornerRadius: 50)
                                 .fill(K.AppColor.HomeViewItemBackgroundCircleColor)

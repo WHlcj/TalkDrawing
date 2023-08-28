@@ -1,5 +1,6 @@
 
 import SwiftUI
+import AVKit
 
 struct StoryChallengeView: View {
     
@@ -10,9 +11,8 @@ struct StoryChallengeView: View {
     // 内容选择
     @State var selectedAges = Ages.zeroToThree
     // 故事闯关模块的ViewModel
-    //@ObservedObject var vm: StoryGameVM
     @State var vm = StoryGameVM()
-        
+    
     var body: some View {
         ZStack {
             // background
@@ -22,9 +22,9 @@ struct StoryChallengeView: View {
                 NavigationBar(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
                 VStack {
                     modelSelection
-                    mainContents
+                    challengeCollection
                 }
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 30)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -48,30 +48,29 @@ extension StoryChallengeView {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     // StoryChallenges列表
-    var mainContents: some View {
+    var challengeCollection: some View {
         ZStack {
             // 粉色背景
             Rectangle()
-                .fill(K.AppColor.StoryChallengeViewContentColor)
+                .fill(K.AppColor.ThemeButtonColor)
+                .opacity(0.3)
+                .padding(.bottom, 20)
+                .blur(radius: 5)
                 .overlay(content: {
-                        challengeModel
-                })
-        }
-    }
-    
-    var challengeModel: some View {
-        ScrollView(.horizontal) {
-            LazyHGrid(rows: [GridItem(.adaptive(minimum: 200, maximum: 300))], spacing: 50) {
-                ForEach(vm.challenges) { challenge in
-                    if challenge.age.contains(selectedAges) {
-                        ChallengeCell(path: $path, challenge: challenge, vm: vm)
+                    ScrollView(.horizontal) {
+                        LazyHGrid(rows: [GridItem(.adaptive(minimum: 200, maximum: 300))], spacing: 50) {
+                            ForEach(vm.challenges) { challenge in
+                                if challenge.age.contains(selectedAges) {
+                                    ChallengeCell(path: $path, challenge: challenge, vm: vm)
+                                }
+                            }
                         }
-                }
-            }
+                    }
+                    .padding(40)
+                })
+            
         }
-        .padding(40)
     }
-    
     // 模块年龄选择按钮
     struct AgesButton: View {
         @Binding var ages: Ages

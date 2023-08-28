@@ -45,12 +45,14 @@ struct StoryView: View {
             .padding(30)
             // 完成游戏弹窗
             if finishedGame {
-                VictoryView(path: $path)
+                VictoryView(path: $path, soundName: "A-完成")
             }
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
+            // 加载故事资源
             vm.chooseStory(story: story)
+            // 播放故事
             if story.welcomeSound != "" {
                 vm.playSound(sound: story.welcomeSound)
             } else {
@@ -150,7 +152,6 @@ extension StoryView {
             }
         }
     }
-    
 }
 
 // MARK: - Functions
@@ -167,7 +168,6 @@ extension StoryView {
             isPlayingVideo = false
         }
     }
-    
     /// 完成游戏检测
     func checkFinishGame() {
         if selectedAnimals == story.targetAnimal && selectedColor == story.targetColor {

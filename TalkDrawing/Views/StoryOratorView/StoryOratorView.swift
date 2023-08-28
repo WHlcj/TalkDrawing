@@ -1,9 +1,13 @@
 
 import SwiftUI
 
+// 当前本文件
+
 struct StoryOratorView: View {
     // App路由导航
     @Binding var path: NavigationPath
+    // 游戏VM
+    @StateObject var vm = SpeakingGameVM()
     // 模块选择
     @State var selectedModel = "我的绘本"
     
@@ -23,6 +27,7 @@ struct StoryOratorView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -51,7 +56,7 @@ extension StoryOratorView {
             Spacer()
         }
     }
-    
+    /// 故事集
     var storyCollection: some View {
         VStack {
             Rectangle()

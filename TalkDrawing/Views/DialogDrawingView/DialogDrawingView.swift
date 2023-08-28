@@ -56,7 +56,7 @@ struct DialogDrawingView: View {
             }
             // 完成游戏动画
             if finishedGame {
-                VictoryView(path: $path, number: 4, title: "生成连环画") {
+                VictoryView(path: $path, soundName: "B-完成", number: 4, title: "生成连环画") {
                     saveComics()
                 }
             }

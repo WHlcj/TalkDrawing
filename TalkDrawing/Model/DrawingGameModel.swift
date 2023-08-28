@@ -10,7 +10,6 @@ class DrawingGameModel {
     private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
     /// 查询生成图片请求url
     private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
-    
 }
 
 // MARK: - BaiDuAlImage
@@ -121,7 +120,6 @@ struct ImageRequestData: Decodable {
 struct TaskId: Decodable {
     let taskId: Int
 }
-
 
 // 返回图片请求
 struct BackImage: Decodable {
