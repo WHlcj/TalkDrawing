@@ -28,6 +28,9 @@ struct StoryOratorView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            vm.loaComics()
+        }
     }
 }
 
@@ -58,12 +61,31 @@ extension StoryOratorView {
     }
     /// 故事集
     var storyCollection: some View {
-        VStack {
+        ZStack {
+            // 粉色背景图
             Rectangle()
                 .fill(K.AppColor.ThemeButtonColor)
                 .opacity(0.3)
+            
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 320), spacing: 16)], spacing: 16) {
+                    if selectedModel == "宝宝作品" {
+                        ForEach(0..<vm.comics.count, id: \.self) { index in
+                            // 连环画
+                            ComicCell(path: $path, vm: vm, index: index)
+                        }
+                    }
+                    else if selectedModel == "我的绘本" {
+                        // 故事集
+                        
+                    }
+                }
+                .padding()
+            }
         }
     }
+    
+    
     
 }
 

@@ -1,5 +1,6 @@
 
 import Foundation
+import UIKit
 
 class DrawingGameModel {
     /// 画板
@@ -10,6 +11,33 @@ class DrawingGameModel {
     private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
     /// 查询生成图片请求url
     private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
+    // 保存连环画到软件文件内
+    func saveComics(images: [UIImage]) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
+    
+        // Ensure folder exists
+        if !FileManager.default.fileExists(atPath: folderURL.path) {
+            do {
+                try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("Error creating local images folder: \(error)")
+            }
+        }
+        do {
+            for (index, image) in images.enumerated() {
+                let timestamp = Date().timeIntervalSince1970
+
+                let fileURL = folderURL.appendingPathComponent("image\(timestamp)_\(index).png")
+                if let data = image.pngData() {
+                    try data.write(to: fileURL)
+                    print("Image saved successful")
+                }
+            }
+        } catch {
+            print("Error saving images locally: \(error)")
+        }
+    }
 }
 
 // MARK: - BaiDuAlImage

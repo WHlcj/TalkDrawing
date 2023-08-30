@@ -140,6 +140,7 @@ extension DialogDrawingView {
         let img2 = Image(uiImage: self.canvases[1].drawing.image(from: canvases[1].bounds, scale: 1))
         let img3 = Image(uiImage: self.canvases[2].drawing.image(from: canvases[2].bounds, scale: 1))
         let img4 = Image(uiImage: self.canvases[3].drawing.image(from: canvases[3].bounds, scale: 1))
+        
         var comics: some View {
             VStack {
                 HStack {
@@ -154,7 +155,22 @@ extension DialogDrawingView {
         }
         
         if !showSheets {
+            // 保存图片到手机相册
             comics.snapshot()
+            // 保存连环画到软件文件内
+            let controller = UIHostingController(rootView: comics)
+            let view = controller.view
+            
+            let targetSize = controller.view.intrinsicContentSize
+            view?.bounds = CGRect(origin: .zero, size: targetSize)
+            view?.backgroundColor = .clear
+            
+            let renderer = UIGraphicsImageRenderer(size: targetSize)
+            
+            let image = renderer.image { _ in
+                view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+            }
+            vm.saveComics(images: [image])
             withAnimation(.easeInOut) {
                 self.showSheets = true
             }

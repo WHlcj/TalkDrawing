@@ -1,11 +1,14 @@
 
 import Foundation
+import UIKit
 
 struct SpeakingGameModel {
     
+    // 保存的连环画资源
+    var comics: [UIImage] = []
+    
     // 四项语音能力总评: 语言清晰度、语言逻辑性、言语情商能力、语汇能力
     var scores: [Int] = [0, 0, 0, 0]
-    
     // 关键词列表
     /// 语言清晰度
     let clarityKeyWords = ["额", "啊", "嗯", "呃", "恩"]
@@ -15,7 +18,63 @@ struct SpeakingGameModel {
     let socialKeyWords = ["感谢", "抱歉", "请", "谢谢", "对不起", "好", "没关系", "不用谢"]
     /// 语汇能力
     let vocabularyKeyWords = ["瘦弱", "淳朴", "慈祥", "和蔼", "朴素", "稳重", "红润", "白净", "俏丽", "勤劳", "爽朗", "健壮", "魁梧", "体贴"]
+}
 
+
+// MARK: - 资源选择部分
+
+extension SpeakingGameModel {
+    /// 加载连环画
+    mutating func loadComics() {
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
+            
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil)
+                let imageFileURLs = fileURLs.filter { fileURL in
+                    let fileExtension = fileURL.pathExtension.lowercased()
+                    return ["png", "jpg", "jpeg"].contains(fileExtension)
+                }
+                
+                var images: [UIImage] = []
+                for fileURL in imageFileURLs {
+                    if let data = try? Data(contentsOf: fileURL), let image = UIImage(data: data) {
+                        images.append(image)
+                    }
+                }
+                print("Number of images in local folder: \(imageFileURLs.count)")
+                comics = images
+            } catch {
+                print("Error counting images in local folder: \(error)")
+            }
+        }
+    /// 删除连环画
+    mutating func deleteComics(at index: Int) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
+        
+        do {
+            let fileURLs = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil)
+            let imageFileURLs = fileURLs.filter { fileURL in
+                let fileExtension = fileURL.pathExtension.lowercased()
+                return ["png", "jpg", "jpeg"].contains(fileExtension)
+            }
+            
+            if index < imageFileURLs.count {
+                let fileURLToDelete = imageFileURLs[index]
+                try FileManager.default.removeItem(at: fileURLToDelete)
+                loadComics() // Refresh savedImages after deletion
+            }
+        } catch {
+            print("Error deleting image: \(error)")
+        }
+    }
+}
+
+
+// MARK: - 语言能力分析部分
+
+extension SpeakingGameModel {
     // 计算语言能力总分
     mutating func calculateScore(text: String, second: Int) {
         // 计算语言清晰度评分

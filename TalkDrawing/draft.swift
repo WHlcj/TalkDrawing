@@ -1,40 +1,50 @@
 
 import SwiftUI
-import AVKit
 
 struct draft: View {
     
-    @State var voicePlayer: AVAudioPlayer!
-    @State var isPlaying = false
-    var soundName = "故事闯关涂鸦"
+    var scores = [10,10,10,10]
     
     var body: some View {
-        Button {
-            if isPlaying {
-                voicePlayer.stop()
-                isPlaying = false
-            } else {
-                playSound(sound: soundName)
+        ZStack {
+            Image(K.AppIcon.scoreBoard)
+            
+            GeometryReader { geometry in
+                let centerX = geometry.size.width / 2
+                let centerY = geometry.size.height / 2
+                
+                // 根据数据分别计算四个顶点的位置
+                let topPoint = CGPoint(x: centerX, y: centerY - CGFloat(scores[0] * 20))
+                let rightPoint = CGPoint(x: centerX + CGFloat(scores[1] * 20), y: centerY)
+                let bottomPoint = CGPoint(x: centerX, y: centerY + CGFloat(scores[2] * 20))
+                let leftPoint = CGPoint(x: centerX - CGFloat(scores[3] * 20), y: centerY)
+                Path { path in
+                    path.move(to: topPoint)
+                    path.addLine(to: rightPoint)
+                    path.addLine(to: bottomPoint)
+                    path.addLine(to: leftPoint)
+                    path.closeSubpath()
+                }
+                .stroke(lineWidth: 5) // 设置连线宽度
+                .foregroundColor(K.AppColor.ThemeButtonColor) // 设置连线颜色
+                
+                CirclePoint(point: topPoint)
+                CirclePoint(point: rightPoint)
+                CirclePoint(point: bottomPoint)
+                CirclePoint(point: leftPoint)
             }
-        } label: {
-            Image(K.AppIcon.speaker)
-                .renderingMode(.template)
-                .resizable()
-                .frame(width: 45, height: 45)//图片默认大小是64x64
-                .foregroundColor(K.AppColor.ThemeButtonColor)
         }
     }
-    
-    /// 播放提示音
-    func playSound(sound: String) {
-        if sound == "" { return }
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            voicePlayer = try AVAudioPlayer(contentsOf: url)
-            voicePlayer.play()
-            isPlaying = true
-        } catch let error {
-            print(error)
+    /// 粉色圆点
+    struct CirclePoint: View {
+        // 定点
+        var point: CGPoint
+        
+        var body: some View {
+            Circle()
+                .frame(width: 20, height: 20) // 设置小圆的大小
+                .foregroundColor(K.AppColor.ThemeButtonColor.opacity(0.7)) // 设置小圆的颜色
+                .position(point)
         }
     }
 }

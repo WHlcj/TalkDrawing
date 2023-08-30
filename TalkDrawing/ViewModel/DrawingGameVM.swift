@@ -33,7 +33,6 @@ class DrawingGameVM: ObservableObject {
             print(error)
         }
     }
-    
     /// 文字请求图片
     func fetchImage(text: String) {
         oldImg = img
@@ -52,6 +51,10 @@ class DrawingGameVM: ObservableObject {
             self.img = model.img
             print("当前的img为: \(img)")
         }
+    }
+    /// 保存连环画到软件文件内
+    func saveComics(images: [UIImage]) {
+        model.saveComics(images: images)
     }
     
     

@@ -66,5 +66,11 @@ class K {
         static let trashbin = "trashbin"
         // 画笔粗细滑条
         static let slider = "sliderTrack"
+        
+        // SpeakingGame
+        // 关闭弹窗
+        static let closeSheet = "closeSheet"
+        // 得分表
+        static let scoreBoard = "scoreBoard"
     }
 }

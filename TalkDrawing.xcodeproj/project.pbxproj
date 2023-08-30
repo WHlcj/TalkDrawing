@@ -19,7 +19,7 @@
 		8D6A0AE72A8A582B007554E4 /* A-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */; };
 		8D8349D62A99AF7000477D3F /* 门前大桥下.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */; };
 		8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */; };
-		8D8349E02A9A332100477D3F /* SpeakingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349DF2A9A332100477D3F /* SpeakingCell.swift */; };
+		8D8349E02A9A332100477D3F /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349DF2A9A332100477D3F /* ComicCell.swift */; };
 		8D8349E22A9A339200477D3F /* SpeakingShowcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */; };
 		8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */; };
 		8D8349EA2A9A42F700477D3F /* 小燕子.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D8349E92A9A42F700477D3F /* 小燕子.mp4 */; };
@@ -37,6 +37,10 @@
 		8D834A032A9C562600477D3F /* 故事真不错.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A022A9C562600477D3F /* 故事真不错.mp3 */; };
 		8D834A052A9C562B00477D3F /* B-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A042A9C562B00477D3F /* B-完成.mp3 */; };
 		8D834A082A9C77BF00477D3F /* 我是故事演说家.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */; };
+		8D834A0A2A9D759100477D3F /* InfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A092A9D759100477D3F /* InfoSheet.swift */; };
+		8D834A0D2A9F80B900477D3F /* ScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */; };
+		8D834A0F2A9F86AD00477D3F /* DrawingBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A0E2A9F86AD00477D3F /* DrawingBookCell.swift */; };
+		8D834A112A9F91E000477D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A102A9F91E000477D3F /* AppDelegate.swift */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
 		8D9296382A70DD7D00822EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9296372A70DD7D00822EC7 /* Assets.xcassets */; };
 		8D92963B2A70DD7D00822EC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D92963A2A70DD7D00822EC7 /* Preview Assets.xcassets */; };
@@ -81,7 +85,7 @@
 		8D6A0AE62A8A582B007554E4 /* A-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A-完成.mp3"; sourceTree = "<group>"; };
 		8D8349D52A99AF7000477D3F /* 门前大桥下.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "门前大桥下.mp4"; sourceTree = "<group>"; };
 		8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingFunctionBar.swift; sourceTree = "<group>"; };
-		8D8349DF2A9A332100477D3F /* SpeakingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingCell.swift; sourceTree = "<group>"; };
+		8D8349DF2A9A332100477D3F /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingShowcaseView.swift; sourceTree = "<group>"; };
 		8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTrainingBaseView.swift; sourceTree = "<group>"; };
 		8D8349E92A9A42F700477D3F /* 小燕子.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "小燕子.mp4"; sourceTree = "<group>"; };
@@ -99,6 +103,10 @@
 		8D834A022A9C562600477D3F /* 故事真不错.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "故事真不错.mp3"; sourceTree = "<group>"; };
 		8D834A042A9C562B00477D3F /* B-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "B-完成.mp3"; sourceTree = "<group>"; };
 		8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "我是故事演说家.mp3"; sourceTree = "<group>"; };
+		8D834A092A9D759100477D3F /* InfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSheet.swift; sourceTree = "<group>"; };
+		8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoard.swift; sourceTree = "<group>"; };
+		8D834A0E2A9F86AD00477D3F /* DrawingBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBookCell.swift; sourceTree = "<group>"; };
+		8D834A102A9F91E000477D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9296332A70DD7C00822EC7 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		8D9296372A70DD7D00822EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,17 +193,10 @@
 			isa = PBXGroup;
 			children = (
 				8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */,
-				8D8349E42A9A343600477D3F /* LanguageTrainingBaseView */,
+				8D834A092A9D759100477D3F /* InfoSheet.swift */,
+				8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */,
 			);
 			path = SpeakingShowcaseView;
-			sourceTree = "<group>";
-		};
-		8D8349E42A9A343600477D3F /* LanguageTrainingBaseView */ = {
-			isa = PBXGroup;
-			children = (
-				8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */,
-			);
-			path = LanguageTrainingBaseView;
 			sourceTree = "<group>";
 		};
 		8D8349E72A9A42E100477D3F /* 小燕子 */ = {
@@ -227,6 +228,15 @@
 			path = SpeakingGame;
 			sourceTree = "<group>";
 		};
+		8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */,
+				8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */,
+			);
+			path = LanguageTrainingBaseView;
+			sourceTree = "<group>";
+		};
 		8D9296272A70DD7C00822EC7 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 				8D9296372A70DD7D00822EC7 /* Assets.xcassets */,
 				8D9296992A74BAA700822EC7 /* Resources */,
 				8DF83ECC2A94EA150044CE0D /* draft.swift */,
+				8D834A102A9F91E000477D3F /* AppDelegate.swift */,
 			);
 			path = TalkDrawing;
 			sourceTree = "<group>";
@@ -326,7 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				8D372D562A978370006BEC70 /* StoryOratorView.swift */,
-				8D8349DF2A9A332100477D3F /* SpeakingCell.swift */,
+				8D834A0E2A9F86AD00477D3F /* DrawingBookCell.swift */,
+				8D8349DF2A9A332100477D3F /* ComicCell.swift */,
 				8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */,
 			);
 			path = StoryOratorView;
@@ -496,15 +508,19 @@
 				8DF83ECD2A94EA150044CE0D /* draft.swift in Sources */,
 				8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */,
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
+				8D834A0A2A9D759100477D3F /* InfoSheet.swift in Sources */,
+				8D834A112A9F91E000477D3F /* AppDelegate.swift in Sources */,
 				8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */,
-				8D8349E02A9A332100477D3F /* SpeakingCell.swift in Sources */,
+				8D8349E02A9A332100477D3F /* ComicCell.swift in Sources */,
 				8D8349FA2A9BB61B00477D3F /* SpeakingGameModel.swift in Sources */,
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
+				8D834A0F2A9F86AD00477D3F /* DrawingBookCell.swift in Sources */,
 				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
 				8D9296472A713BB600822EC7 /* ContentView.swift in Sources */,
 				8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */,
 				8D372D552A977ECB006BEC70 /* DrawingTools.swift in Sources */,
+				8D834A0D2A9F80B900477D3F /* ScoreBoard.swift in Sources */,
 				8D9296612A71779D00822EC7 /* UIView+.swift in Sources */,
 				8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */,
 				8D9296582A7150E300822EC7 /* HomeView.swift in Sources */,
