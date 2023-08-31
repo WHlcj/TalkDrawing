@@ -34,7 +34,6 @@ struct StoryOratorView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             vm.loaComics()
-            createImageView()
         }
     }
 }
@@ -75,16 +74,14 @@ extension StoryOratorView {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 240, maximum: 250), spacing: 10)]) {
                     if selectedModel == "宝宝作品" {
-                        ForEach(0..<savedImages.count, id: \.self) { index in
-//                            // 连环画
-//                            ComicCell(path: $path, vm: vm, index: index)
+                        ForEach(0..<vm.comics.count, id: \.self) { index in
                             ZStack {
-                                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: savedImages[index]))) {
+                                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: vm.comics[index]))) {
                                     ZStack {
                                         Rectangle()
                                             .fill(.white)
                                             .frame(width: 240, height: 160)
-                                        Image(uiImage: savedImages[index])
+                                        Image(uiImage: vm.comics[index])
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 240, height: 160)
@@ -93,7 +90,7 @@ extension StoryOratorView {
                                                     HStack {
                                                         Spacer()
                                                         Button {
-                                                            deleteImage(at: index)
+                                                            vm.deleteComics(at: index)
                                                         } label: {
                                                             Image(systemName: "trash")
                                                                 .foregroundColor(.red)
@@ -107,6 +104,37 @@ extension StoryOratorView {
                                     }
                                 }
                             }
+//                            // 连环画
+                            //ComicCell(path: $path, vm: vm, index: index)
+//                            ZStack {
+//                                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: savedImages[index]))) {
+//                                    ZStack {
+//                                        Rectangle()
+//                                            .fill(.white)
+//                                            .frame(width: 240, height: 160)
+//                                        Image(uiImage: savedImages[index])
+//                                            .resizable()
+//                                            .aspectRatio(contentMode: .fit)
+//                                            .frame(width: 240, height: 160)
+//                                            .overlay(
+//                                                VStack {
+//                                                    HStack {
+//                                                        Spacer()
+//                                                        Button {
+//                                                            deleteImage(at: index)
+//                                                        } label: {
+//                                                            Image(systemName: "trash")
+//                                                                .foregroundColor(.red)
+//                                                                .padding(8)
+//                                                        }
+//                                                        .padding()
+//                                                    }
+//                                                    Spacer()
+//                                                }
+//                                            )
+//                                    }
+//                                }
+//                            }
                         }
                     }
                     else if selectedModel == "我的绘本" {
@@ -125,55 +153,6 @@ extension StoryOratorView {
         }
     }
     
-}
-
-// MARK: - Functions
-
-extension StoryOratorView {
-    private func createImageView() {
-            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
-            
-            do {
-                let fileURLs = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil)
-                let imageFileURLs = fileURLs.filter { fileURL in
-                    let fileExtension = fileURL.pathExtension.lowercased()
-                    return ["png", "jpg", "jpeg"].contains(fileExtension)
-                }
-                
-                var images: [UIImage] = []
-                for fileURL in imageFileURLs {
-                    if let data = try? Data(contentsOf: fileURL), let image = UIImage(data: data) {
-                        images.append(image)
-                    }
-                }
-                print("Number of images in local folder: \(imageFileURLs.count)")
-                savedImages = images
-            } catch {
-                print("Error counting images in local folder: \(error)")
-            }
-        }
-    
-    private func deleteImage(at index: Int) {
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
-        
-        do {
-            let fileURLs = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil)
-            let imageFileURLs = fileURLs.filter { fileURL in
-                let fileExtension = fileURL.pathExtension.lowercased()
-                return ["png", "jpg", "jpeg"].contains(fileExtension)
-            }
-            
-            if index < imageFileURLs.count {
-                let fileURLToDelete = imageFileURLs[index]
-                try FileManager.default.removeItem(at: fileURLToDelete)
-                createImageView() // Refresh savedImages after deletion
-            }
-        } catch {
-            print("Error deleting image: \(error)")
-        }
-    }
 }
 
 struct StoryOratorView_Previews: PreviewProvider {
