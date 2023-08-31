@@ -7,7 +7,8 @@ struct ComicCell: View {
     @Binding var path: NavigationPath
     // 绑定的vm
     @ObservedObject var vm: SpeakingGameVM
-    let index: Int
+    var index: Int
+    
     
     var body: some View {
         ZStack {
@@ -41,11 +42,3 @@ struct ComicCell: View {
         }
     }
 }
-
-//struct SpeakingCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        @State var path = NavigationPath()
-//        @StateObject var vm = SpeakingGameVM()
-//        ComicCell(path: $path, vm: vm, index: 0)
-//    }
-//}

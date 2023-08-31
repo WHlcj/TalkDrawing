@@ -256,6 +256,7 @@
 			children = (
 				8D9296E32A8A042300822EC7 /* Info.plist */,
 				8D9296332A70DD7C00822EC7 /* AppEntry.swift */,
+				8D834A102A9F91E000477D3F /* AppDelegate.swift */,
 				8D9296942A74B92600822EC7 /* Model */,
 				8D9296D32A84F49500822EC7 /* ViewModel */,
 				8D9296592A71764500822EC7 /* Extensions */,
@@ -264,7 +265,6 @@
 				8D9296372A70DD7D00822EC7 /* Assets.xcassets */,
 				8D9296992A74BAA700822EC7 /* Resources */,
 				8DF83ECC2A94EA150044CE0D /* draft.swift */,
-				8D834A102A9F91E000477D3F /* AppDelegate.swift */,
 			);
 			path = TalkDrawing;
 			sourceTree = "<group>";

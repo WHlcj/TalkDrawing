@@ -33,6 +33,11 @@ class DrawingGameVM: ObservableObject {
             print(error)
         }
     }
+    
+    /// 停止播放音频
+    func stopVoice() {
+        voicePlayer.stop()
+    }
     /// 文字请求图片
     func fetchImage(text: String) {
         oldImg = img

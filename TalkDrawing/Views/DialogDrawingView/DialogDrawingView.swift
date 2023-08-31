@@ -108,15 +108,9 @@ extension DialogDrawingView {
                     .overlay(Text(voiceText))
                     .aspectRatio(1, contentMode: .fit)
             } placeholder: {
-                if isLoadingImage {
-                    Color.clear.opacity(0.3)
-                        .overlay(ProgressView().scaleEffect(1.2))
-                        .aspectRatio(1, contentMode: .fit)
-                } else {
-                    Color.gray.opacity(0.3)
-                        .overlay(Text(voiceText == "" ? "按住语言按钮说话" : voiceText))
-                        .aspectRatio(1, contentMode: .fit)
-                }
+                Color.gray.opacity(0.3)
+                    .overlay(Text(voiceText == "" ? "按住上方语言按钮说话,说完后点击我可生成图片" : voiceText))
+                    .aspectRatio(1, contentMode: .fit)
             }
             .onTapGesture {
                 if voiceText != "" {
@@ -154,25 +148,25 @@ extension DialogDrawingView {
         if !showSheets {
             // 保存图片到手机相册
             comics.snapshot()
-            // 保存连环画到软件文件内
-            let controller = UIHostingController(rootView: comics)
-            let view = controller.view
+//            // 保存连环画到软件文件内
+//            let controller = UIHostingController(rootView: comics)
+//            let view = controller.view
+//
+//            let targetSize = controller.view.intrinsicContentSize
+//            view?.bounds = CGRect(origin: .zero, size: targetSize)
+//            view?.backgroundColor = .clear
+//
+//            let renderer = UIGraphicsImageRenderer(size: targetSize)
+//
+//            let image = renderer.image { _ in
+//                view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+//            }
+//            vm.saveComics(images: [image])
             
-            let targetSize = controller.view.intrinsicContentSize
-            view?.bounds = CGRect(origin: .zero, size: targetSize)
-            view?.backgroundColor = .clear
-            
-            let renderer = UIGraphicsImageRenderer(size: targetSize)
-            
-            let image = renderer.image { _ in
-                view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
-            }
-            vm.saveComics(images: [image])
-            withAnimation(.easeInOut) {
-                self.showSheets = true
-            }
+            self.showSheets = true
+
             // 防止警告弹窗常驻
-            delay(by: 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation(.easeInOut) {
                     self.showSheets = false
                 }

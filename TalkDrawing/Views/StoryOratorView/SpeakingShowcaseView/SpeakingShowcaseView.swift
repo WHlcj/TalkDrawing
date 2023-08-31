@@ -25,7 +25,6 @@ struct SpeakingShowcaseView: View {
     @State var showResult = false
     // 故事资源
     @State var story: Story?
-    //= Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"))
     // 连环画资源
     @State var image: Image?
     
@@ -87,7 +86,7 @@ extension SpeakingShowcaseView {
                             .opacity(0.8)
                     )
             }
-            Text(isDecording ? "正在录音" : " 测试 ")
+            Text(isDecording ? "正在录音" : " ")
                 .font(.system(size: 20).bold())
                 .padding(.vertical)
             SwiftSpeech.RecordButton()
@@ -104,7 +103,7 @@ extension SpeakingShowcaseView {
     var functionButtons: some View {
         VStack(spacing: 50) {
             CustomButton(title: "故事情节回顾") { playStory() }
-            CustomButton(title: "亲子分享乐园") { startDecording() }
+            CustomButton(title: isDecording ? "停止录音" : "亲子分享乐园") { startDecording() }
             CustomButton(title: "语言能力分析") { getResult() }
         }
         .padding(.horizontal)
@@ -152,7 +151,6 @@ extension SpeakingShowcaseView {
             }
         }
     }
-    
     /// 分享乐园
     private func startDecording() {
         if !isDecording {

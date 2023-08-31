@@ -28,6 +28,9 @@ struct DrawingFunctionBar: View {
         }
         .frame(maxWidth: .infinity)
         .background(Rectangle().fill(K.AppColor.ThemeColor).opacity(0.4))
+        .onAppear {
+            vm.playVoice(vm.canvas[0])
+        }
     }
 }
 
@@ -41,6 +44,7 @@ extension DrawingFunctionBar {
             ForEach(vm.canvas, id: \.self) { item in
                 Button {
                     index = vm.canvas.firstIndex(of: item)!
+                    vm.stopVoice()
                     vm.playVoice(vm.canvas[index])
                 } label: {
                     Rectangle()
@@ -109,6 +113,7 @@ extension DrawingFunctionBar {
             index += 1
             vm.playVoice(vm.canvas[index])
         } else {
+            vm.stopVoice() // 暂停播放声音
             finishedGame = true
         }
     }

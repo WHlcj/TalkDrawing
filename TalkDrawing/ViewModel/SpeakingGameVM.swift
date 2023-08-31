@@ -23,14 +23,10 @@ class SpeakingGameVM: ObservableObject{
     func loaComics() {
         model.loadComics()
     }
-    
     /// 删除连环画
     func deleteComics(at index: Int) {
         model.deleteComics(at: index)
     }
-    
-    
-    
     // 计时器
     private var timer: Timer?
     private(set) var seconds = 0.0
