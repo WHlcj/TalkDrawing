@@ -19,6 +19,8 @@ class StoryGameVM: ObservableObject {
     var challenges: [StoryChallenge] {
         model.challenges
     }
+    // 选择好的挑战
+    var selectedChallenge: StoryChallenge?
     
     private var videoURL: URL?
     
@@ -26,6 +28,7 @@ class StoryGameVM: ObservableObject {
     // 选择挑战模块
     func chooseChallenge(challenge: StoryChallenge) {
         model.ChooseChallenge(challenge: challenge)
+        selectedChallenge = challenge
     }
     // 选择故事
     func chooseStory(story: Story) {

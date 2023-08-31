@@ -36,17 +36,16 @@ struct ComicCell: View {
                                 Spacer()
                             }
                         )
-                    
                 }
             }
         }
     }
 }
 
-struct SpeakingCell_Previews: PreviewProvider {
-    static var previews: some View {
-        @State var path = NavigationPath()
-        @StateObject var vm = SpeakingGameVM()
-        ComicCell(path: $path, vm: vm, index: 0)
-    }
-}
+//struct SpeakingCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var path = NavigationPath()
+//        @StateObject var vm = SpeakingGameVM()
+//        ComicCell(path: $path, vm: vm, index: 0)
+//    }
+//}

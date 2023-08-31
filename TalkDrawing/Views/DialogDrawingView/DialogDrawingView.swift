@@ -1,7 +1,4 @@
 
-// TO DO:
-// 1.完成finishGame的页面改造和DrawingGame相关的逻辑处理
-
 import SwiftUI
 import PencilKit
 import SwiftSpeech

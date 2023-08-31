@@ -20,7 +20,6 @@ struct VictoryView: View {
     // 按键触发动作
     var active: (() -> Void)?
     
-    
     var body: some View {
         ZStack{
             // background
@@ -76,12 +75,13 @@ extension VictoryView {
             VictoryItem(icon: K.AppIcon.leftArrow, title: "返回") {
                 dismiss()
             }
-            // 功能按钮
-            VictoryItem(icon: K.AppIcon.rightArrow, title: title) {
-                if let action = active {
+            if let action = active {
+                // 功能按钮
+                VictoryItem(icon: K.AppIcon.rightArrow, title: title) {
                     action()
                 }
             }
+            
         }
     }
     

@@ -25,11 +25,11 @@ struct StoryGameModel {
     // 当前游戏主要内容
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetAnimal: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"), // 黄  故事闯关涂鸦    A-数鸭子
-            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetAnimal: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"), // 黄  故事闯关涂鸦    A-数鸭子
+            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
-        ]),
+        ], figures: ["pig", "monkey", "frog", "sheep", "duck", "swallow"]),//"deer", "chicken", "panda", "lion", "monkey", "horse""/
         StoryChallenge(title: "童话寓言", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false),
         StoryChallenge(title: "国学诗词", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
         StoryChallenge(title: "传统文化", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
@@ -40,11 +40,11 @@ struct StoryGameModel {
         StoryChallenge(title: "山海经", age: [.SenvenPlus]),
         StoryChallenge(title: "风雅颂", age: [.SenvenPlus]),
         StoryChallenge(title: "四大名著", age: [.SenvenPlus], isLocked: false, stories: [
-            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetAnimal: "monkey", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySpeaker: "A-石猴出世"), // 橙
+            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySpeaker: "A-石猴出世"), // 橙
             Story(title: "美猴王学艺", parentTitle: "四大名著"),
             Story(title: "龙宫寻宝", parentTitle: "四大名著"),
             Story(title: "大闹天宫", parentTitle: "四大名著")
-        ])
+        ], figures: ["唐僧", "土地公公", "孙悟空", "沙和尚", "猪八戒", "佛祖"])
     ]
     // StoryChallengeView的模版选择
     mutating func ChooseChallenge(challenge: StoryChallenge) {
@@ -88,7 +88,7 @@ struct Story: Identifiable {
     // 故事语音关键词口令
     var keyWord = ""
     // 故事动物
-    var targetAnimal = ""
+    var targetFigure = ""
     // 搭配颜色
     var targetColor = Color(red: 0.93, green: 0.46, blue: 0.18) // 橙
     // 游戏开始提示音
@@ -111,4 +111,6 @@ struct StoryChallenge: Identifiable {
     var isSelected = false
     // 子Stories
     var stories = [Story]()
+    // 图形选择
+    var figures = [String]()
 }

@@ -12,13 +12,12 @@ struct DrawingBookCell: View {
     @ObservedObject var vm: SpeakingGameVM
     
     var body: some View {
-        Button {
-            // 只是做一个点击有闪烁效果的链接导航
-        } label: {
-            VStack {
-                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, story: story)) {
-                    Image(story.title)
-                }
+        ZStack {
+            NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, story: story)) {
+                Image(story.title)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 240, height: 160)
             }
         }
     }

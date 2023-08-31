@@ -40,7 +40,7 @@ struct StoryView: View {
                 functionButtons
                 videoSection
                 ColorChosenSection(selectedColor: $selectedColor)
-                animalChosenSection
+                figureChosenSection
             }
             .padding(30)
             // 完成游戏弹窗
@@ -138,10 +138,10 @@ extension StoryView {
         .padding(.bottom)
     }
     // 动物选择区
-    var animalChosenSection: some View {
+    var figureChosenSection: some View {
         VStack(spacing: 20) {
-            ForEach(K.AppIcon.animals, id: \.self) { animal in
-                AnimalsCell(animal: animal, selectedAnimal: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
+            ForEach(vm.selectedChallenge!.figures, id: \.self) { figure in
+                FiguresCell(figure: figure, selectedFigure: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
             }
         }
         .onChange(of: hasFinishedPlacingAnimal) { newValue in
@@ -170,7 +170,7 @@ extension StoryView {
     }
     /// 完成游戏检测
     func checkFinishGame() {
-        if selectedAnimals == story.targetAnimal && selectedColor == story.targetColor {
+        if selectedAnimals == story.targetFigure && selectedColor == story.targetColor {
             if recognizedKey {
                 vm.playVideo()
                 delay(by: 3) {

@@ -36,8 +36,6 @@ class K {
         // StoryGameIcon
         static let StoryChallengeIsLocked = "imageLock"
         static let StoryChallengeIsUnLock = "imageUnlock"
-        // 动物
-        static let animals = ["pig", "monkey", "frog", "sheep", "duck", "swallow"]//"deer", "chicken", "panda", "lion", "monkey", "horse"
         // 精选绘本
         static let SelectedPictureBooks = ["SelectedPictureBookOne" , "SelectedPictureBookTwo", "SelectedPictureBookThree"]
         // 返回按钮

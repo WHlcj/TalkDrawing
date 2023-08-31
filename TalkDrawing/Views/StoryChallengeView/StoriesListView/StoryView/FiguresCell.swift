@@ -1,11 +1,11 @@
 
 import SwiftUI
 
-struct AnimalsCell: View {
+struct FiguresCell: View {
     // 动物图片名称
-    let animal: String
+    let figure: String
     // 动物选择
-    @Binding var selectedAnimal: String
+    @Binding var selectedFigure: String
     // 上色
     @Binding var selectedColor: Color
     // 表示视图被拖动的距离
@@ -32,23 +32,23 @@ struct AnimalsCell: View {
             }
         
         Button {
-            selectedAnimal = animal
+            selectedFigure = figure
             hasFinishedPlacingAnimal = false
         } label: {
-            Image(animal)
+            Image(figure)
                 .renderingMode(.template)
-                .tint(selectedAnimal == animal ? selectedColor : .gray)
+                .tint(selectedFigure == figure ? selectedColor : .gray)
                 .offset(withAnimation {offset})
                 .gesture(dragGesture)
         }
     }
 }
 
-struct AnimalsCell_Previews: PreviewProvider {
+struct FiguresCell_Previews: PreviewProvider {
     static var previews: some View {
         @State var selectedColor = Color.green
         @State var selectedAnimal = "duck"
         @State var hasFinishedPlacingAnimal = false
-        AnimalsCell(animal: "duck",selectedAnimal: $selectedAnimal , selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
+        FiguresCell(figure: "duck",selectedFigure: $selectedAnimal , selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
     }
 }

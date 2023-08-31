@@ -35,11 +35,13 @@ struct SpeakingShowcaseView: View {
             
             VStack {
                 NavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 20)
+                Spacer()
                 HStack {
                     mediaSection
                     functionButtons
                 }
+                Spacer()
             }
             
             if showSheets {
@@ -63,37 +65,39 @@ struct SpeakingShowcaseView: View {
 extension SpeakingShowcaseView {
     /// 媒体区
     var mediaSection: some View {
-        ZStack {
-            // background
-            Rectangle()
-                .fill(.white)
-                .opacity(0.4)
-            
-            // content
-            VStack {
-                if story != nil {
-                    VideoPlayer(player: vm.videoPlayer)
-                        .aspectRatio(144.0/81.0, contentMode: .fit)
-                        .padding(.horizontal)
-                        .disabled(true) // 隐藏视频控件
-                } else {
-                    image!
-                        .resizable()
-                        .aspectRatio(144.0/81.0, contentMode: .fit)
-                        .padding(.horizontal)
-                }
-                Text(isDecording ? "正在录音" : "  ")
-                    .font(.system(size: 20).bold())
-                    .padding(.top)
-                SwiftSpeech.RecordButton()
-                    .swiftSpeechToggleRecordingOnTap(locale: Locale(identifier: "zh-CN"))
-                    .onRecognizeLatest(update: $voiceText)
-                    .scaleEffect(0.8)
-                    .disabled(!isDecording)
+        VStack {
+            if story != nil {
+                VideoPlayer(player: vm.videoPlayer)
+                    .aspectRatio(144.0/81.0, contentMode: .fit)
+                    .padding(.horizontal)
+                    .disabled(true) // 隐藏视频控件
+                    .background(
+                        Rectangle()
+                            .fill(.white)
+                            .opacity(0.4)
+                    )
+            } else {
+                image!
+                    .resizable()
+                    .aspectRatio(144.0/81.0, contentMode: .fit)
+                    .padding(.horizontal)
+                    .background(
+                        Rectangle()
+                            .fill(.white)
+                            .opacity(0.8)
+                    )
             }
-            .onAppear {
-                SwiftSpeech.requestSpeechRecognitionAuthorization()
-            }
+            Text(isDecording ? "正在录音" : " 测试 ")
+                .font(.system(size: 20).bold())
+                .padding(.vertical)
+            SwiftSpeech.RecordButton()
+                .swiftSpeechToggleRecordingOnTap(locale: Locale(identifier: "zh-CN"))
+                .onRecognizeLatest(update: $voiceText)
+                .scaleEffect(0.8)
+                .disabled(!isDecording)
+        }
+        .onAppear {
+            SwiftSpeech.requestSpeechRecognitionAuthorization()
         }
     }
     /// 功能按键区

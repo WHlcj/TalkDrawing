@@ -8,6 +8,7 @@ struct StoryOratorView: View {
     @Binding var path: NavigationPath
     // 游戏VM
     @StateObject var vm = SpeakingGameVM()
+    @StateObject var storyVM = StoryGameVM()
     // 模块选择
     @State var selectedModel = "我的绘本"
     
@@ -43,7 +44,7 @@ extension StoryOratorView {
             Spacer()
             ForEach (["我的绘本", "宝宝作品"], id: \.self) { item in
                 Rectangle()
-                    .frame(width: 350, height: 150)
+                    .frame(width: 250, height: 130)
                     .foregroundColor(K.AppColor.ThemeColor)
                     .opacity(selectedModel == item ? 0.7 : 0.3)
                     .overlay(
@@ -68,7 +69,7 @@ extension StoryOratorView {
                 .opacity(0.3)
             
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 320), spacing: 16)], spacing: 16) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 240, maximum: 250), spacing: 10)]) {
                     if selectedModel == "宝宝作品" {
                         ForEach(0..<vm.comics.count, id: \.self) { index in
                             // 连环画
@@ -76,8 +77,14 @@ extension StoryOratorView {
                         }
                     }
                     else if selectedModel == "我的绘本" {
-                        // 故事集
-                        
+                        ForEach(storyVM.challenges) { challenge in
+                            ForEach(challenge.stories) { story in
+                                    // 故事集
+                                if !story.storySpeaker.isEmpty {
+                                    DrawingBookCell(path: $path, story: story, vm: vm)
+                                }
+                            }
+                        }
                     }
                 }
                 .padding()

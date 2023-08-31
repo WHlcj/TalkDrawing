@@ -56,8 +56,7 @@
 		8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296A92A824F5A00822EC7 /* StoryCell.swift */; };
 		8D9296AD2A82552F00822EC7 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296AC2A82552F00822EC7 /* StoryView.swift */; };
 		8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CD2A84DE0300822EC7 /* Structs.swift */; };
-		8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */; };
-		8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D12A84EEAA00822EC7 /* ColorCell.swift */; };
+		8D9296D02A84DFCD00822EC7 /* FiguresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */; };
 		8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */; };
 		8D9296DA2A8632D300822EC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296D92A8632D300822EC7 /* Realm */; };
 		8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296DB2A8632D300822EC7 /* RealmSwift */; };
@@ -123,8 +122,7 @@
 		8D9296A92A824F5A00822EC7 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		8D9296AC2A82552F00822EC7 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		8D9296CD2A84DE0300822EC7 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
-		8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsCell.swift; sourceTree = "<group>"; };
-		8D9296D12A84EEAA00822EC7 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiguresCell.swift; sourceTree = "<group>"; };
 		8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryGameVM.swift; sourceTree = "<group>"; };
 		8D9296E32A8A042300822EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D9296EA2A8A470200822EC7 /* VictoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryView.swift; sourceTree = "<group>"; };
@@ -379,8 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				8D9296AC2A82552F00822EC7 /* StoryView.swift */,
-				8D9296CF2A84DFCD00822EC7 /* AnimalsCell.swift */,
-				8D9296D12A84EEAA00822EC7 /* ColorCell.swift */,
+				8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */,
 				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 			);
 			path = StoryView;
@@ -516,7 +513,7 @@
 				8D9296962A74B93F00822EC7 /* StoryGameModel.swift in Sources */,
 				8D9296AA2A824F5A00822EC7 /* StoryCell.swift in Sources */,
 				8D834A0F2A9F86AD00477D3F /* DrawingBookCell.swift in Sources */,
-				8D9296D02A84DFCD00822EC7 /* AnimalsCell.swift in Sources */,
+				8D9296D02A84DFCD00822EC7 /* FiguresCell.swift in Sources */,
 				8D9296472A713BB600822EC7 /* ContentView.swift in Sources */,
 				8D9296492A713BC500822EC7 /* AppRouter.swift in Sources */,
 				8D372D552A977ECB006BEC70 /* DrawingTools.swift in Sources */,
@@ -525,7 +522,6 @@
 				8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */,
 				8D9296582A7150E300822EC7 /* HomeView.swift in Sources */,
 				8DEB16DA2A8E19B200A4DF1C /* DialogDrawingView.swift in Sources */,
-				8D9296D22A84EEAA00822EC7 /* ColorCell.swift in Sources */,
 				8DEB171A2A8E581700A4DF1C /* DrawingBoard.swift in Sources */,
 				8D8349E22A9A339200477D3F /* SpeakingShowcaseView.swift in Sources */,
 				8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */,

@@ -100,7 +100,13 @@ struct ColorChosenSection: View {
         ScrollView {
             VStack(spacing: 0) {
                 ForEach(K.AppColor.colors, id: \.self) { color in
-                    ColorCell(selectedColor: $selectedColor, color: color)
+                    Button {
+                        selectedColor = color
+                    } label: {
+                        Rectangle()
+                            .fill(color)
+                            .frame(width: 100, height: 100)
+                    }
                 }
             }
         }
