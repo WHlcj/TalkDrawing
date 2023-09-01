@@ -188,7 +188,7 @@ struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var vm = StoryGameVM()
         @State var path = NavigationPath()
-        let story = Story(title: "门前大桥下", parentTitle: "童话寓言")
+        let story = Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子")
         StoryView(path: $path, vm: vm, story: story)
     }
 }

@@ -75,7 +75,7 @@ extension StoryOratorView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 240, maximum: 250), spacing: 10)]) {
                     if selectedModel == "宝宝作品" {
                         ForEach(0..<vm.comics.count, id: \.self) { index in
-                            ZStack {
+                            ZStack { // STA: ZStack
                                 NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: vm.comics[index]))) {
                                     ZStack {
                                         Rectangle()
@@ -103,38 +103,9 @@ extension StoryOratorView {
                                             )
                                     }
                                 }
-                            }
+                            } // END: ZStack
 //                            // 连环画
-                            //ComicCell(path: $path, vm: vm, index: index)
-//                            ZStack {
-//                                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: savedImages[index]))) {
-//                                    ZStack {
-//                                        Rectangle()
-//                                            .fill(.white)
-//                                            .frame(width: 240, height: 160)
-//                                        Image(uiImage: savedImages[index])
-//                                            .resizable()
-//                                            .aspectRatio(contentMode: .fit)
-//                                            .frame(width: 240, height: 160)
-//                                            .overlay(
-//                                                VStack {
-//                                                    HStack {
-//                                                        Spacer()
-//                                                        Button {
-//                                                            deleteImage(at: index)
-//                                                        } label: {
-//                                                            Image(systemName: "trash")
-//                                                                .foregroundColor(.red)
-//                                                                .padding(8)
-//                                                        }
-//                                                        .padding()
-//                                                    }
-//                                                    Spacer()
-//                                                }
-//                                            )
-//                                    }
-//                                }
-//                            }
+                           // ComicCell(path: $path, vm: vm, index: index)
                         }
                     }
                     else if selectedModel == "我的绘本" {

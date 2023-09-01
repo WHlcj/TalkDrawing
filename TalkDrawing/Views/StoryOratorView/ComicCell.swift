@@ -11,7 +11,7 @@ struct ComicCell: View {
     
     
     var body: some View {
-        ZStack {
+        ZStack { // STA: ZStack
             NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: vm.comics[index]))) {
                 ZStack {
                     Rectangle()
@@ -39,6 +39,6 @@ struct ComicCell: View {
                         )
                 }
             }
-        }
+        } // END: ZStack
     }
 }
