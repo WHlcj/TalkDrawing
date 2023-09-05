@@ -4,6 +4,7 @@ import SwiftUI
 struct HomeView: View {
     // APP导航路由
     @State var path = NavigationPath()
+
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -15,7 +16,6 @@ struct HomeView: View {
                     Image("title")
                         .resizable()
                         .frame(width: 500, height: 160)
-                        .padding(.leading, 100)
                     HStack {
                         Spacer()
                         // 左侧Item

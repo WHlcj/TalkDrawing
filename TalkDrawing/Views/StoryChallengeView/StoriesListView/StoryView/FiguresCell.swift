@@ -11,7 +11,7 @@ struct FiguresCell: View {
     // 表示视图被拖动的距离
     @State var offset: CGSize = .zero
     // 拖拽到指定位置判断
-    @Binding var hasFinishedPlacingAnimal: Bool
+    @Binding var gestureFlag: Bool
 
     var body: some View {
         //初始化拖动手势
@@ -23,17 +23,18 @@ struct FiguresCell: View {
             .onEnded { (value) in
                 if (abs(value.translation.width) >= 300) {
                     self.offset = .zero
-                    hasFinishedPlacingAnimal = true
+                    //hasFinishedPlacingAnimal = true
+                    gestureFlag.toggle()
                 }
                 else {
                     //如果被拖动的视图，距离目标视图的位置较远，则返回原来的位置
                     self.offset = .zero
                 }
+                
             }
         
         Button {
             selectedFigure = figure
-            hasFinishedPlacingAnimal = false
         } label: {
             Image(figure)
                 .renderingMode(.template)
@@ -49,6 +50,6 @@ struct FiguresCell_Previews: PreviewProvider {
         @State var selectedColor = Color.green
         @State var selectedAnimal = "duck"
         @State var hasFinishedPlacingAnimal = false
-        FiguresCell(figure: "duck",selectedFigure: $selectedAnimal , selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
+        FiguresCell(figure: "duck",selectedFigure: $selectedAnimal , selectedColor: $selectedColor, gestureFlag: $hasFinishedPlacingAnimal)
     }
 }

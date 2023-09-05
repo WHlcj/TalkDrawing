@@ -22,7 +22,7 @@ struct StoryView: View {
     // 语音助手控制
     @State private var isPlayingVideo = false
     // 是否上色并放置动物
-    @State private var hasFinishedPlacingAnimal = false
+    @State private var gestureFlag = false
     // 完成游戏弹出结算画面
     @State private var finishedGame = false
     // 是否正在播放声音
@@ -34,6 +34,7 @@ struct StoryView: View {
         ZStack {
             // background
             Background()
+            //
             
             // content
             HStack {
@@ -47,6 +48,7 @@ struct StoryView: View {
             if finishedGame {
                 VictoryView(path: $path, soundName: "A-完成")
             }
+
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
@@ -141,14 +143,12 @@ extension StoryView {
     var figureChosenSection: some View {
         VStack(spacing: 20) {
             ForEach(vm.selectedChallenge!.figures, id: \.self) { figure in
-                FiguresCell(figure: figure, selectedFigure: $selectedAnimals, selectedColor: $selectedColor, hasFinishedPlacingAnimal: $hasFinishedPlacingAnimal)
+                FiguresCell(figure: figure, selectedFigure: $selectedAnimals, selectedColor: $selectedColor, gestureFlag: $gestureFlag)
             }
         }
-        .onChange(of: hasFinishedPlacingAnimal) { newValue in
-            if newValue == true {
-                if recognizedKey {
-                    checkFinishGame()
-                }
+        .onChange(of: gestureFlag) { newValue in
+            if recognizedKey {
+                checkFinishGame()
             }
         }
     }
