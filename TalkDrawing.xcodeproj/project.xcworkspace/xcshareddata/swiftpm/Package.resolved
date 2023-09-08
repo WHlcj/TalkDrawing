@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "c04f5e401a1ec682e6b08b1ee157e19a0f834a5f",
+        "version" : "13.17.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "933abaa8076966e237e66497def74df84c6adbb4",
+        "version" : "10.42.0"
+      }
+    },
+    {
+      "identity" : "swiftspeech",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cay-Zhang/SwiftSpeech",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6e41f289f5ccc1751ef5674972d46b48b326c4c6"
+      }
+    }
+  ],
+  "version" : 2
+}

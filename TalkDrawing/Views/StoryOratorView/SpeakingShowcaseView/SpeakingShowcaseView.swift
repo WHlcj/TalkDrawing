@@ -3,8 +3,6 @@ import SwiftUI
 import AVKit
 import SwiftSpeech
 
-// 当前本文件
-
 struct SpeakingShowcaseView: View {
     
     // App路由导航

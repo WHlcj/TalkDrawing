@@ -1,21 +1,14 @@
 
 import SwiftUI
 
-// 当前本文件
-
 struct StoryOratorView: View {
     // App路由导航
     @Binding var path: NavigationPath
     // 游戏VM
     @StateObject var vm = SpeakingGameVM()
-    @StateObject var storyVM = StoryGameVM()
     // 模块选择
     @State var selectedModel = "我的绘本"
-    
-    // 晚上21:55修改
-    @State private var savedImages: [UIImage] = []
-    //
-    
+
     var body: some View {
         ZStack {
             Background()
@@ -71,59 +64,24 @@ extension StoryOratorView {
                 .fill(K.AppColor.ThemeButtonColor)
                 .opacity(0.3)
             
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 240, maximum: 250), spacing: 10)]) {
-                    if selectedModel == "宝宝作品" {
-                        ForEach(0..<vm.comics.count, id: \.self) { index in
-                            ZStack { // STA: ZStack
-                                NavigationLink(destination: SpeakingShowcaseView(path: $path, vm: vm, image: Image(uiImage: vm.comics[index]))) {
-                                    ZStack {
-                                        Rectangle()
-                                            .fill(.white)
-                                            .frame(width: 240, height: 160)
-                                        Image(uiImage: vm.comics[index])
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 240, height: 160)
-                                            .overlay(
-                                                VStack {
-                                                    HStack {
-                                                        Spacer()
-                                                        Button {
-                                                            vm.deleteComics(at: index)
-                                                        } label: {
-                                                            Image(systemName: "trash")
-                                                                .foregroundColor(.red)
-                                                                .padding(8)
-                                                        }
-                                                        .padding()
-                                                    }
-                                                    Spacer()
-                                                }
-                                            )
-                                    }
-                                }
-                            } // END: ZStack
-//                            // 连环画
-                           // ComicCell(path: $path, vm: vm, index: index)
+            GeometryReader { geomtry in
+                let width = geomtry.size.width / 3.4
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: width), spacing: 0)]) {
+                        if selectedModel == "宝宝作品" {
+                            // 连环画
+                            ComicCells(path: $path, vm: vm, width: width)
+                        }
+                        else if selectedModel == "我的绘本" {
+                            // 故事集
+                            TaleCells(path: $path, vm: vm, width: width)
                         }
                     }
-                    else if selectedModel == "我的绘本" {
-                        ForEach(storyVM.challenges) { challenge in
-                            ForEach(challenge.stories) { story in
-                                    // 故事集
-                                if !story.storySpeaker.isEmpty {
-                                    DrawingBookCell(path: $path, story: story, vm: vm)
-                                }
-                            }
-                        }
-                    }
+                    .padding()
                 }
-                .padding()
             }
         }
     }
-    
 }
 
 struct StoryOratorView_Previews: PreviewProvider {

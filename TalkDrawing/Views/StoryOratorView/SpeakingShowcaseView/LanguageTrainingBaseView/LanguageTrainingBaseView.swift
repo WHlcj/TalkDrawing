@@ -76,6 +76,6 @@ extension LanguageTrainingBaseView {
 struct LanguageTrainingBaseView_Previews: PreviewProvider {
     static var previews: some View {
         @State var showResult = false
-        LanguageTrainingBaseView(showResult: $showResult, scores: [9,8,6,8])
+        LanguageTrainingBaseView(showResult: $showResult, scores: [9,6,6,8])
     }
 }
