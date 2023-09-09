@@ -7,10 +7,12 @@ class DrawingGameModel {
     var canvas = ["何时", "何地", "何人", "何事"]
     /// 生成的图片链接
     var img = ""
+    /// 密钥access_token
+    private let access_token = "Your Access_token"
     /// 文字生成图片请求url
-    private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
+    private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token="
     /// 查询生成图片请求url
-    private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token=24.97d11252c9523083e4f3aed70f905f7b.2592000.1695210623.282335-37996049"
+    private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token="
     // 保存连环画到软件文件内
     func saveComics(images: [UIImage]) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -54,7 +56,7 @@ extension DrawingGameModel {
             // 图片生成数量，支持1-6张
             "num": 1
         ]
-        var request = URLRequest(url: URL(string: textToImageURL)!)
+        var request = URLRequest(url: URL(string: textToImageURL+access_token)!)
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
             print("Error: Failed to serialize JSON data.")
             return
@@ -84,7 +86,7 @@ extension DrawingGameModel {
             "taskId": id
         ]
         
-        var request = URLRequest(url: URL(string: getImageURL)!)
+        var request = URLRequest(url: URL(string: getImageURL+access_token)!)
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
             print("Error: Failed to serialize JSON data.")
             return
