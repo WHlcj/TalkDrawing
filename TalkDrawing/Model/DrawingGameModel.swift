@@ -4,16 +4,16 @@ import UIKit
 
 class DrawingGameModel {
     /// 画板
-    var canvas = ["何时", "何地", "何人", "何事"]
+    private(set) var canvas = ["何时", "何地", "何人", "何事"]
     /// 生成的图片链接
-    var img = ""
+    private(set) var img = ""
     /// 密钥access_token
-    private let access_token = "Your Access_token"
+    private let access_token = "Your Key"
     /// 文字生成图片请求url
     private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token="
     /// 查询生成图片请求url
     private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token="
-    // 保存连环画到软件文件内
+    // 长期存储连环画
     func saveComics(images: [UIImage]) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
@@ -45,7 +45,8 @@ class DrawingGameModel {
 // MARK: - BaiDuAlImage
 extension DrawingGameModel {
     /// 请求文字生成图片
-    func performAskImage(text: String) {
+    func performAskImage(text: String, semaphore: DispatchSemaphore) {
+        print("调用AskImage成功")
         let parameters: [String: Any] = [
             // 输入内容
             "text": text,
@@ -74,14 +75,16 @@ extension DrawingGameModel {
             
             if let safeData = data {
                 if let taskId = self.parseAskImageJSON(safeData) {
-                    self.performGetImage(id: taskId)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 7){
+                        self.performGetImage(id: taskId, semaphore: semaphore)
+                    }
                 }
             }
         }
         task.resume()
     }
     /// 请求回调图片url
-    private func performGetImage(id: String) {
+    private func performGetImage(id: String, semaphore: DispatchSemaphore) {
         let parameters: [String: Any] = [
             "taskId": id
         ]
@@ -106,9 +109,11 @@ extension DrawingGameModel {
                 if let imageURL = self.parseGetImageJSON(safeData) {
                     if imageURL != "" {
                         self.img = imageURL
+                        // 释放信号量
+                        semaphore.signal()
                     } else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.performGetImage(id: id)
+                            self.performGetImage(id: id, semaphore: semaphore)
                         }
                     }
                 }
