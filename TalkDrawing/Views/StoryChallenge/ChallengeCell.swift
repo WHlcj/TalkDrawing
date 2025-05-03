@@ -2,12 +2,8 @@
 import SwiftUI
 
 struct ChallengeCell: View {
-    
-    // APP导航路由
     @Binding var path: NavigationPath
-    // 选择的challenge
     let challenge: StoryChallenge
-    // 故事闯关模块的ViewModel
     @ObservedObject var vm: StoryGameVM
     
     var body: some View {

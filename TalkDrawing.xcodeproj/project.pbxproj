@@ -190,7 +190,6 @@
 			children = (
 				8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */,
 				8D834A092A9D759100477D3F /* InfoSheet.swift */,
-				8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */,
 			);
 			path = SpeakingShowcaseView;
 			sourceTree = "<group>";
@@ -279,9 +278,9 @@
 			children = (
 				8D9296462A713BB600822EC7 /* ContentView.swift */,
 				8D9296572A7150E300822EC7 /* HomeView.swift */,
-				8D9296662A72340500822EC7 /* StoryChallengeView */,
-				8D9296672A72343E00822EC7 /* DialogDrawingView */,
-				8D9296682A72346D00822EC7 /* StoryOratorView */,
+				8D9296662A72340500822EC7 /* StoryChallenge */,
+				8D9296672A72343E00822EC7 /* DialogDrawing */,
+				8D9296682A72346D00822EC7 /* StoryOrator */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,17 +305,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8D9296662A72340500822EC7 /* StoryChallengeView */ = {
+		8D9296662A72340500822EC7 /* StoryChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				8D9296A62A824B4000822EC7 /* StoriesListView */,
 				8D92964E2A713D3900822EC7 /* StoryChallengeView.swift */,
 				8D9296A22A7504C900822EC7 /* ChallengeCell.swift */,
+				8D9296A62A824B4000822EC7 /* StoriesListView */,
+				8D9296AB2A82551900822EC7 /* StoryView */,
 			);
-			path = StoryChallengeView;
+			path = StoryChallenge;
 			sourceTree = "<group>";
 		};
-		8D9296672A72343E00822EC7 /* DialogDrawingView */ = {
+		8D9296672A72343E00822EC7 /* DialogDrawing */ = {
 			isa = PBXGroup;
 			children = (
 				8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */,
@@ -325,18 +325,19 @@
 				8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */,
 				8D372D542A977ECB006BEC70 /* DrawingTools.swift */,
 			);
-			path = DialogDrawingView;
+			path = DialogDrawing;
 			sourceTree = "<group>";
 		};
-		8D9296682A72346D00822EC7 /* StoryOratorView */ = {
+		8D9296682A72346D00822EC7 /* StoryOrator */ = {
 			isa = PBXGroup;
 			children = (
 				8D372D562A978370006BEC70 /* StoryOratorView.swift */,
 				8DE04FB12AAABACF007611AF /* TaleCells.swift */,
 				8D8349DF2A9A332100477D3F /* ComicCells.swift */,
 				8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */,
+				8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */,
 			);
-			path = StoryOratorView;
+			path = StoryOrator;
 			sourceTree = "<group>";
 		};
 		8D9296942A74B92600822EC7 /* Model */ = {
@@ -365,7 +366,6 @@
 			children = (
 				8D9296A72A824B5600822EC7 /* StoriesListView.swift */,
 				8D9296A92A824F5A00822EC7 /* StoryCell.swift */,
-				8D9296AB2A82551900822EC7 /* StoryView */,
 			);
 			path = StoriesListView;
 			sourceTree = "<group>";

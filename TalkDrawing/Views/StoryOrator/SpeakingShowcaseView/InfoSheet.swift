@@ -7,29 +7,25 @@ struct InfoSheet: View {
     
     var body: some View {
         ZStack {
-            K.AppColor.ThemeButtonColor
-                .opacity(0.3)
-                .ignoresSafeArea()
+            ThemeNotificationBackground()
 
-            if showSheets {
+            if self.showSheets {
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(K.AppColor.ThemeButtonColor.opacity(0.8))
+                    .fill(K.AppColor.ThemeColor.opacity(0.8))
                     .frame(width: 350, height: 200)
                     .overlay(
                         VStack {
                             Image(K.AppIcon.closeSheet)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
-                            VStack {
-                                Text("请先完成亲子分享乐园")
-                                Text("再查看语言能力报告")
-                            }
+                            Text("请先完成亲子分享乐园\n再查看语言能力报告")
+                                .multilineTextAlignment(.center)
                                 .font(.system(size: 20))
                                 .foregroundColor(.white)
                             Button {
-                                showSheets = false
+                                self.showSheets = false
                             } label: {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(K.AppColor.ThemeColor)
+                                    .fill(K.AppColor.ThemeButtonColor)
                                     .frame(width: 80, height: 50)
                                     .overlay(
                                         Text("好的")

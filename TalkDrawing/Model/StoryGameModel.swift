@@ -2,11 +2,10 @@
 import Foundation
 import SwiftUI
 
-// 年龄分段
 enum Ages: String {
     case zeroToThree
     case foreToSix
-    case SenvenPlus
+    case SixPlus
 }
 
 struct StoryGameModel {
@@ -24,45 +23,57 @@ struct StoryGameModel {
     }
     // 当前游戏主要内容
     private(set) var challenges = [
-        StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false, stories: [
+        StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SixPlus], isLocked: false, stories: [
             Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"), // 黄  故事闯关涂鸦    A-数鸭子
             Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ], figures: ["pig", "monkey", "frog", "sheep", "duck", "swallow"]),//"deer", "chicken", "panda", "lion", "monkey", "horse""/
-        StoryChallenge(title: "童话寓言", age: [.zeroToThree, .foreToSix, .SenvenPlus], isLocked: false),
-        StoryChallenge(title: "国学诗词", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "传统文化", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "自然百科", age: [.zeroToThree, .foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "历史人文", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "地理名胜", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "国外绘本", age: [.foreToSix, .SenvenPlus]),
-        StoryChallenge(title: "山海经", age: [.SenvenPlus]),
-        StoryChallenge(title: "风雅颂", age: [.SenvenPlus]),
-        StoryChallenge(title: "四大名著", age: [.SenvenPlus], isLocked: false, stories: [
+        StoryChallenge(title: "童话寓言", age: [.zeroToThree, .foreToSix, .SixPlus], isLocked: false),
+        StoryChallenge(title: "国学诗词", age: [.zeroToThree, .foreToSix, .SixPlus]),
+        StoryChallenge(title: "传统文化", age: [.zeroToThree, .foreToSix, .SixPlus]),
+        StoryChallenge(title: "自然百科", age: [.zeroToThree, .foreToSix, .SixPlus]),
+        StoryChallenge(title: "历史人文", age: [.foreToSix, .SixPlus]),
+        StoryChallenge(title: "地理名胜", age: [.foreToSix, .SixPlus]),
+        StoryChallenge(title: "国外绘本", age: [.foreToSix, .SixPlus]),
+        StoryChallenge(title: "山海经", age: [.SixPlus]),
+        StoryChallenge(title: "风雅颂", age: [.SixPlus]),
+        StoryChallenge(title: "四大名著", age: [.SixPlus], isLocked: false, stories: [
             Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySpeaker: "A-石猴出世"), // 橙
             Story(title: "美猴王学艺", parentTitle: "四大名著"),
             Story(title: "龙宫寻宝", parentTitle: "四大名著"),
             Story(title: "大闹天宫", parentTitle: "四大名著")
         ], figures: ["唐僧", "土地公公", "孙悟空", "沙和尚", "猪八戒", "佛祖"])
     ]
-    // StoryChallengeView的模版选择
+
     mutating func ChooseChallenge(challenge: StoryChallenge) {
         for index in challenges.indices {
             challenges[index].isSelected = challenge.id == challenges[index].id
         }
     }
-    // StoriesListView的故事选择
+
+//    mutating func ChooseStory(story: Story) {
+//        if let challengeIndex = indexOfSelectedChallenge {
+//            for index in challenges[challengeIndex].stories.indices {
+//                challenges[challengeIndex].stories[index].isSelected = story.id == challenges[challengeIndex].stories[index].id
+//            }
+//        } else {
+//            print("[StoryGameModel] 选择故事失败")
+//        }
+//    }
     mutating func ChooseStory(story: Story) {
-        if let challengeIndex = indexOfSelectedChallenge {
-            for index in challenges[challengeIndex].stories.indices {
-                challenges[challengeIndex].stories[index].isSelected = story.id == challenges[challengeIndex].stories[index].id
+        for (challengeIndex, challenge) in challenges.enumerated() {
+            if let storyIndex = challenge.stories.firstIndex(where: { $0.title == story.title }) {
+                challenges.indices.forEach { challenges[$0].isSelected = false }
+                challenges[challengeIndex].isSelected = true
+                challenges[challengeIndex].stories[storyIndex].isSelected = true
+                print("[StoryGameModel] 成功匹配故事: \(story.title)")
+                return
             }
-        } else {
-            //print("选择故事失败")
         }
+        print("[StoryGameModel] 选择故事失败: 未找到标题为'\(story.title)'的故事")
     }
-    // 完成故事游戏
+    
     mutating func FinishStory() {
         if let challengeIndex = indexOfSelectedChallenge, let storyIndex = indexOfSelectedStory {
             challenges[challengeIndex].stories[storyIndex].isFinished = true
@@ -72,7 +83,6 @@ struct StoryGameModel {
 }
 
 // MARK: - 数据模型
-/// 故事闯关式涂鸦的Stroy
 struct Story: Identifiable {
     let id = UUID().uuidString
     // StoryCell标题

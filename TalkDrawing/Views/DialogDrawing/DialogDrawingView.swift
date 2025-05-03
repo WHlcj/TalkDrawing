@@ -26,18 +26,15 @@ struct DialogDrawingView: View {
     @State var isLoadingImage = false
     // 弹出sheets
     @State private var showSheets = false
-    // 完成游戏弹出VictoryView
     @State private var finishedGame = false
     
     var body: some View {
         ZStack {
-            // background
-            Background()
+            ThemeBackground()
             
             // content
             VStack(spacing: 0) {
-                // 顶部标题栏
-                NavigationBar(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
+                ThemeNavigationBar(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
                 // 粉色区域功能栏
                 DrawingFunctionBar(vm: vm, canvases: $canvases, index: $index, showSheets: $showSheets, finishedGame: $finishedGame)
                 HStack {
@@ -47,18 +44,15 @@ struct DialogDrawingView: View {
                     toolChooseSection
                 }
             }
-            // 保存图片成功提醒
             if showSheets {
                 TextAlert(text: "图片保存成功", boolValue: $showSheets)
             }
-            // 完成游戏动画
             if finishedGame {
-                VictoryView(path: $path, soundName: "B-完成", number: 4, title: "生成连环画") {
+                VictoryView(path: $path, soundName: "B-完成", starNumber: 4, title: "生成连环画") {
                     saveComics()
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

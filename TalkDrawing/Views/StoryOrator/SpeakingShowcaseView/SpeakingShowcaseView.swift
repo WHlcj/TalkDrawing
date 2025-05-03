@@ -28,10 +28,10 @@ struct SpeakingShowcaseView: View {
     
     var body: some View {
         ZStack {
-            Background()
+            ThemeBackground()
             
             VStack {
-                NavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
+                ThemeNavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
                     .padding(.bottom, 20)
                 Spacer()
                 HStack {
@@ -45,20 +45,18 @@ struct SpeakingShowcaseView: View {
                 InfoSheet(showSheets: $showSheets)
                     .zIndex(2)
             }
-            if showResult {
-                LanguageTrainingBaseView(showResult: $showResult, scores: vm.scores)
+            if self.showResult {
+                LanguageTrainingBaseView(scores: vm.scores)
             }
         }
-        .navigationBarBackButtonHidden(true)
         .onAppear {
-            // 如果故事不为空,则
             if story != nil {
                 vm.initVideoPlayer(story: story!)
             }
         }
     }
 }
-// MARK: - Components
+
 extension SpeakingShowcaseView {
     /// 媒体区
     var mediaSection: some View {
@@ -85,7 +83,7 @@ extension SpeakingShowcaseView {
                     )
             }
             Text(isDecording ? "正在录音" : " ")
-                .font(.system(size: 20).bold())
+                .font(.system(size: 20))
                 .padding(.vertical)
             SwiftSpeech.RecordButton()
                 .swiftSpeechToggleRecordingOnTap(locale: Locale(identifier: "zh-CN"))
@@ -120,7 +118,7 @@ extension SpeakingShowcaseView {
                     }
                 } label: {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(K.AppColor.ThemeButtonColor)
+                        .fill(K.AppColor.ThemeColor)
                         .frame(width: 200, height: 70)
                         .blur(radius: 2)
                         .overlay(

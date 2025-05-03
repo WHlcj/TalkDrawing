@@ -2,8 +2,7 @@
 import SwiftUI
 
 struct FiguresCell: View {
-    // 动物图片名称
-    let figure: String
+    let image: String
     // 动物选择
     @Binding var selectedFigure: String
     // 上色
@@ -14,7 +13,6 @@ struct FiguresCell: View {
     @Binding var gestureFlag: Bool
 
     var body: some View {
-        //初始化拖动手势
         let dragGesture = DragGesture()
             .onChanged { (value) in
                // print(value.startLocation, value.location, value.translation)
@@ -24,7 +22,7 @@ struct FiguresCell: View {
                 if (abs(value.translation.width) >= 300) {
                     self.offset = .zero
                     //hasFinishedPlacingAnimal = true
-                    gestureFlag.toggle()
+                    self.gestureFlag.toggle()
                 }
                 else {
                     //如果被拖动的视图，距离目标视图的位置较远，则返回原来的位置
@@ -34,11 +32,11 @@ struct FiguresCell: View {
             }
         
         Button {
-            selectedFigure = figure
+            selectedFigure = self.image
         } label: {
-            Image(figure)
+            Image(self.image)
                 .renderingMode(.template)
-                .tint(selectedFigure == figure ? selectedColor : .gray)
+                .tint(selectedFigure == self.image ? selectedColor : .gray)
                 .offset(withAnimation {offset})
                 .gesture(dragGesture)
         }
@@ -50,6 +48,6 @@ struct FiguresCell_Previews: PreviewProvider {
         @State var selectedColor = Color.green
         @State var selectedAnimal = "duck"
         @State var hasFinishedPlacingAnimal = false
-        FiguresCell(figure: "duck",selectedFigure: $selectedAnimal , selectedColor: $selectedColor, gestureFlag: $hasFinishedPlacingAnimal)
+        FiguresCell(image: "duck",selectedFigure: $selectedAnimal , selectedColor: $selectedColor, gestureFlag: $hasFinishedPlacingAnimal)
     }
 }

@@ -27,7 +27,7 @@ struct ScoreBoard: View {
                         path.closeSubpath()
                     }
                     .stroke(lineWidth: 5) // 设置连线宽度
-                    .foregroundColor(K.AppColor.ThemeButtonColor) // 设置连线颜色
+                    .foregroundColor(K.AppColor.ThemeColor) // 设置连线颜色
                     
                     CirclePoint(point: topPoint)
                     CirclePoint(point: rightPoint)
@@ -46,7 +46,7 @@ struct ScoreBoard: View {
         var body: some View {
             Circle()
                 .frame(width: 20, height: 20) // 设置小圆的大小
-                .foregroundColor(K.AppColor.ThemeButtonColor.opacity(0.7)) // 设置小圆的颜色
+                .foregroundColor(K.AppColor.ThemeColor.opacity(0.7)) // 设置小圆的颜色
                 .position(point)
         }
     }

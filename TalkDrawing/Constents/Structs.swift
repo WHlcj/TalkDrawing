@@ -2,16 +2,32 @@
 import SwiftUI
 import AVFoundation
 
-/// 大部分页面背景
-struct Background: View {
+struct ThemeBackground: View {
     var body: some View {
-        Image("background")
+        Image("theme_background")
             .resizable()
             .ignoresSafeArea()
     }
 }
-/// 自定义的粉色箭头返回按钮
-struct BackButton: View {
+
+struct ThemeCollectionBackGround: View {
+    var body: some View {
+        Rectangle()
+            .fill(K.AppColor.ThemeColor)
+            .opacity(0.3)
+            .blur(radius: 5)
+    }
+}
+
+struct ThemeNotificationBackground: View {
+    var body: some View {
+        K.AppColor.ThemeColor
+            .opacity(0.3)
+            .ignoresSafeArea()
+    }
+}
+
+struct ThemeBackButton: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         Button {
@@ -21,23 +37,23 @@ struct BackButton: View {
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 65, height: 45)
-                .foregroundColor(K.AppColor.ThemeButtonColor)
+                .foregroundColor(K.AppColor.ThemeColor)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-/// 自定义导航栏
+/// 主题通用导航栏
 ///
 /// - Parameter image: 标题图标
 /// - Parameter title: 标题内容和声音播放内容
-struct NavigationBar: View {
-    // Icon
+struct ThemeNavigationBar: View {
     var image: String
     var title: String
 
     var body: some View {
         HStack {
-            BackButton()
+            ThemeBackButton()
             Spacer()
             HomeItem(image: image, title: title)
             Spacer()
@@ -45,13 +61,11 @@ struct NavigationBar: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .padding(.horizontal)
     }
 }
 
 ///  功能介绍语音按钮
 struct SpeakingButton: View {
-    
     var soundName = ""
     @State var voicePlayer: AVAudioPlayer!
     @State var isPlaying = false
@@ -59,63 +73,43 @@ struct SpeakingButton: View {
     var body: some View {
         Button {
             if isPlaying {
-                voicePlayer.stop()
-                isPlaying = false
+                self.voicePlayer.stop()
+                self.isPlaying = false
             } else {
-                playSound(sound: soundName)
+                self.playSound(soundName)
             }
         } label: {
             Image(K.AppIcon.speaker)
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: 45, height: 45)//图片默认大小是64x64
-                .foregroundColor(K.AppColor.ThemeButtonColor)
+                .foregroundColor(K.AppColor.ThemeColor)
         }
         .onDisappear {
-            if isPlaying {
-                voicePlayer.stop()
+            if self.isPlaying {
+                self.voicePlayer.stop()
             }
         }
     }
     
-    func playSound(sound: String) {
+    func playSound(_ sound: String) {
         if sound == "" { return }
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
-            voicePlayer = try AVAudioPlayer(contentsOf: url)
-            voicePlayer.play()
-            isPlaying = true
+            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
+            self.voicePlayer.play()
+            self.isPlaying = true
         } catch let error {
             print(error)
         }
     }
 }
 
-/// 颜色选择区
-struct ColorChosenSection: View {
-    // 绑定的颜色选择
-    @Binding var selectedColor: Color
-    
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                ForEach(K.AppColor.colors, id: \.self) { color in
-                    Button {
-                        selectedColor = color
-                    } label: {
-                        Rectangle()
-                            .fill(color)
-                            .frame(width: 100, height: 100)
-                    }
-                }
-            }
-        }
-    }
-}
 /// 主要功能区下的标题栏
 struct HomeItem: View {
     var image: String
     var title: String
+    
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 35)
@@ -143,9 +137,7 @@ struct HomeItem: View {
 /// - parameter text: This is the title for the alert.
 /// - parameter value: This is the binding value which control your alert presend.
 struct TextAlert: View {
-    
     var text: String
-    
     @Binding var boolValue: Bool
     
     var body: some View {

@@ -2,28 +2,23 @@
 import SwiftUI
 
 struct HomeView: View {
-    // APP导航路由
     @State var path = NavigationPath()
-
     
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                Background()
+                ThemeBackground()
                 
                 VStack {
-                    // 妙语生画logo
-                    Image("title")
+                    Image("home_title")
                         .resizable()
                         .frame(width: 500, height: 160)
                     HStack {
                         Spacer()
-                        // 左侧Item
-                        leftItems
+                        mainMenu
                         Spacer()
                         Spacer()
-                        // 右侧推荐栏
-                        SelectedPictureBooks
+                        pictureBooks
                         Spacer()
                     }
                     .frame(maxHeight: 500)
@@ -31,29 +26,26 @@ struct HomeView: View {
                 .padding()
             }
             .navigationDestination(for: AppRouter.self) { page in
-                ContentView(view: page, path: $path)
+                ContentView(destination: page, path: $path)
             }
         }
     }
 }
 
-
-// Components
 extension HomeView {
-    
-    var leftItems: some View {
+    var mainMenu: some View {
         VStack {
             Spacer()
-            HomeButtonItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
             Spacer()
-            HomeButtonItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView, path: $path)
             Spacer()
-            HomeButtonItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家", destination: AppRouter.StoryOratorView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家", destination: AppRouter.StoryOratorView, path: $path)
             Spacer()
         }
     }
-    /// 精选绘本栏
-    var SelectedPictureBooks: some View {
+
+    var pictureBooks: some View {
         VStack {
             Text("精选绘本")
                 .font(.system(size: 35).bold())
@@ -67,11 +59,10 @@ extension HomeView {
         }
     }
     
-    struct HomeButtonItem: View {
+    struct HomeFunctionItem: View {
         var image: String
         var title: String
         var destination: AppRouter
-        // App导航路由
         @Binding var path: NavigationPath
         var body: some View {
             Button {

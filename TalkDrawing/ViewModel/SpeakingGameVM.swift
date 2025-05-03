@@ -49,14 +49,14 @@ class SpeakingGameVM: ObservableObject{
     ///  同时播放故事视频和语音
     func playStory(story: String) {
         videoPlayer.play()
-        playSound(sound: story)
+        playSound(story)
     }
     func stopStory() {
         videoPlayer.pause()
         voicePlayer.stop()
     }
     /// 播放提示音
-    private func playSound(sound: String) {
+    private func playSound(_ sound: String) {
         if sound == "" { return }
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {

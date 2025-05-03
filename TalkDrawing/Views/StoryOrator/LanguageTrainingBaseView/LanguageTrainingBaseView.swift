@@ -2,13 +2,11 @@
 import SwiftUI
 
 struct LanguageTrainingBaseView: View {
-    
-    @Binding var showResult: Bool
     var scores: [Int]
     
     var body: some View {
         ZStack {
-            Background()
+            ThemeBackground()
 
             VStack {
                 customNavigationBar
@@ -17,20 +15,16 @@ struct LanguageTrainingBaseView: View {
                 Spacer()
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 
-// MARK: - Components
 extension LanguageTrainingBaseView {
-    
-    /// 自定义NavigationBar
     var customNavigationBar: some View {
         HStack {
-            backbutton
+            ThemeBackButton()
             Spacer()
             RoundedRectangle(cornerRadius: 25)
-                .fill(K.AppColor.ThemeButtonColor)
+                .fill(K.AppColor.ThemeColor)
                 .opacity(0.7)
                 .frame(width: 300, height: 100)
                 .overlay(
@@ -45,19 +39,7 @@ extension LanguageTrainingBaseView {
         .padding()
         .padding(.horizontal)
     }
-    /// 自定义返回按钮
-    var backbutton: some View {
-        Button {
-            showResult = false
-        } label: {
-            Image(K.AppIcon.backButton)
-                .renderingMode(.template)
-                .resizable()
-                .frame(width: 65, height: 45)
-                .foregroundColor(K.AppColor.ThemeButtonColor)
-        }
-    }
-    /// 语言能力得分板
+
     var scoreBoard: some View {// 语言清晰度、语言逻辑性、言语情商能力、语汇能力
         HStack {
             Text("言语情商能力\(scores[2])分")
@@ -76,6 +58,6 @@ extension LanguageTrainingBaseView {
 struct LanguageTrainingBaseView_Previews: PreviewProvider {
     static var previews: some View {
         @State var showResult = false
-        LanguageTrainingBaseView(showResult: $showResult, scores: [9,6,6,8])
+        LanguageTrainingBaseView(scores: [9,6,6,8])
     }
 }

@@ -2,56 +2,47 @@
 import SwiftUI
 
 struct StoriesListView: View {
-    // APP导航路由
     @Binding var path: NavigationPath
-    // 故事闯关模块的ViewModel
     @ObservedObject var vm: StoryGameVM
     
     let challenge: StoryChallenge
     
     var stories: [Story] {
-        challenge.stories
+        self.challenge.stories
     }
     
     var body: some View {
         ZStack {
-            // background
-            Background()
-            // 内容空白背景
+            ThemeBackground()
+
             VStack {
                 navigationBar
                 storiesList
             }
         }
-        .navigationBarBackButtonHidden(true)
         .onAppear {
-            vm.chooseChallenge(challenge: challenge)
+            self.vm.chooseChallenge(challenge: self.challenge)
         }
     }
 }
 
-// Components
 extension StoriesListView {
-    
-    // 自定义导航栏
     var navigationBar: some View {
-        HStack(alignment: .bottom) {
-            BackButton()
-            Text(challenge.title)
+        HStack {
+            ThemeBackButton()
+            Text(self.challenge.title)
                 .font(.system(size: 35).bold())
-                .foregroundColor(K.AppColor.ThemeButtonColor)
+                .foregroundColor(K.AppColor.ThemeColor)
             Spacer()
         }
         .padding()
-        .padding(.horizontal)
     }
     
-    // 故事列表
     var storiesList: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 500, maximum: 700))]) {
-                ForEach(0..<stories.count, id: \.self) { number in
-                    StoryCell(path: $path, order: number, story: stories[number], vm: vm)
+                ForEach(0..<self.stories.count, id: \.self) { number in
+                    StoryCell(path: $path, order: number, story: self.stories[number], vm: self.vm)
                 }
             }
             .padding(.horizontal, 90)
@@ -61,8 +52,7 @@ extension StoriesListView {
 
 struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var path = NavigationPath()
-        @StateObject var vm = StoryGameVM()
-        StoriesListView(path: $path, vm: vm, challenge: vm.challenges[0])
+        let vm = StoryGameVM()
+        StoriesListView(path: .constant(NavigationPath()), vm: vm, challenge: vm.challenges[0])
     }
 }

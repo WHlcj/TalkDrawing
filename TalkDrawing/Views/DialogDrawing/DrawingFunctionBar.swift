@@ -3,8 +3,6 @@ import SwiftUI
 import PencilKit
 
 struct DrawingFunctionBar: View {
-    
-    // 传入参数
     // DrawingGame的ViewModel
     @ObservedObject var vm: DrawingGameVM
     // 画板
@@ -34,11 +32,7 @@ struct DrawingFunctionBar: View {
     }
 }
 
-
-// MARK: - Components
-
 extension DrawingFunctionBar {
-    /// 情景选择区
     var sectionChooseSection: some View {
         HStack(spacing: 0) {
             ForEach(vm.canvas, id: \.self) { item in
@@ -48,12 +42,12 @@ extension DrawingFunctionBar {
                     vm.playVoice(vm.canvas[index])
                 } label: {
                     Rectangle()
-                        .fill(K.AppColor.ThemeColor)
+                        .fill(K.AppColor.ThemeButtonColor)
                         .frame(width: 56, height: 56)
                         .opacity(index == vm.canvas.firstIndex(of: item) ? 1 : 0.6)
                         .overlay {
                             Text(item)
-                                .font(.system(size: index == vm.canvas.firstIndex(of: item) ? 23 : 20))
+                                .font(.system(size: index == vm.canvas.firstIndex(of: item) ? 25 : 20))
                                 .bold(index == vm.canvas.firstIndex(of: item))
                                 .foregroundColor(.white)
                         }
@@ -61,7 +55,7 @@ extension DrawingFunctionBar {
             }
         }
     }
-    /// 功能按键区
+
     var buttonsSection: some View {
         HStack {
             // 清空按钮
@@ -72,6 +66,7 @@ extension DrawingFunctionBar {
             CustomButton(image: K.AppIcon.rightArrow) { increaseIndex() }
         }
     }
+    
     struct CustomButton: View {
         let image: String
         var action: () -> Void
@@ -89,9 +84,8 @@ extension DrawingFunctionBar {
 }
 
 // MARK: - Functions
-
 extension DrawingFunctionBar {
-    /// 保存图片到本地
+
     private func saveImage() {
         if !showSheets {
             UIImageWriteToSavedPhotosAlbum(canvases[index].drawing.image(from: canvases[index].bounds, scale: 1), nil, nil, nil)
@@ -106,7 +100,7 @@ extension DrawingFunctionBar {
             }
         }
     }
-    /// index计数
+
     private func increaseIndex() {
         // 这样写才能实现index = 0时显性跳转到"何时"
         if index < vm.canvas.count - 1 {
@@ -118,7 +112,6 @@ extension DrawingFunctionBar {
         }
     }
 }
-
 
 struct DrawingFunctionBar_Previews: PreviewProvider {
     static var previews: some View {

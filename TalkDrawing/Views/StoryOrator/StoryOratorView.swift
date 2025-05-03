@@ -11,10 +11,10 @@ struct StoryOratorView: View {
 
     var body: some View {
         ZStack {
-            Background()
+            ThemeBackground()
             
             VStack {
-                NavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
+                ThemeNavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
                 HStack {
                     sideBar
                     Rectangle()
@@ -24,14 +24,11 @@ struct StoryOratorView: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
         .onAppear {
             vm.loaComics()
         }
     }
 }
-
-// MARK: - Components
 
 extension StoryOratorView {
     /// 侧栏
@@ -41,7 +38,7 @@ extension StoryOratorView {
             ForEach (["我的绘本", "宝宝作品"], id: \.self) { item in
                 Rectangle()
                     .frame(width: 250, height: 130)
-                    .foregroundColor(K.AppColor.ThemeColor)
+                    .foregroundColor(K.AppColor.ThemeButtonColor)
                     .opacity(selectedModel == item ? 0.7 : 0.3)
                     .overlay(
                         Text(item)
@@ -59,10 +56,7 @@ extension StoryOratorView {
     /// 故事集
     var storyCollection: some View {
         ZStack {
-            // 粉色背景图
-            Rectangle()
-                .fill(K.AppColor.ThemeButtonColor)
-                .opacity(0.3)
+            ThemeCollectionBackGround()
             
             GeometryReader { geomtry in
                 let width = geomtry.size.width / 3.4

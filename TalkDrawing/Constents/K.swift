@@ -5,9 +5,9 @@ import SwiftUI
 class K {
     class AppColor {
         // 主题按钮色用于返回按钮,设置按钮,一些场景底色背景(区别是透明度不同): 故事闯关模块选择背景、语音日记涂鸦副标题栏背景、故事演说家作品栏背景色
-        static let ThemeButtonColor = Color(red: 1.00, green: 0.41, blue: 0.71) //#FF69B4
+        static let ThemeColor = Color(red: 1.00, green: 0.41, blue: 0.71) //#FF69B4
         // 语音日记副标题栏汉字背景色、故事演说家板块选择背景色
-        static let ThemeColor = Color(red: 1.00, green: 0.08, blue: 0.58) //#FF1493
+        static let ThemeButtonColor = Color(red: 1.00, green: 0.08, blue: 0.58) //#FF1493
         // HomeView
         static let HomeViewItemBackgroundColor = Color(red: 1.00, green: 0.41, blue: 0.78, opacity: 0.7)
         static let HomeViewItemBackgroundCircleColor = Color(red: 0.91, green: 0.13, blue: 0.53)
