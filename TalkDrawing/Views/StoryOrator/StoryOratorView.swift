@@ -2,12 +2,9 @@
 import SwiftUI
 
 struct StoryOratorView: View {
-    // App路由导航
     @Binding var path: NavigationPath
-    // 游戏VM
     @StateObject var vm = SpeakingGameVM()
-    // 模块选择
-    @State var selectedModel = "我的绘本"
+    @State var selectedModel = "故事绘本"
 
     var body: some View {
         ZStack {
@@ -35,7 +32,7 @@ extension StoryOratorView {
     var sideBar: some View {
         VStack(alignment: .leading, spacing: 50) {
             Spacer()
-            ForEach (["我的绘本", "宝宝作品"], id: \.self) { item in
+            ForEach (["故事绘本", "我的作品"], id: \.self) { item in
                 Rectangle()
                     .frame(width: 250, height: 130)
                     .foregroundColor(K.AppColor.ThemeButtonColor)
@@ -62,11 +59,11 @@ extension StoryOratorView {
                 let width = geomtry.size.width / 3.4
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: width), spacing: 0)]) {
-                        if selectedModel == "宝宝作品" {
+                        if selectedModel == "我的作品" {
                             // 连环画
                             ComicCells(path: $path, vm: vm, width: width)
                         }
-                        else if selectedModel == "我的绘本" {
+                        else if selectedModel == "故事绘本" {
                             // 故事集
                             TaleCells(path: $path, vm: vm, width: width)
                         }

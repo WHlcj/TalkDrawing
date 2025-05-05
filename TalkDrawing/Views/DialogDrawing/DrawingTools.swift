@@ -3,33 +3,29 @@ import SwiftUI
 import PencilKit
 import SwiftSpeech
 
-/// 画图工具
 struct DrawingTools: View {
-    // 画笔和橡皮擦切换
-    @Binding var isDrawing: Bool
-    // 画图工具
-    @Binding var tool: PKInkingTool.InkType
-    // 语音文本
+
+    @Binding var isDrawing: Bool            // 画笔和橡皮擦切换
+    @Binding var drawingTool: PKInkingTool.InkType
     @Binding var voiceText: String
     
     var body: some View {
-        /// 涂鸦工具选择栏
         VStack(spacing: 20) {
             ForEach(K.AppIcon.tools, id: \.self) { toolName in
                 Button {
                     switch toolName {
                     case "drawingPencil":
                         isDrawing = true
-                        tool = .pencil
+                        drawingTool = .pencil
                     case "inkjetPen":
                         isDrawing = true
-                        tool = .pen
+                        drawingTool = .pen
                     case "paintBucket":
                         isDrawing = true
-                        tool = .marker
+                        drawingTool = .marker
                     default:
                         isDrawing = true
-                        tool = .pen
+                        drawingTool = .pen
                         return
                     }
                 } label: {
@@ -64,6 +60,6 @@ struct DrawingTools_Previews: PreviewProvider {
         // 语音文本
         @State var voiceText: String = ""
         
-        DrawingTools(isDrawing: $isDrawing, tool: $tool, voiceText: $voiceText)
+        DrawingTools(isDrawing: $isDrawing, drawingTool: $tool, voiceText: $voiceText)
     }
 }

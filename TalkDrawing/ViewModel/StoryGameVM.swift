@@ -7,72 +7,68 @@ class StoryGameVM: ObservableObject {
     @Published var videoPlayer = AVPlayer()
     @Published var voicePlayer = AVAudioPlayer()
     @Published var model = createStoryGame()
-    
+
     private static func createStoryGame() -> StoryGameModel {
         StoryGameModel()
     }
-    
     var challenges: [StoryChallenge] {
-        model.challenges
+        self.model.challenges
     }
     
     var selectedChallenge: StoryChallenge?
-    
+    var selectedStory: Story?
     private var videoURL: URL?
     
-    // MARK: - 游戏交互控制
     func chooseChallenge(challenge: StoryChallenge) {
-        model.ChooseChallenge(challenge: challenge)
-        selectedChallenge = challenge
+        self.model.ChooseChallenge(challenge: challenge)
+        self.selectedChallenge = challenge
     }
     
     func chooseStory(story: Story) {
-        model.ChooseStory(story: story)
+        self.model.ChooseStory(story: story)
+        self.selectedStory = story
         initVideoPlayer()
     }
-    // 进入故事模块
+
     func initVideoPlayer() {
-        // 获取资源文件的 URL
         if let challengeIndex = model.indexOfSelectedChallenge, let storyIndex = model.indexOfSelectedStory {
             if let videoURL = challenges[challengeIndex].stories[storyIndex].url {
                 self.videoPlayer = AVPlayer(url: videoURL)
-                print("[StoryGameVM] videoPlayer 资源初始化为 \(videoURL)")
             } else {
                 self.videoPlayer = AVPlayer()
-                print("[StoryGameVM] videoPlayer 资源初始化为 nil")
             }
         }
     }
     
     func playVideo() {
-        videoPlayer.play()
+        self.videoPlayer.play()
     }
     
     func stopVideo() {
-        videoPlayer.pause()
+        self.videoPlayer.pause()
     }
     
     func stopSound() {
-        voicePlayer.stop()
+        self.voicePlayer.stop()
     }
     
     func playSound(_ sound: String) {
         if sound == "" {
-            voicePlayer.play()
+            self.voicePlayer.play()
             return
         }
         
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
-            voicePlayer = try AVAudioPlayer(contentsOf: url)
-            voicePlayer.play()
+            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
+            self.voicePlayer.play()
         } catch let error {
-            print(error)
+            print("[StoryGameVM] playSound failed with error: \(error)")
         }
     }
     
     func finishedGame() {
-        model.FinishStory()
+        self.model.FinishStory()
     }
     
 }

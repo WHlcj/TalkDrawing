@@ -36,7 +36,6 @@ class SpeakingGameVM: ObservableObject{
     }
     
     // MARK: - 故事情节回顾
-    /// 若为我的绘本，进入SpeakingShowcaseView后初始化视频
     func initVideoPlayer(story: Story) {
         // 获取资源文件的 URL
         if let videoURL = story.url {
@@ -63,7 +62,7 @@ class SpeakingGameVM: ObservableObject{
             voicePlayer = try AVAudioPlayer(contentsOf: url)
             voicePlayer.play()
         } catch let error {
-            print(error)
+            print("[SpeakingGameVM] play sound failed with error: \(error)")
         }
     }
     

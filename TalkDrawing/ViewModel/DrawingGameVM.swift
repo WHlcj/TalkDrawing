@@ -33,7 +33,7 @@ class DrawingGameVM: ObservableObject {
             voicePlayer = try AVAudioPlayer(contentsOf: url)
             voicePlayer.play()
         } catch let error {
-            print(error)
+            print("[DrawingGameVM] play sound failed with error: \(error)")
         }
     }
     /// 停止播放音频

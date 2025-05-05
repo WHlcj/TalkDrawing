@@ -3,32 +3,54 @@ import SwiftUI
 import PencilKit
 
 struct DrawingBoard: UIViewRepresentable {
-    // 传入画板
-    @Binding var canvas: PKCanvasView
-    // 切换画图工具和橡皮擦
+    @Binding var drawing: PKDrawing
     @Binding var isDrawing: Bool
-    // 切换画图工具
-    @Binding var tool: PKInkingTool.InkType
-    // 颜色选择
+    @Binding var drawingTool: PKInkingTool.InkType
     @Binding var color: Color
-    // 画笔粗细
     @Binding var lineWidth: Double
     
-    let eraser = PKEraserTool(.bitmap) // 橡皮擦
+    class Coordinator: NSObject, PKCanvasViewDelegate {
+        var parent: DrawingBoard
+        var isUpdating = false
+        
+        init(_ parent: DrawingBoard) {
+            self.parent = parent
+        }
+        
+        func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            guard !isUpdating else { return }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.isUpdating = true
+                self?.parent.drawing = canvasView.drawing
+                self?.isUpdating = false
+            }
+        }
+    }
     
-    var ink: PKInkingTool {
-        PKInkingTool(tool, color: UIColor(color), width: lineWidth)
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
     
     func makeUIView(context: Context) -> PKCanvasView {
+        let canvas = PKCanvasView()
+        canvas.delegate = context.coordinator
+        canvas.drawing = drawing
         canvas.drawingPolicy = .anyInput
-        canvas.tool = isDrawing ? ink : eraser
-    
+        canvas.tool = currentTool
         return canvas
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        uiView.tool = isDrawing ? ink : eraser
-
+    func updateUIView(_ uiView: PKCanvasView, context: Context) {
+        if !context.coordinator.isUpdating && uiView.drawing != drawing {
+            uiView.drawing = drawing
+        }
+        uiView.tool = currentTool
+    }
+    
+    private var currentTool: PKTool {
+        isDrawing ?
+            PKInkingTool(drawingTool, color: UIColor(color), width: lineWidth) :
+            PKEraserTool(.bitmap)
     }
 }

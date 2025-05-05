@@ -100,7 +100,7 @@ struct SpeakingButton: View {
             self.voicePlayer.play()
             self.isPlaying = true
         } catch let error {
-            print(error)
+            print("[SpeakingButton] play sound failed with error: \(error)")
         }
     }
 }
@@ -133,35 +133,7 @@ struct HomeItem: View {
         }
     }
 }
-/// app的消息提醒弹窗
-/// - parameter text: This is the title for the alert.
-/// - parameter value: This is the binding value which control your alert presend.
-struct TextAlert: View {
-    var text: String
-    @Binding var boolValue: Bool
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Image("appicon")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .cornerRadius(13)
-                Text(text)
-                    .foregroundColor(.black)
-            }
-            .padding(8)
-            .background(
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(.ultraThinMaterial)
-            )
-        }
-        .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity.animation(.spring())))
-        .padding(.bottom, 20)
-    }
-}
+
 /// 强制录音界面
 struct RecordingView: View {
     @State var audioRecorder: AVAudioRecorder!

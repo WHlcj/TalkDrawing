@@ -9,22 +9,21 @@ enum Ages: String {
 }
 
 struct StoryGameModel {
-    // 当前选择的挑战的索引
     var indexOfSelectedChallenge: Int? {
         get {
             challenges.firstIndex(where: { $0.isSelected == true })
         }
     }
-    // 当前选择的故事的索引
+
     var indexOfSelectedStory: Int? {
         get {
             challenges[indexOfSelectedChallenge ?? 0].stories.firstIndex(where: { $0.isSelected == true })
         }
     }
-    // 当前游戏主要内容
+
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SixPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"), // 黄  故事闯关涂鸦    A-数鸭子
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"),
             Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
@@ -52,22 +51,12 @@ struct StoryGameModel {
         }
     }
 
-//    mutating func ChooseStory(story: Story) {
-//        if let challengeIndex = indexOfSelectedChallenge {
-//            for index in challenges[challengeIndex].stories.indices {
-//                challenges[challengeIndex].stories[index].isSelected = story.id == challenges[challengeIndex].stories[index].id
-//            }
-//        } else {
-//            print("[StoryGameModel] 选择故事失败")
-//        }
-//    }
     mutating func ChooseStory(story: Story) {
         for (challengeIndex, challenge) in challenges.enumerated() {
             if let storyIndex = challenge.stories.firstIndex(where: { $0.title == story.title }) {
                 challenges.indices.forEach { challenges[$0].isSelected = false }
                 challenges[challengeIndex].isSelected = true
                 challenges[challengeIndex].stories[storyIndex].isSelected = true
-                print("[StoryGameModel] 成功匹配故事: \(story.title)")
                 return
             }
         }
@@ -102,11 +91,11 @@ struct Story: Identifiable {
     // 搭配颜色
     var targetColor = Color(red: 0.93, green: 0.46, blue: 0.18) // 橙
     // 游戏开始提示音
-    var welcomeSound = "" //
+    var welcomeSound = ""
     // 游戏动作提示音
     var actionTintSound = ""
     // 故事播放
-    var storySpeaker = "" //
+    var storySpeaker = ""
 }
 
 struct StoryChallenge: Identifiable {

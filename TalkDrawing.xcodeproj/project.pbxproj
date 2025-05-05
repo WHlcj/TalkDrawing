@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710CA8F22DC7CC15007DC3E0 /* TDToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710CA8F12DC7CC15007DC3E0 /* TDToast.swift */; };
 		8D372D4A2A97348D006BEC70 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D372D492A97348D006BEC70 /* View+.swift */; };
 		8D372D502A973BF5006BEC70 /* 何地.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4C2A973BF5006BEC70 /* 何地.mp3 */; };
 		8D372D512A973BF5006BEC70 /* 何时.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D372D4D2A973BF5006BEC70 /* 何时.mp3 */; };
@@ -57,8 +58,6 @@
 		8D9296CE2A84DE0300822EC7 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CD2A84DE0300822EC7 /* Structs.swift */; };
 		8D9296D02A84DFCD00822EC7 /* FiguresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */; };
 		8D9296D72A8613AE00822EC7 /* StoryGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296D62A8613AE00822EC7 /* StoryGameVM.swift */; };
-		8D9296DA2A8632D300822EC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296D92A8632D300822EC7 /* Realm */; };
-		8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296DB2A8632D300822EC7 /* RealmSwift */; };
 		8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 8D9296E12A89FF9700822EC7 /* SwiftSpeech */; };
 		8D9296EB2A8A470200822EC7 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296EA2A8A470200822EC7 /* VictoryView.swift */; };
 		8DE04FB22AAABACF007611AF /* TaleCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE04FB12AAABACF007611AF /* TaleCells.swift */; };
@@ -71,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		710CA8F12DC7CC15007DC3E0 /* TDToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDToast.swift; sourceTree = "<group>"; };
 		8D372D492A97348D006BEC70 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		8D372D4C2A973BF5006BEC70 /* 何地.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何地.mp3"; sourceTree = "<group>"; };
 		8D372D4D2A973BF5006BEC70 /* 何时.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "何时.mp3"; sourceTree = "<group>"; };
@@ -138,9 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9296DC2A8632D300822EC7 /* RealmSwift in Frameworks */,
 				8D9296E22A89FF9700822EC7 /* SwiftSpeech in Frameworks */,
-				8D9296DA2A8632D300822EC7 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +276,8 @@
 			children = (
 				8D9296462A713BB600822EC7 /* ContentView.swift */,
 				8D9296572A7150E300822EC7 /* HomeView.swift */,
+				710CA8F12DC7CC15007DC3E0 /* TDToast.swift */,
+				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 				8D9296662A72340500822EC7 /* StoryChallenge */,
 				8D9296672A72343E00822EC7 /* DialogDrawing */,
 				8D9296682A72346D00822EC7 /* StoryOrator */,
@@ -375,7 +375,6 @@
 			children = (
 				8D9296AC2A82552F00822EC7 /* StoryView.swift */,
 				8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */,
-				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 			);
 			path = StoryView;
 			sourceTree = "<group>";
@@ -407,8 +406,6 @@
 			);
 			name = TalkDrawing;
 			packageProductDependencies = (
-				8D9296D92A8632D300822EC7 /* Realm */,
-				8D9296DB2A8632D300822EC7 /* RealmSwift */,
 				8D9296E12A89FF9700822EC7 /* SwiftSpeech */,
 			);
 			productName = TalkDrawing;
@@ -440,7 +437,6 @@
 			);
 			mainGroup = 8D9296272A70DD7C00822EC7;
 			packageReferences = (
-				8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */,
 			);
 			productRefGroup = 8D9296312A70DD7C00822EC7 /* Products */;
@@ -503,6 +499,7 @@
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
 				8D834A0A2A9D759100477D3F /* InfoSheet.swift in Sources */,
 				8D834A112A9F91E000477D3F /* AppDelegate.swift in Sources */,
+				710CA8F22DC7CC15007DC3E0 /* TDToast.swift in Sources */,
 				8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */,
 				8D8349E02A9A332100477D3F /* ComicCells.swift in Sources */,
 				8D8349FA2A9BB61B00477D3F /* SpeakingGameModel.swift in Sources */,
@@ -745,14 +742,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.42.0;
-			};
-		};
 		8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Cay-Zhang/SwiftSpeech";
@@ -764,16 +753,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8D9296D92A8632D300822EC7 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		8D9296DB2A8632D300822EC7 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8D9296D82A8632D300822EC7 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		8D9296E12A89FF9700822EC7 /* SwiftSpeech */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8D9296E02A89FF9700822EC7 /* XCRemoteSwiftPackageReference "SwiftSpeech" */;

@@ -9,7 +9,6 @@ import SwiftSpeech
 struct StoryView: View {
     @Binding var path: NavigationPath
     @ObservedObject var vm: StoryGameVM
-    let story: Story
     
     @State private var selectedColor = Color.green
     @State private var selectedAnimals = ""
@@ -36,13 +35,10 @@ struct StoryView: View {
             }
         }
         .onAppear {
-            // 加载故事资源
-            self.vm.chooseStory(story: self.story)
-            // 播放故事
-            if self.story.welcomeSound != "" {
-                self.vm.playSound(self.story.welcomeSound)
+            if self.vm.selectedStory!.welcomeSound != "" {
+                self.vm.playSound(self.vm.selectedStory!.welcomeSound)
             } else {
-                self.vm.playSound(self.story.actionTintSound)
+                self.vm.playSound(self.vm.selectedStory!.actionTintSound)
                 self.recognizedKey = true
             }
         }
@@ -57,7 +53,7 @@ extension StoryView {
         HStack {
             ThemeBackButton()
             Spacer()
-            Text("《\(self.story.title)》")
+            Text("《\(self.vm.selectedStory!.title)》")
                 .font(.system(size: 42).bold())
                 .foregroundColor(K.AppColor.ThemeColor)
             speakerButton
@@ -72,7 +68,7 @@ extension StoryView {
                 self.vm.stopSound()
                 self.isPlayingVoice = false
             } else {
-                self.vm.playSound(story.storySpeaker)
+                self.vm.playSound(self.vm.selectedStory!.storySpeaker)
                 self.isPlayingVoice = true
             }
         } label: {
@@ -106,10 +102,10 @@ extension StoryView {
                 .onRecognizeLatest(update: $voiceText)
                 .onChange(of: voiceText) { newValue in
                     // 当检测到语音识别到故事关键词时，播放第一段动画
-                    if newValue.contains(story.keyWord) && self.recognizedKey != true {
+                    if newValue.contains(self.vm.selectedStory!.keyWord) && self.recognizedKey != true {
                         self.recognizedKey = true
                         self.playFirstAV()
-                        self.vm.playSound(story.actionTintSound)
+                        self.vm.playSound(self.vm.selectedStory!.actionTintSound)
                     }
                 }
                 .scaleEffect(0.8)
@@ -148,7 +144,7 @@ extension StoryView {
     }
 
     var figureChosenSection: some View {
-        ScrollView {
+        VStack {
             ForEach(vm.selectedChallenge!.figures, id: \.self) { figure in
                 FiguresCell(
                     image: figure,
@@ -187,7 +183,7 @@ extension StoryView {
     }
 
     func checkFinishGame() {
-        if selectedAnimals == story.targetFigure && selectedColor == story.targetColor {
+        if self.selectedAnimals == self.vm.selectedStory!.targetFigure && self.selectedColor == self.vm.selectedStory!.targetColor {
             if self.recognizedKey {
                 self.vm.playVideo()
                 delay(by: 3) {
@@ -208,6 +204,6 @@ struct StoryView_Previews: PreviewProvider {
         vm.chooseStory(story: story)
         vm.chooseChallenge(challenge: vm.model.challenges[0])
         
-        return StoryView(path: .constant(NavigationPath()), vm: vm, story: story)
+        return StoryView(path: .constant(NavigationPath()), vm: vm)
     }
 }

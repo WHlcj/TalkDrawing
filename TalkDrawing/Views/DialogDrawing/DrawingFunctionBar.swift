@@ -3,31 +3,29 @@ import SwiftUI
 import PencilKit
 
 struct DrawingFunctionBar: View {
-    // DrawingGame的ViewModel
+    @Binding var path: NavigationPath
     @ObservedObject var vm: DrawingGameVM
-    // 画板
-    @Binding var canvases: [PKCanvasView]
-    // 画板index
-    @Binding var index: Int
-    // 弹出sheets
-    @Binding var showSheets: Bool
-    // 完成游戏弹出VictoryView
-    @Binding var finishedGame: Bool
+    @Binding var drawings: [PKDrawing]
+    @Binding var canvaseIndex: Int
     
     var body: some View {
         HStack {
-            Spacer()
             sectionChooseSection
             Spacer()
-            Spacer()
-            Spacer()
             buttonsSection
-            Spacer()
         }
         .frame(maxWidth: .infinity)
+        .padding(.horizontal)
         .background(Rectangle().fill(K.AppColor.ThemeColor).opacity(0.4))
         .onAppear {
-            vm.playVoice(vm.canvas[0])
+            self.vm.playVoice(vm.canvas[0])
+        }
+        .navigationDestination(for: String.self) { destination in
+            if destination == "VictoryView" {
+                VictoryView(path: $path, soundName: "B-完成", starNumber: 4, title: "生成连环画") {
+                    self.saveComics()
+                }
+            }
         }
     }
 }
@@ -35,20 +33,20 @@ struct DrawingFunctionBar: View {
 extension DrawingFunctionBar {
     var sectionChooseSection: some View {
         HStack(spacing: 0) {
-            ForEach(vm.canvas, id: \.self) { item in
+            ForEach(self.vm.canvas, id: \.self) { item in
                 Button {
-                    index = vm.canvas.firstIndex(of: item)!
-                    vm.stopVoice()
-                    vm.playVoice(vm.canvas[index])
+                    self.canvaseIndex = self.vm.canvas.firstIndex(of: item)!
+                    self.vm.stopVoice()
+                    self.vm.playVoice(self.vm.canvas[self.canvaseIndex])
                 } label: {
                     Rectangle()
                         .fill(K.AppColor.ThemeButtonColor)
                         .frame(width: 56, height: 56)
-                        .opacity(index == vm.canvas.firstIndex(of: item) ? 1 : 0.6)
+                        .opacity(self.canvaseIndex == self.vm.canvas.firstIndex(of: item) ? 1 : 0.6)
                         .overlay {
                             Text(item)
-                                .font(.system(size: index == vm.canvas.firstIndex(of: item) ? 25 : 20))
-                                .bold(index == vm.canvas.firstIndex(of: item))
+                                .font(.system(size: self.canvaseIndex == self.vm.canvas.firstIndex(of: item) ? 25 : 20))
+                                .bold(self.canvaseIndex == self.vm.canvas.firstIndex(of: item))
                                 .foregroundColor(.white)
                         }
                 }
@@ -58,16 +56,15 @@ extension DrawingFunctionBar {
 
     var buttonsSection: some View {
         HStack {
-            // 清空按钮
-            CustomButton(image: K.AppIcon.trashbin) { canvases[index].drawing = PKDrawing() }
-            // 图片保存本地按钮
-            CustomButton(image: K.AppIcon.download) { saveImage() }
-            // 跳转下一区域按钮
-            CustomButton(image: K.AppIcon.rightArrow) { increaseIndex() }
+            DrawingFunctionBarButton(image: K.AppIcon.trashbin) {
+                self.drawings[self.canvaseIndex] = PKDrawing()
+            }
+            DrawingFunctionBarButton(image: K.AppIcon.download) { saveImage() }
+            DrawingFunctionBarButton(image: K.AppIcon.rightArrow) { increaseIndex() }
         }
     }
     
-    struct CustomButton: View {
+    struct DrawingFunctionBarButton: View {
         let image: String
         var action: () -> Void
         
@@ -83,48 +80,62 @@ extension DrawingFunctionBar {
     }
 }
 
-// MARK: - Functions
 extension DrawingFunctionBar {
-
     private func saveImage() {
-        if !showSheets {
-            UIImageWriteToSavedPhotosAlbum(canvases[index].drawing.image(from: canvases[index].bounds, scale: 1), nil, nil, nil)
-            withAnimation(.easeInOut) {
-                self.showSheets = true
-            }
-            // 防止警告弹窗常驻
-            delay(by: 2) {
-                withAnimation(.easeInOut) {
-                    self.showSheets = false
-                }
-            }
-        }
+        let rect = CGRect(x: 0, y: 0, width: 960, height: 600)
+        UIImageWriteToSavedPhotosAlbum(self.drawings[self.canvaseIndex].image(from: rect, scale: 1), nil, nil, nil)
+        TDToast.show("图片保存成功！")
     }
 
     private func increaseIndex() {
-        // 这样写才能实现index = 0时显性跳转到"何时"
-        if index < vm.canvas.count - 1 {
-            index += 1
-            vm.playVoice(vm.canvas[index])
+        if self.canvaseIndex < self.vm.canvas.count - 1 {
+            self.canvaseIndex += 1
+            self.vm.playVoice(self.vm.canvas[self.canvaseIndex])
         } else {
-            vm.stopVoice() // 暂停播放声音
-            finishedGame = true
+            self.vm.stopVoice()
+            self.path.append("VictoryView")
         }
+    }
+    
+    private func saveComics() {
+        let rect = CGRect(x: 0, y: 0, width: 960, height: 600)
+        var comics: some View {
+            VStack {
+                HStack {
+                    Image(uiImage: self.drawings[0].image(from: rect, scale: 1))
+                    Image(uiImage: self.drawings[1].image(from: rect, scale: 1))
+                }
+                HStack {
+                    Image(uiImage: self.drawings[2].image(from: rect, scale: 1))
+                    Image(uiImage: self.drawings[3].image(from: rect, scale: 1))
+                }
+            }
+        }
+        
+        comics.snapshot()
+        let controller = UIHostingController(rootView: comics)
+        let view = controller.view
+
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+
+        let image = renderer.image { _ in
+            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+        }
+        self.vm.saveComics(images: [image])
+        TDToast.show("连环画保存成功！")
     }
 }
 
 struct DrawingFunctionBar_Previews: PreviewProvider {
     static var previews: some View {
-        // DrawingGame的ViewModel
         @StateObject var vm = DrawingGameVM()
-        // 画板
-        @State var canvases = [PKCanvasView(), PKCanvasView(), PKCanvasView(), PKCanvasView()]
-        // 画板index
+        @State var drawings = [PKDrawing(), PKDrawing(), PKDrawing(), PKDrawing()]
         @State var index = 0
-        // 弹出sheets
         @State var showSheets = false
-        // 完成游戏弹出VictoryView
-        @State var finishedGame = false
-        DrawingFunctionBar(vm: vm, canvases: $canvases, index: $index, showSheets: $showSheets, finishedGame: $finishedGame)
+        DrawingFunctionBar(path: .constant(NavigationPath()), vm: vm, drawings: $drawings, canvaseIndex: $index)
     }
 }

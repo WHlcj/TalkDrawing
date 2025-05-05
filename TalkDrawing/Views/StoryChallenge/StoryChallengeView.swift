@@ -40,9 +40,9 @@ extension StoryChallengeView {
 
             ScrollView(.horizontal) {
                 LazyHGrid(rows: [GridItem(.adaptive(minimum: 200, maximum: 250))], spacing: 30) {
-                    ForEach(vm.challenges) { challenge in
+                    ForEach(self.vm.challenges) { challenge in
                         if challenge.age.contains(selectedAges) {
-                            ChallengeCell(path: $path, challenge: challenge, vm: vm)
+                            ChallengeCell(path: $path, challenge: challenge, vm: self.vm)
                         }
                     }
                 }

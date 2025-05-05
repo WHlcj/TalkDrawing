@@ -30,9 +30,9 @@ struct StoryCell: View {
                     .foregroundColor(self.story.isFinished ? .yellow : .gray)
                 
                 Button {
-                    // 只是做一个点击有闪烁效果的链接导航
+                    self.vm.chooseStory(story: self.story)
                 } label: {
-                    NavigationLink(destination: StoryView(path: $path, vm: self.vm, story: self.story)) {
+                    NavigationLink(destination: StoryView(path: $path, vm: self.vm)) {
                         Image(self.story.title)
                             .resizable()
                             .frame(width: 330, height: 225)
@@ -45,7 +45,6 @@ struct StoryCell: View {
                 .resizable()
                 .frame(width: 225, height: 300) // 原300x400
                 .scaleEffect(0.8)
-
         }
         .padding(.trailing, -90)
     }
@@ -54,9 +53,9 @@ struct StoryCell: View {
         HStack(spacing: -90) {
             VStack {
                 Button {
-                    // 只是做一个点击有闪烁效果的链接导航
+                    self.vm.chooseStory(story: self.story)
                 } label: {
-                    NavigationLink(destination: StoryView(path: $path, vm: self.vm, story: self.story)) {
+                    NavigationLink(destination: StoryView(path: $path, vm: self.vm)) {
                         Image(self.story.title)// 原440x300
                             .resizable()
                             .frame(width: 330, height: 225)

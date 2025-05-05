@@ -32,6 +32,7 @@ struct VictoryView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -95,7 +96,7 @@ extension VictoryView {
             self.voicePlayer.play()
             self.isPlaying = true
         } catch let error {
-            print(error)
+            print("[VictoryView] play sound failed with error: \(error)")
         }
     }
 }

@@ -4,10 +4,8 @@ import UIKit
 
 struct SpeakingGameModel {
     
-    // 保存的连环画资源
-    var comics: [UIImage] = []
-    // 四项语音能力总评: 语言清晰度、语言逻辑性、言语情商能力、语汇能力
-    var scores: [Int] = [0, 0, 0, 0]
+    var comics: [UIImage] = []              // 保存的连环画
+    var scores: [Int] = [0, 0, 0, 0]        // 四项语音能力总评: 语言清晰度、语言逻辑性、言语情商能力、语汇能力
     // 关键词列表
     /// 语言清晰度
     let clarityKeyWords = ["额", "啊", "嗯", "呃", "恩", "那个", "这个这个", "那个什么", "呃", "等一下", "怎么说呢", "就是这个样子", "那个意思是", "不过就是", "那个啊", "嗯嗯", "怎么说呢"]
@@ -42,10 +40,10 @@ extension SpeakingGameModel {
                         images.append(image)
                     }
                 }
-                print("Number of images in local folder: \(imageFileURLs.count)")
+                //print("Number of images in local folder: \(imageFileURLs.count)")
                 comics = images
             } catch {
-                print("Error counting images in local folder: \(error)")
+                print("[SpeakingGameModel] Error counting images in local folder: \(error)")
             }
         }
     /// 删除连环画
@@ -66,7 +64,7 @@ extension SpeakingGameModel {
                 loadComics() // Refresh savedImages after deletion
             }
         } catch {
-            print("Error deleting image: \(error)")
+            print("[SpeakingGameModel] Error deleting image: \(error)")
         }
     }
 }
