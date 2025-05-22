@@ -1,20 +1,30 @@
-
 import SwiftUI
 import AVKit
 
 struct StoryChallengeView: View {
-    @Binding var path: NavigationPath
     @State var selectedAges = Ages.zeroToThree
-    @State var vm = StoryGameVM()
     
     var body: some View {
         ZStack {
-            ThemeBackground()
-
-            VStack {
-                ThemeNavigationBar(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
+            TDThemeBackground()
+            
+            VStack(spacing: 0) {
+                TDThemeNavigationBar(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦")
                 agesModelSelection
                 challengeCollection
+            }
+        }
+        .navigationDestination(for: String.self) { destination in
+            if destination == "StoriesListView" {
+                StoriesListView()
+            }
+            
+            if destination == "StoryView" {
+                StoryView()
+            }
+            
+            if destination == "VictoryView" {
+                VictoryView(soundName: "A-完成", starNumber: 1, title: "故事闯关成功")
             }
         }
     }
@@ -36,13 +46,13 @@ extension StoryChallengeView {
 
     var challengeCollection: some View {
         ZStack {
-            ThemeCollectionBackGround()
+            TDThemeCollectionBackGround()
 
             ScrollView(.horizontal) {
                 LazyHGrid(rows: [GridItem(.adaptive(minimum: 200, maximum: 250))], spacing: 30) {
-                    ForEach(self.vm.challenges) { challenge in
-                        if challenge.age.contains(selectedAges) {
-                            ChallengeCell(path: $path, challenge: challenge, vm: self.vm)
+                    ForEach(0..<StoryGameVM.shared.challenges.count, id: \.self) { index in
+                        if StoryGameVM.shared.challenges[index].age.contains(selectedAges) {
+                            ChallengeCell(index: index)
                         }
                     }
                 }
@@ -71,7 +81,6 @@ extension StoryChallengeView {
 
 struct StoryChallengeView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var path = NavigationPath()
-        StoryChallengeView(path: $path)
+        StoryChallengeView()
     }
 }

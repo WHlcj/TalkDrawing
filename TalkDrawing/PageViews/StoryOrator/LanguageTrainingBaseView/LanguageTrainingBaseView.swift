@@ -6,7 +6,7 @@ struct LanguageTrainingBaseView: View {
     
     var body: some View {
         ZStack {
-            ThemeBackground()
+            TDThemeBackground()
 
             VStack {
                 customNavigationBar
@@ -21,7 +21,7 @@ struct LanguageTrainingBaseView: View {
 extension LanguageTrainingBaseView {
     var customNavigationBar: some View {
         HStack {
-            ThemeBackButton()
+            TDThemeBackButton()
             Spacer()
             RoundedRectangle(cornerRadius: 25)
                 .fill(K.AppColor.ThemeColor)

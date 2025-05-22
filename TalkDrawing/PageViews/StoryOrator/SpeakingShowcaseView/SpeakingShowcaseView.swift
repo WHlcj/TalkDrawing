@@ -1,12 +1,8 @@
-
 import SwiftUI
 import AVKit
-import SwiftSpeech
 
 struct SpeakingShowcaseView: View {
     
-    // App路由导航
-    @Binding var path: NavigationPath
     // SpeakingGameVM
     @ObservedObject var vm: SpeakingGameVM
     // 是否正在播放故事
@@ -28,10 +24,10 @@ struct SpeakingShowcaseView: View {
     
     var body: some View {
         ZStack {
-            ThemeBackground()
+            TDThemeBackground()
             
             VStack {
-                ThemeNavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
+                TDThemeNavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
                     .padding(.bottom, 20)
                 Spacer()
                 HStack {
@@ -85,14 +81,17 @@ extension SpeakingShowcaseView {
             Text(isDecording ? "正在录音" : " ")
                 .font(.system(size: 20))
                 .padding(.vertical)
-            SwiftSpeech.RecordButton()
-                .swiftSpeechToggleRecordingOnTap(locale: Locale(identifier: "zh-CN"))
-                .onRecognizeLatest(update: $voiceText)
-                .scaleEffect(0.8)
-                .disabled(!isDecording)
-        }
-        .onAppear {
-            SwiftSpeech.requestSpeechRecognitionAuthorization()
+            TDVoiceRecordButton(
+                mode: .tapToToggle,
+                recognizedText: $voiceText,
+                onRecordingStart: {
+                    print("开始录音")
+                },
+                onRecordingStop: {
+                    print("停止录音")
+                }
+            )
+            .disabled(!isDecording)
         }
     }
     /// 功能按键区
@@ -142,7 +141,7 @@ extension SpeakingShowcaseView {
                 vm.stopStory()
                 isPlaying = false
             } else {
-                vm.playStory(story: story!.storySpeaker)
+                vm.playStory(story: story!.storySoundUrl)
                 isPlaying = true
             }
         }
@@ -177,6 +176,6 @@ struct SpeakingShowcaseView_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
         @State var vm = SpeakingGameVM()
-        SpeakingShowcaseView(path: $path, vm: vm, story: Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4")))
+        SpeakingShowcaseView(vm: vm, story: Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4")))
     }
 }

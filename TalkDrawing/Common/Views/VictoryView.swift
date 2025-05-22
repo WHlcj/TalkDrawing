@@ -3,9 +3,6 @@ import SwiftUI
 import AVFAudio
 
 struct VictoryView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    @Binding var path: NavigationPath
     var soundName = ""
     @State var isPlaying = false
     @State var voicePlayer: AVAudioPlayer!
@@ -15,7 +12,7 @@ struct VictoryView: View {
     
     var body: some View {
         ZStack{
-            ThemeNotificationBackground()
+            TDThemeNotificationBackground()
             
             VStack(spacing: 50) {
                 Image(K.AppIcon.finishGame)
@@ -51,11 +48,11 @@ extension VictoryView {
     var functionButtons: some View {
         HStack(spacing: 100) {
             VictoryItem(icon: K.AppIcon.backHome, title: "主页") {
-                path.removeLast(path.count)
+                NavigationManager.shared.goToRoot()
             }
 
             VictoryItem(icon: K.AppIcon.leftArrow, title: "返回") {
-                dismiss()
+                NavigationManager.shared.goBack(count: 2)
             }
             
             if let action = active {
@@ -105,6 +102,6 @@ extension VictoryView {
 struct VictoryView_Previews: PreviewProvider {
     static var previews: some View {
         @State var path = NavigationPath()
-        VictoryView(path: $path, starNumber: 3)
+        VictoryView(starNumber: 3)
     }
 }

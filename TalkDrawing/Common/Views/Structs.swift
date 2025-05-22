@@ -2,7 +2,7 @@
 import SwiftUI
 import AVFoundation
 
-struct ThemeBackground: View {
+struct TDThemeBackground: View {
     var body: some View {
         Image("theme_background")
             .resizable()
@@ -10,7 +10,7 @@ struct ThemeBackground: View {
     }
 }
 
-struct ThemeCollectionBackGround: View {
+struct TDThemeCollectionBackGround: View {
     var body: some View {
         Rectangle()
             .fill(K.AppColor.ThemeColor)
@@ -19,7 +19,7 @@ struct ThemeCollectionBackGround: View {
     }
 }
 
-struct ThemeNotificationBackground: View {
+struct TDThemeNotificationBackground: View {
     var body: some View {
         K.AppColor.ThemeColor
             .opacity(0.3)
@@ -27,11 +27,10 @@ struct ThemeNotificationBackground: View {
     }
 }
 
-struct ThemeBackButton: View {
-    @Environment(\.dismiss) var dismiss
+struct TDThemeBackButton: View {
     var body: some View {
         Button {
-            dismiss()
+            NavigationManager.shared.goBack()
         } label: {
             Image(K.AppIcon.backButton)
                 .renderingMode(.template)
@@ -47,17 +46,17 @@ struct ThemeBackButton: View {
 ///
 /// - Parameter image: 标题图标
 /// - Parameter title: 标题内容和声音播放内容
-struct ThemeNavigationBar: View {
+struct TDThemeNavigationBar: View {
     var image: String
     var title: String
 
     var body: some View {
         HStack {
-            ThemeBackButton()
+            TDThemeBackButton()
             Spacer()
-            HomeItem(image: image, title: title)
+            TDHomeItem(image: image, title: title)
             Spacer()
-            SpeakingButton(soundName: title)
+            TDPromptSpeakingButton(soundName: title)
         }
         .frame(maxWidth: .infinity)
         .padding()
@@ -65,7 +64,7 @@ struct ThemeNavigationBar: View {
 }
 
 ///  功能介绍语音按钮
-struct SpeakingButton: View {
+struct TDPromptSpeakingButton: View {
     var soundName = ""
     @State var voicePlayer: AVAudioPlayer!
     @State var isPlaying = false
@@ -106,7 +105,7 @@ struct SpeakingButton: View {
 }
 
 /// 主要功能区下的标题栏
-struct HomeItem: View {
+struct TDHomeItem: View {
     var image: String
     var title: String
     
@@ -131,52 +130,5 @@ struct HomeItem: View {
                 .font(.system(size: 42).bold())
             
         }
-    }
-}
-
-/// 强制录音界面
-struct RecordingView: View {
-    @State var audioRecorder: AVAudioRecorder!
-    
-    var body: some View {
-        Color.clear
-            .onAppear {
-                startRecording()
-            }
-            .onDisappear {
-                stopRecording()
-            }
-    }
-    
-    func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("test.m4a")
-        
-        let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 44100,
-            AVNumberOfChannelsKey: 2,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ]
-        
-        do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-            audioRecorder.record()
-            
-            print("开始录音")
-        } catch {
-            print("录音失败")
-        }
-    }
-    
-    func stopRecording() {
-        audioRecorder.stop()
-        audioRecorder = nil
-        
-        print("停止录音")
-    }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
     }
 }

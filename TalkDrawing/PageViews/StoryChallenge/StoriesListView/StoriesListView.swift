@@ -2,26 +2,16 @@
 import SwiftUI
 
 struct StoriesListView: View {
-    @Binding var path: NavigationPath
-    @ObservedObject var vm: StoryGameVM
-    
-    let challenge: StoryChallenge
-    
-    var stories: [Story] {
-        self.challenge.stories
-    }
+    @ObservedObject private var vm = StoryGameVM.shared
     
     var body: some View {
         ZStack {
-            ThemeBackground()
+            TDThemeBackground()
 
             VStack {
                 navigationBar
                 storiesList
             }
-        }
-        .onAppear {
-            self.vm.chooseChallenge(challenge: self.challenge)
         }
     }
 }
@@ -29,8 +19,8 @@ struct StoriesListView: View {
 extension StoriesListView {
     var navigationBar: some View {
         HStack {
-            ThemeBackButton()
-            Text(self.challenge.title)
+            TDThemeBackButton()
+            Text(vm.selectedChallenge!.title)
                 .font(.system(size: 35).bold())
                 .foregroundColor(K.AppColor.ThemeColor)
             Spacer()
@@ -41,8 +31,8 @@ extension StoriesListView {
     var storiesList: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.adaptive(minimum: 500, maximum: 700))]) {
-                ForEach(0..<self.stories.count, id: \.self) { number in
-                    StoryCell(path: $path, order: number, story: self.stories[number], vm: self.vm)
+                ForEach(0..<vm.selectedChallenge!.stories.count, id: \.self) { index in
+                    StoryCell(index: index)
                 }
             }
             .padding(.horizontal, 90)
@@ -52,7 +42,7 @@ extension StoriesListView {
 
 struct StoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = StoryGameVM()
-        StoriesListView(path: .constant(NavigationPath()), vm: vm, challenge: vm.challenges[0])
+        StoryGameVM.shared.chooseChallenge(StoryGameVM.shared.challenges[0])
+        return StoriesListView()
     }
 }

@@ -1,26 +1,19 @@
-
 // TODO:
 // 1.修复scrollView的内容视图无法拖拽出来的情况
 
 import SwiftUI
 import AVKit
-import SwiftSpeech
 
 struct StoryView: View {
-    @Binding var path: NavigationPath
-    @ObservedObject var vm: StoryGameVM
-    
     @State private var selectedColor = Color.green
     @State private var selectedAnimals = ""
     @State private var voiceText = "按住按钮说话"     // 语音文本识别与关键词检测
-    @State private var isPlayingVideo = false
     @State private var gestureFlag = false          // 是否上色并放置动物
-    @State private var isPlayingVoice = false
     @State private var recognizedKey = false        // 是否识别完关键词
     
     var body: some View {
         ZStack {
-            ThemeBackground()
+            TDThemeBackground()
             
             HStack(spacing: 10) {
                 videoSection
@@ -29,21 +22,16 @@ struct StoryView: View {
             }
             .padding()
         }
-        .navigationDestination(for: String.self) { destination in
-            if destination == "VictoryView" {
-                VictoryView(path: $path, soundName: "A-完成")
-            }
-        }
         .onAppear {
-            if self.vm.selectedStory!.welcomeSound != "" {
-                self.vm.playSound(self.vm.selectedStory!.welcomeSound)
+            if StoryGameVM.shared.selectedStory!.welcomeSound != "" {
+                StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.welcomeSound)
             } else {
-                self.vm.playSound(self.vm.selectedStory!.actionTintSound)
+                StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
                 self.recognizedKey = true
             }
         }
         .onDisappear {
-            self.vm.stopSound()
+            StoryGameVM.shared.stopSound()
         }
     }
 }
@@ -51,45 +39,26 @@ struct StoryView: View {
 extension StoryView {
     var functionButtons: some View {
         HStack {
-            ThemeBackButton()
+            TDThemeBackButton()
             Spacer()
-            Text("《\(self.vm.selectedStory!.title)》")
+            Text("《\(StoryGameVM.shared.selectedStory!.title)》")
                 .font(.system(size: 42).bold())
                 .foregroundColor(K.AppColor.ThemeColor)
-            speakerButton
+            TDPromptSpeakingButton(soundName:StoryGameVM.shared.selectedStory!.storySoundUrl)
             Spacer()
         }
         .padding(.vertical)
     }
     
-    var speakerButton: some View {
-        Button {
-            if self.isPlayingVoice {
-                self.vm.stopSound()
-                self.isPlayingVoice = false
-            } else {
-                self.vm.playSound(self.vm.selectedStory!.storySpeaker)
-                self.isPlayingVoice = true
-            }
-        } label: {
-            Image(K.AppIcon.speaker)
-                .frame(width: 40, height: 40)
-                .foregroundColor(self.isPlayingVoice ? K.AppColor.ThemeColor : .blue)
-        }
-    }
-
     var videoSection: some View {
         VStack {
             functionButtons
-            
-            VideoPlayer(player: self.vm.videoPlayer)
+            Spacer()
+            VideoPlayer(player: StoryGameVM.shared.videoPlayer)
                 .aspectRatio(144.0/81.0, contentMode: .fit)
                 .disabled(true) // 隐藏视频控件
-            
+            Spacer()
             voiceButton
-        }
-        .onAppear {
-            SwiftSpeech.requestSpeechRecognitionAuthorization()
         }
     }
 
@@ -97,20 +66,24 @@ extension StoryView {
         VStack {
             Text(voiceText)
                 .font(.system(size: 20).bold())
-            SwiftSpeech.RecordButton()
-                .swiftSpeechRecordOnHold(locale: Locale(identifier: "zh-CN"))
-                .onRecognizeLatest(update: $voiceText)
-                .onChange(of: voiceText) { newValue in
-                    // 当检测到语音识别到故事关键词时，播放第一段动画
-                    if newValue.contains(self.vm.selectedStory!.keyWord) && self.recognizedKey != true {
-                        self.recognizedKey = true
-                        self.playFirstAV()
-                        self.vm.playSound(self.vm.selectedStory!.actionTintSound)
-                    }
+            TDVoiceRecordButton(
+                mode: .holdToRecord,
+                recognizedText: $voiceText,
+                onRecordingStart: {
+                    print("开始录音")
+                },
+                onRecordingStop: {
+                    print("停止录音")
                 }
-                .scaleEffect(0.8)
-                .disabled(self.isPlayingVideo)
-                .padding(.vertical, 20)
+            )
+            .onChange(of: voiceText) { newValue in
+                // 当检测到语音识别到故事关键词时，播放第一段动画
+                if newValue.contains(StoryGameVM.shared.selectedStory!.keyWord) && self.recognizedKey != true {
+                    self.recognizedKey = true
+                    self.playFirstAV()
+                    StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
+                }
+            }
         }
     }
     
@@ -145,7 +118,7 @@ extension StoryView {
 
     var figureChosenSection: some View {
         VStack {
-            ForEach(vm.selectedChallenge!.figures, id: \.self) { figure in
+            ForEach(StoryGameVM.shared.selectedChallenge!.figures, id: \.self) { figure in
                 FiguresCell(
                     image: figure,
                     selectedFigure: $selectedAnimals,
@@ -171,39 +144,35 @@ extension StoryView {
 // MARK: - Functions
 extension StoryView {
     func playFirstAV() {
-        self.vm.playVideo()
-        // 禁止语音按钮，播放视频提示音
-        self.isPlayingVideo = true
+        StoryGameVM.shared.playVideo()
 
         delay(by: 1) {
             self.voiceText = "按住按钮说话"
-            self.vm.stopVideo()
-            self.isPlayingVideo = false
+            StoryGameVM.shared.stopVideo()
         }
     }
 
     func checkFinishGame() {
-        if self.selectedAnimals == self.vm.selectedStory!.targetFigure && self.selectedColor == self.vm.selectedStory!.targetColor {
+        if self.selectedAnimals == StoryGameVM.shared.selectedStory!.targetFigure && self.selectedColor == StoryGameVM.shared.selectedStory!.targetColor {
             if self.recognizedKey {
-                self.vm.playVideo()
+                StoryGameVM.shared.playVideo()
                 delay(by: 3) {
-                    self.vm.finishedGame()
-                    self.path.append("VictoryView")
+                    StoryGameVM.shared.finishedGame()
+                    NavigationManager.shared.navigateTo("VictoryView")
                 }
             }
         } else {
-            self.vm.playSound("A-错误提醒")
+            StoryGameVM.shared.playSound("A-错误提醒")
         }
     }
 }
 
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = StoryGameVM()
-        let story = vm.model.challenges[0].stories[0]
-        vm.chooseStory(story: story)
-        vm.chooseChallenge(challenge: vm.model.challenges[0])
+        let story = StoryGameVM.shared.model.challenges[0].stories[0]
+        StoryGameVM.shared.chooseStory(story: story)
+        StoryGameVM.shared.chooseChallenge(StoryGameVM.shared.model.challenges[0])
         
-        return StoryView(path: .constant(NavigationPath()), vm: vm)
+        return StoryView()
     }
 }

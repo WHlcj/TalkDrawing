@@ -1,7 +1,5 @@
-
 import SwiftUI
 import PencilKit
-import SwiftSpeech
 
 struct DrawingTools: View {
 
@@ -38,16 +36,17 @@ struct DrawingTools: View {
             } label: {
                 Image(K.AppIcon.eraser)
             }
-            SwiftSpeech.RecordButton()
-                .swiftSpeechRecordOnHold(locale: Locale(identifier: "zh-CN"))
-                .onRecognizeLatest(update: $voiceText)
-                .onAppear {
-                    SwiftSpeech.requestSpeechRecognitionAuthorization()
+            TDVoiceRecordButton(
+                mode: .holdToRecord,
+                recognizedText: $voiceText,
+                onRecordingStart: {
+                    print("开始录音")
+                },
+                onRecordingStop: {
+                    print("停止录音")
                 }
-                .frame(width: 80, height: 80)
-                .scaleEffect(0.8)
+            )
         }
-        
     }
 }
 

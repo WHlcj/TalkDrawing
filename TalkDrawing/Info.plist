@@ -4,5 +4,9 @@
 <dict>
 	<key>UIInterfaceOrientation</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>需要使用麦克风来进行语音识别</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>需要使用语音识别功能来将语音转换为文字</string>
 </dict>
 </plist>

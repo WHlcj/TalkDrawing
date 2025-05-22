@@ -3,10 +3,8 @@ import Foundation
 import AVKit
 
 class SpeakingGameVM: ObservableObject{
-    
-    /// 连环画资源
     var comics: [UIImage] {
-        model.comics
+        self.model.comics
     }
     /// 播放故事视频
     @Published var videoPlayer = AVPlayer()
@@ -16,18 +14,17 @@ class SpeakingGameVM: ObservableObject{
     @Published var model = createSpeakingGame()
     /// 能力分析得分
     var scores: [Int] {
-        model.scores
+        self.model.scores
     }
     
-    /// 加载连环画
     func loaComics() {
-        model.loadComics()
+        self.model.loadComics()
     }
-    /// 删除连环画
+
     func deleteComics(at index: Int) {
-        model.deleteComics(at: index)
+        self.model.deleteComics(at: index)
     }
-    // 计时器
+
     private var timer: Timer?
     private(set) var seconds = 0.0
     
@@ -35,55 +32,49 @@ class SpeakingGameVM: ObservableObject{
         SpeakingGameModel()
     }
     
-    // MARK: - 故事情节回顾
     func initVideoPlayer(story: Story) {
-        // 获取资源文件的 URL
         if let videoURL = story.url {
-            videoPlayer = AVPlayer(url: videoURL)
+            self.videoPlayer = AVPlayer(url: videoURL)
         } else {
             self.videoPlayer = AVPlayer()
         }
     }
-    /// 故事回顾
-    ///  同时播放故事视频和语音
+
     func playStory(story: String) {
-        videoPlayer.play()
-        playSound(story)
+        self.videoPlayer.play()
+        self.playSound(story)
     }
+    
     func stopStory() {
-        videoPlayer.pause()
-        voicePlayer.stop()
+        self.videoPlayer.pause()
+        self.voicePlayer.stop()
     }
-    /// 播放提示音
+    
     private func playSound(_ sound: String) {
         if sound == "" { return }
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
-            voicePlayer = try AVAudioPlayer(contentsOf: url)
-            voicePlayer.play()
+            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
+            self.voicePlayer.play()
         } catch let error {
             print("[SpeakingGameVM] play sound failed with error: \(error)")
         }
     }
     
-    // MARK: - 语言能力分析
-    
-    /// 开始计时
     func startDecording() {
-        timer = Timer(timeInterval: 1, repeats: true) { _ in
+        self.timer = Timer(timeInterval: 1, repeats: true) { _ in
             self.seconds += 1
         }
-        RunLoop.current.add(timer!, forMode: .default)
-    }
-    /// 停止时间
-    func stopDecording() {
-        timer?.invalidate()
-        timer = nil
-    }
-    /// 计算得分
-    func calculateScore(text: String) {
-        model.calculateScore(text: text, second: Int(seconds))
+        RunLoop.current.add(self.timer!, forMode: .default)
     }
 
+    func stopDecording() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+
+    func calculateScore(text: String) {
+        self.model.analyzeSpeech(text: text, duration: Int(self.seconds))
+    }
 }
 

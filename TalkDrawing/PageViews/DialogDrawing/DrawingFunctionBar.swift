@@ -3,7 +3,6 @@ import SwiftUI
 import PencilKit
 
 struct DrawingFunctionBar: View {
-    @Binding var path: NavigationPath
     @ObservedObject var vm: DrawingGameVM
     @Binding var drawings: [PKDrawing]
     @Binding var canvaseIndex: Int
@@ -22,7 +21,7 @@ struct DrawingFunctionBar: View {
         }
         .navigationDestination(for: String.self) { destination in
             if destination == "VictoryView" {
-                VictoryView(path: $path, soundName: "B-完成", starNumber: 4, title: "生成连环画") {
+                VictoryView(soundName: "B-完成", starNumber: 4, title: "生成连环画") {
                     self.saveComics()
                 }
             }
@@ -93,7 +92,7 @@ extension DrawingFunctionBar {
             self.vm.playVoice(self.vm.canvas[self.canvaseIndex])
         } else {
             self.vm.stopVoice()
-            self.path.append("VictoryView")
+            NavigationManager.shared.path.append("VictoryView")
         }
     }
     
@@ -136,6 +135,6 @@ struct DrawingFunctionBar_Previews: PreviewProvider {
         @State var drawings = [PKDrawing(), PKDrawing(), PKDrawing(), PKDrawing()]
         @State var index = 0
         @State var showSheets = false
-        DrawingFunctionBar(path: .constant(NavigationPath()), vm: vm, drawings: $drawings, canvaseIndex: $index)
+        DrawingFunctionBar(vm: vm, drawings: $drawings, canvaseIndex: $index)
     }
 }

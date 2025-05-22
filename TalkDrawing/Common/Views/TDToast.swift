@@ -1,9 +1,3 @@
-//
-//  TDToast.swift
-//  TalkDrawing
-//
-//  Created by changjun li on 2025/5/5.
-//
 
 import SwiftUI
 

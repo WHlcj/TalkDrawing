@@ -1,10 +1,8 @@
-
 import SwiftUI
 import PencilKit
-import SwiftSpeech
 
 struct DialogDrawingView: View {
-    @Binding var path: NavigationPath
+    @ObservedObject private var navigationManager = NavigationManager.shared
     @StateObject var vm = DrawingGameVM()
     
     @State private var drawings = [PKDrawing(), PKDrawing(), PKDrawing(), PKDrawing()]
@@ -19,11 +17,11 @@ struct DialogDrawingView: View {
     
     var body: some View {
         ZStack {
-            ThemeBackground()
+            TDThemeBackground()
             
             VStack(spacing: 0) {
-                ThemeNavigationBar(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
-                DrawingFunctionBar(path: $path, vm: self.vm, drawings: $drawings, canvaseIndex: $canvaseIndex)
+                TDThemeNavigationBar(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
+                DrawingFunctionBar(vm: self.vm, drawings: $drawings, canvaseIndex: $canvaseIndex)
                 
                 HStack {
                     DrawingBoard(
@@ -85,7 +83,6 @@ extension DialogDrawingView {
 
 struct DialogDrawingView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var path = NavigationPath()
-        DialogDrawingView(path: $path)
+        DialogDrawingView()
     }
 }

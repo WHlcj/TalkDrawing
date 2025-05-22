@@ -7,7 +7,7 @@ struct InfoSheet: View {
     
     var body: some View {
         ZStack {
-            ThemeNotificationBackground()
+            TDThemeNotificationBackground()
 
             if self.showSheets {
                 RoundedRectangle(cornerRadius: 25)

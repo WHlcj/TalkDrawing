@@ -23,8 +23,8 @@ struct StoryGameModel {
 
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SixPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySpeaker: "A-数鸭子"),
-            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySpeaker: "A-小燕子"),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySoundUrl: "A-数鸭子"),
+            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySoundUrl: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ], figures: ["pig", "monkey", "frog", "sheep", "duck", "swallow"]),//"deer", "chicken", "panda", "lion", "monkey", "horse""/
@@ -38,7 +38,7 @@ struct StoryGameModel {
         StoryChallenge(title: "山海经", age: [.SixPlus]),
         StoryChallenge(title: "风雅颂", age: [.SixPlus]),
         StoryChallenge(title: "四大名著", age: [.SixPlus], isLocked: false, stories: [
-            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySpeaker: "A-石猴出世"), // 橙
+            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySoundUrl: "A-石猴出世"), // 橙
             Story(title: "美猴王学艺", parentTitle: "四大名著"),
             Story(title: "龙宫寻宝", parentTitle: "四大名著"),
             Story(title: "大闹天宫", parentTitle: "四大名著")
@@ -52,22 +52,28 @@ struct StoryGameModel {
     }
 
     mutating func ChooseStory(story: Story) {
+        // 首先清除所有故事的选择状态
+        for challengeIndex in challenges.indices {
+            for storyIndex in challenges[challengeIndex].stories.indices {
+                challenges[challengeIndex].stories[storyIndex].isSelected = false
+            }
+        }
+        
+        // 然后找到并选择目标故事
         for (challengeIndex, challenge) in challenges.enumerated() {
-            if let storyIndex = challenge.stories.firstIndex(where: { $0.title == story.title }) {
-                challenges.indices.forEach { challenges[$0].isSelected = false }
+            if let storyIndex = challenge.stories.firstIndex(where: { $0.id == story.id }) {
                 challenges[challengeIndex].isSelected = true
                 challenges[challengeIndex].stories[storyIndex].isSelected = true
                 return
             }
         }
-        print("[StoryGameModel] 选择故事失败: 未找到标题为'\(story.title)'的故事")
+        print("[StoryGameModel] 选择故事失败: 未找到ID为'\(story.id)'的故事")
     }
     
     mutating func FinishStory() {
         if let challengeIndex = indexOfSelectedChallenge, let storyIndex = indexOfSelectedStory {
             challenges[challengeIndex].stories[storyIndex].isFinished = true
         }
-        
     }
 }
 
@@ -94,8 +100,8 @@ struct Story: Identifiable {
     var welcomeSound = ""
     // 游戏动作提示音
     var actionTintSound = ""
-    // 故事播放
-    var storySpeaker = ""
+    // 故事语音资源
+    var storySoundUrl = ""
 }
 
 struct StoryChallenge: Identifiable {

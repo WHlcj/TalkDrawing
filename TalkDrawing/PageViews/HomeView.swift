@@ -1,13 +1,12 @@
-
 import SwiftUI
 
 struct HomeView: View {
-    @State var path = NavigationPath()
+    @StateObject private var navigationManager = NavigationManager.shared
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $navigationManager.path) {
             ZStack {
-                ThemeBackground()
+                TDThemeBackground()
                 
                 VStack {
                     Image("home_title")
@@ -26,7 +25,16 @@ struct HomeView: View {
                 .padding()
             }
             .navigationDestination(for: AppRouter.self) { page in
-                ContentView(destination: page, path: $path)
+                switch page {
+                    case .MainView:
+                        HomeView()
+                    case .StoryChallengeView:
+                        StoryChallengeView()
+                    case .DialogDrawingView:
+                        DialogDrawingView()
+                    case .StoryOratorView:
+                        StoryOratorView()
+                }
             }
         }
     }
@@ -36,11 +44,11 @@ extension HomeView {
     var mainMenu: some View {
         VStack {
             Spacer()
-            HomeFunctionItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemUnlock, title: "故事闯关式涂鸦", destination: AppRouter.StoryChallengeView)
             Spacer()
-            HomeFunctionItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦", destination: AppRouter.DialogDrawingView)
             Spacer()
-            HomeFunctionItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家", destination: AppRouter.StoryOratorView, path: $path)
+            HomeFunctionItem(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家", destination: AppRouter.StoryOratorView)
             Spacer()
         }
     }
@@ -63,10 +71,10 @@ extension HomeView {
         var image: String
         var title: String
         var destination: AppRouter
-        @Binding var path: NavigationPath
+        
         var body: some View {
             Button {
-                path.append(destination)
+                NavigationManager.shared.navigateTo(destination)
             } label: {
                 HStack {
                     RoundedRectangle(cornerRadius: 35)
