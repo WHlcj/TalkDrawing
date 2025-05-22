@@ -1,11 +1,8 @@
-
 import SwiftUI
 import AVFAudio
 
 struct VictoryView: View {
     var soundName = ""
-    @State var isPlaying = false
-    @State var voicePlayer: AVAudioPlayer!
     var starNumber = 1
     var title = "下一关"
     var active: (() -> Void)?
@@ -20,13 +17,10 @@ struct VictoryView: View {
                 functionButtons
             }
             .onAppear {
-                playSound(soundName)
-                isPlaying = true
+                AudioManager.shared.playSound(soundName)
             }
             .onDisappear {
-                if isPlaying {
-                    self.voicePlayer.stop()
-                }
+                AudioManager.shared.stopSound()
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -52,7 +46,7 @@ extension VictoryView {
             }
 
             VictoryItem(icon: K.AppIcon.leftArrow, title: "返回") {
-                NavigationManager.shared.goBack(count: 2)
+                NavigationManager.shared.goBack()
             }
             
             if let action = active {
@@ -60,7 +54,6 @@ extension VictoryView {
                     action()
                 }
             }
-            
         }
     }
     
@@ -84,20 +77,7 @@ extension VictoryView {
             }
         }
     }
-
-    func playSound(_ sound: String) {
-        if sound == "" { return }
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
-            self.voicePlayer.play()
-            self.isPlaying = true
-        } catch let error {
-            print("[VictoryView] play sound failed with error: \(error)")
-        }
-    }
 }
-
 
 struct VictoryView_Previews: PreviewProvider {
     static var previews: some View {

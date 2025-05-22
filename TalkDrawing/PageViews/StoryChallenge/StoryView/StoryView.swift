@@ -1,5 +1,3 @@
-// TODO:
-// 1.修复scrollView的内容视图无法拖拽出来的情况
 
 import SwiftUI
 import AVKit
@@ -24,20 +22,20 @@ struct StoryView: View {
         }
         .onAppear {
             if StoryGameVM.shared.selectedStory!.welcomeSound != "" {
-                StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.welcomeSound)
+                AudioManager.shared.playSound(StoryGameVM.shared.selectedStory!.welcomeSound)
             } else {
-                StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
+                AudioManager.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
                 self.recognizedKey = true
             }
         }
         .onDisappear {
-            StoryGameVM.shared.stopSound()
+            AudioManager.shared.stopSound()
         }
     }
 }
 
 extension StoryView {
-    var functionButtons: some View {
+    var headerButtons: some View {
         HStack {
             TDThemeBackButton()
             Spacer()
@@ -51,38 +49,35 @@ extension StoryView {
     }
     
     var videoSection: some View {
-        VStack {
-            functionButtons
-            Spacer()
+        VStack(spacing: 20) {
+            headerButtons
             VideoPlayer(player: StoryGameVM.shared.videoPlayer)
                 .aspectRatio(144.0/81.0, contentMode: .fit)
                 .disabled(true) // 隐藏视频控件
-            Spacer()
+            Text(voiceText)
+                .font(.system(size: 20).bold())
             voiceButton
+            Spacer()
         }
     }
 
     var voiceButton: some View {
-        VStack {
-            Text(voiceText)
-                .font(.system(size: 20).bold())
-            TDVoiceRecordButton(
-                mode: .holdToRecord,
-                recognizedText: $voiceText,
-                onRecordingStart: {
-                    print("开始录音")
-                },
-                onRecordingStop: {
-                    print("停止录音")
-                }
-            )
-            .onChange(of: voiceText) { newValue in
-                // 当检测到语音识别到故事关键词时，播放第一段动画
-                if newValue.contains(StoryGameVM.shared.selectedStory!.keyWord) && self.recognizedKey != true {
-                    self.recognizedKey = true
-                    self.playFirstAV()
-                    StoryGameVM.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
-                }
+        TDVoiceRecordButton(
+            mode: .holdToRecord,
+            recognizedText: $voiceText,
+            onRecordingStart: {
+                print("开始录音")
+            },
+            onRecordingStop: {
+                print("停止录音")
+            }
+        )
+        .onChange(of: voiceText) { newValue in
+            // 当检测到语音识别到故事关键词时，播放第一段动画
+            if newValue.contains(StoryGameVM.shared.selectedStory!.keyWord) && self.recognizedKey != true {
+                self.recognizedKey = true
+                self.playFirstAV()
+                AudioManager.shared.playSound(StoryGameVM.shared.selectedStory!.actionTintSound)
             }
         }
     }
@@ -141,7 +136,6 @@ extension StoryView {
     }
 }
 
-// MARK: - Functions
 extension StoryView {
     func playFirstAV() {
         StoryGameVM.shared.playVideo()
@@ -162,7 +156,7 @@ extension StoryView {
                 }
             }
         } else {
-            StoryGameVM.shared.playSound("A-错误提醒")
+            AudioManager.shared.playSound("A-错误提醒")
         }
     }
 }

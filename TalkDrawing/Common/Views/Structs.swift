@@ -66,17 +66,11 @@ struct TDThemeNavigationBar: View {
 ///  功能介绍语音按钮
 struct TDPromptSpeakingButton: View {
     var soundName = ""
-    @State var voicePlayer: AVAudioPlayer!
     @State var isPlaying = false
     
     var body: some View {
         Button {
-            if isPlaying {
-                self.voicePlayer.stop()
-                self.isPlaying = false
-            } else {
-                self.playSound(soundName)
-            }
+            AudioManager.shared.playSound(soundName)
         } label: {
             Image(K.AppIcon.speaker)
                 .renderingMode(.template)
@@ -85,21 +79,7 @@ struct TDPromptSpeakingButton: View {
                 .foregroundColor(K.AppColor.ThemeColor)
         }
         .onDisappear {
-            if self.isPlaying {
-                self.voicePlayer.stop()
-            }
-        }
-    }
-    
-    func playSound(_ sound: String) {
-        if sound == "" { return }
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
-            self.voicePlayer.play()
-            self.isPlaying = true
-        } catch let error {
-            print("[SpeakingButton] play sound failed with error: \(error)")
+            AudioManager.shared.stopSound()
         }
     }
 }

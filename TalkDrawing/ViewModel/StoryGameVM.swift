@@ -1,4 +1,3 @@
-
 import Foundation
 import AVKit
 
@@ -6,7 +5,6 @@ class StoryGameVM: ObservableObject {
     static let shared = StoryGameVM()
     
     @Published var videoPlayer = AVPlayer()
-    @Published var voicePlayer = AVAudioPlayer()
     @Published private(set) var model = createStoryGame()
 
     private static func createStoryGame() -> StoryGameModel {
@@ -63,25 +61,6 @@ class StoryGameVM: ObservableObject {
     
     func stopVideo() {
         self.videoPlayer.pause()
-    }
-    
-    func stopSound() {
-        self.voicePlayer.stop()
-    }
-    
-    func playSound(_ sound: String) {
-        if sound == "" {
-            self.voicePlayer.play()
-            return
-        }
-        
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
-            self.voicePlayer.play()
-        } catch let error {
-            print("[StoryGameVM] playSound failed with error: \(error)")
-        }
     }
     
     func finishedGame() {

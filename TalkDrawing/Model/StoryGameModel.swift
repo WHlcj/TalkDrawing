@@ -52,14 +52,12 @@ struct StoryGameModel {
     }
 
     mutating func ChooseStory(story: Story) {
-        // 首先清除所有故事的选择状态
         for challengeIndex in challenges.indices {
             for storyIndex in challenges[challengeIndex].stories.indices {
                 challenges[challengeIndex].stories[storyIndex].isSelected = false
             }
         }
         
-        // 然后找到并选择目标故事
         for (challengeIndex, challenge) in challenges.enumerated() {
             if let storyIndex = challenge.stories.firstIndex(where: { $0.id == story.id }) {
                 challenges[challengeIndex].isSelected = true

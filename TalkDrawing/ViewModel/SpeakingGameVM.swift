@@ -1,4 +1,3 @@
-
 import Foundation
 import AVKit
 
@@ -8,8 +7,6 @@ class SpeakingGameVM: ObservableObject{
     }
     /// 播放故事视频
     @Published var videoPlayer = AVPlayer()
-    /// 播放故事
-    @Published var voicePlayer = AVAudioPlayer()
     // 游戏模组
     @Published var model = createSpeakingGame()
     /// 能力分析得分
@@ -42,23 +39,12 @@ class SpeakingGameVM: ObservableObject{
 
     func playStory(story: String) {
         self.videoPlayer.play()
-        self.playSound(story)
+        AudioManager.shared.playSound(story)
     }
     
     func stopStory() {
         self.videoPlayer.pause()
-        self.voicePlayer.stop()
-    }
-    
-    private func playSound(_ sound: String) {
-        if sound == "" { return }
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            self.voicePlayer = try AVAudioPlayer(contentsOf: url)
-            self.voicePlayer.play()
-        } catch let error {
-            print("[SpeakingGameVM] play sound failed with error: \(error)")
-        }
+        AudioManager.shared.stopSound()
     }
     
     func startDecording() {
