@@ -40,7 +40,7 @@
 		8D834A032A9C562600477D3F /* 故事真不错.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A022A9C562600477D3F /* 故事真不错.mp3 */; };
 		8D834A052A9C562B00477D3F /* B-完成.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A042A9C562B00477D3F /* B-完成.mp3 */; };
 		8D834A082A9C77BF00477D3F /* 我是故事演说家.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */; };
-		8D834A0A2A9D759100477D3F /* InfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A092A9D759100477D3F /* InfoSheet.swift */; };
+		8D834A0A2A9D759100477D3F /* TDInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A092A9D759100477D3F /* TDInfoSheet.swift */; };
 		8D834A0D2A9F80B900477D3F /* ScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */; };
 		8D834A112A9F91E000477D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D834A102A9F91E000477D3F /* AppDelegate.swift */; };
 		8D9296342A70DD7C00822EC7 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9296332A70DD7C00822EC7 /* AppEntry.swift */; };
@@ -104,7 +104,7 @@
 		8D834A022A9C562600477D3F /* 故事真不错.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "故事真不错.mp3"; sourceTree = "<group>"; };
 		8D834A042A9C562B00477D3F /* B-完成.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "B-完成.mp3"; sourceTree = "<group>"; };
 		8D834A072A9C77BF00477D3F /* 我是故事演说家.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "我是故事演说家.mp3"; sourceTree = "<group>"; };
-		8D834A092A9D759100477D3F /* InfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSheet.swift; sourceTree = "<group>"; };
+		8D834A092A9D759100477D3F /* TDInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDInfoSheet.swift; sourceTree = "<group>"; };
 		8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoard.swift; sourceTree = "<group>"; };
 		8D834A102A9F91E000477D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9296302A70DD7C00822EC7 /* TalkDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,9 +151,41 @@
 				8D9296CD2A84DE0300822EC7 /* Structs.swift */,
 				71AC178E2DDED4DC00C888C8 /* TDVoiceRecordButton.swift */,
 				710CA8F12DC7CC15007DC3E0 /* TDToast.swift */,
+				8D834A092A9D759100477D3F /* TDInfoSheet.swift */,
 				8D9296EA2A8A470200822EC7 /* VictoryView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		71BE39852DE013E9003B75B8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8D9296A22A7504C900822EC7 /* ChallengeCell.swift */,
+				8D9296A92A824F5A00822EC7 /* StoryCell.swift */,
+				8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		71BE39862DE01CD7003B75B8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349DF2A9A332100477D3F /* ComicCells.swift */,
+				8DE04FB12AAABACF007611AF /* TaleCells.swift */,
+				8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		71BE39872DE01E9F003B75B8 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */,
+				8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */,
+				8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */,
+				8D372D542A977ECB006BEC70 /* DrawingTools.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		8D372D4B2A973BD6006BEC70 /* DrawingGame */ = {
@@ -194,15 +226,6 @@
 			path = "门前大桥下";
 			sourceTree = "<group>";
 		};
-		8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */ = {
-			isa = PBXGroup;
-			children = (
-				8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */,
-				8D834A092A9D759100477D3F /* InfoSheet.swift */,
-			);
-			path = SpeakingShowcaseView;
-			sourceTree = "<group>";
-		};
 		8D8349E72A9A42E100477D3F /* 小燕子 */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,15 +255,6 @@
 			path = SpeakingGame;
 			sourceTree = "<group>";
 		};
-		8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */ = {
-			isa = PBXGroup;
-			children = (
-				8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */,
-				8D834A0C2A9F80B900477D3F /* ScoreBoard.swift */,
-			);
-			path = LanguageTrainingBaseView;
-			sourceTree = "<group>";
-		};
 		8D9296272A70DD7C00822EC7 = {
 			isa = PBXGroup;
 			children = (
@@ -265,7 +279,6 @@
 				8D834A102A9F91E000477D3F /* AppDelegate.swift */,
 				8D9296942A74B92600822EC7 /* Model */,
 				8D9296D32A84F49500822EC7 /* ViewModel */,
-				8D9296592A71764500822EC7 /* Extensions */,
 				8D9296432A712A1B00822EC7 /* Common */,
 				8D9296412A71257C00822EC7 /* PageViews */,
 				8D9296372A70DD7D00822EC7 /* Assets.xcassets */,
@@ -299,6 +312,7 @@
 				71AC17902DDF8E8B00C888C8 /* AudioManager.swift */,
 				8D9296482A713BC500822EC7 /* NavigationManager.swift */,
 				8D9296442A712A2E00822EC7 /* K.swift */,
+				8D9296592A71764500822EC7 /* Extensions */,
 				71AC178D2DDED4B600C888C8 /* Views */,
 			);
 			path = Common;
@@ -318,9 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				8D92964E2A713D3900822EC7 /* StoryChallengeView.swift */,
-				8D9296A22A7504C900822EC7 /* ChallengeCell.swift */,
-				8D9296A62A824B4000822EC7 /* StoriesListView */,
-				8D9296AB2A82551900822EC7 /* StoryView */,
+				8D9296A72A824B5600822EC7 /* StoriesListView.swift */,
+				8D9296AC2A82552F00822EC7 /* StoryView.swift */,
+				71BE39852DE013E9003B75B8 /* Cells */,
 			);
 			path = StoryChallenge;
 			sourceTree = "<group>";
@@ -329,10 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				8DEB16D92A8E19B200A4DF1C /* DialogDrawingView.swift */,
-				8D8349D92A99DDF100477D3F /* DrawingFunctionBar.swift */,
-				8DEB17192A8E581700A4DF1C /* DrawingBoard.swift */,
-				8DF83EC62A94B6B00044CE0D /* ColorValueSlider.swift */,
-				8D372D542A977ECB006BEC70 /* DrawingTools.swift */,
+				71BE39872DE01E9F003B75B8 /* SubViews */,
 			);
 			path = DialogDrawing;
 			sourceTree = "<group>";
@@ -341,10 +352,9 @@
 			isa = PBXGroup;
 			children = (
 				8D372D562A978370006BEC70 /* StoryOratorView.swift */,
-				8DE04FB12AAABACF007611AF /* TaleCells.swift */,
-				8D8349DF2A9A332100477D3F /* ComicCells.swift */,
-				8D8349E32A9A339A00477D3F /* SpeakingShowcaseView */,
-				8D834A0B2A9F809900477D3F /* LanguageTrainingBaseView */,
+				8D8349E12A9A339200477D3F /* SpeakingShowcaseView.swift */,
+				8D8349E52A9A345200477D3F /* LanguageTrainingBaseView.swift */,
+				71BE39862DE01CD7003B75B8 /* Cells */,
 			);
 			path = StoryOrator;
 			sourceTree = "<group>";
@@ -368,24 +378,6 @@
 				8D6A0AE02A8A57BD007554E4 /* StoryGame */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		8D9296A62A824B4000822EC7 /* StoriesListView */ = {
-			isa = PBXGroup;
-			children = (
-				8D9296A72A824B5600822EC7 /* StoriesListView.swift */,
-				8D9296A92A824F5A00822EC7 /* StoryCell.swift */,
-			);
-			path = StoriesListView;
-			sourceTree = "<group>";
-		};
-		8D9296AB2A82551900822EC7 /* StoryView */ = {
-			isa = PBXGroup;
-			children = (
-				8D9296AC2A82552F00822EC7 /* StoryView.swift */,
-				8D9296CF2A84DFCD00822EC7 /* FiguresCell.swift */,
-			);
-			path = StoryView;
 			sourceTree = "<group>";
 		};
 		8D9296D32A84F49500822EC7 /* ViewModel */ = {
@@ -505,7 +497,7 @@
 				8D8349DA2A99DDF100477D3F /* DrawingFunctionBar.swift in Sources */,
 				8DF83EC72A94B6B00044CE0D /* ColorValueSlider.swift in Sources */,
 				8D9296A82A824B5600822EC7 /* StoriesListView.swift in Sources */,
-				8D834A0A2A9D759100477D3F /* InfoSheet.swift in Sources */,
+				8D834A0A2A9D759100477D3F /* TDInfoSheet.swift in Sources */,
 				8D834A112A9F91E000477D3F /* AppDelegate.swift in Sources */,
 				710CA8F22DC7CC15007DC3E0 /* TDToast.swift in Sources */,
 				8D8349E62A9A345200477D3F /* LanguageTrainingBaseView.swift in Sources */,

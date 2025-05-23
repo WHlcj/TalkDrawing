@@ -38,8 +38,13 @@ struct SpeakingShowcaseView: View {
             }
             
             if showSheets {
-                InfoSheet(showSheets: $showSheets)
-                    .zIndex(2)
+                TDInfoSheet(
+                    isPresented: $showSheets,
+                    title: "提示",
+                    message: "请先完成亲子分享乐园再查看语言能力报告",
+                    buttonText: "好的"
+                )
+                .zIndex(2)
             }
             if self.showResult {
                 LanguageTrainingBaseView(scores: vm.scores)

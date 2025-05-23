@@ -17,7 +17,6 @@ class DrawingGameModel {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
     
-        // Ensure folder exists
         if !FileManager.default.fileExists(atPath: folderURL.path) {
             do {
                 try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)

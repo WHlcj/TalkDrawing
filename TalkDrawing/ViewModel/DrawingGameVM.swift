@@ -1,11 +1,8 @@
 
 import Foundation
-import PencilKit
+import UIKit
 import AVFAudio
 
-// TODO:
-// 1. 修复运行时  @Published var voicePlayer: AVAudioPlayer!
-//Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.  报错
 class DrawingGameVM: ObservableObject {
     
     /// 播放故事提示音

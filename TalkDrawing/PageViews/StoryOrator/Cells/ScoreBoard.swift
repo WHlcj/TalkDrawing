@@ -7,14 +7,13 @@ struct ScoreBoard: View {
     
     var body: some View {
         VStack {
-            ZStack { //STA: ZStack
+            ZStack {
                 Image(K.AppIcon.scoreBoard)
                 
                 GeometryReader { geometry in
                     let centerX = geometry.size.width / 2
                     let centerY = geometry.size.height / 2
                     
-                    // 根据数据分别计算四个顶点的位置
                     let topPoint = CGPoint(x: centerX, y: centerY - CGFloat(scores[0] * 20))
                     let rightPoint = CGPoint(x: centerX + CGFloat(scores[3] * 20), y: centerY)
                     let bottomPoint = CGPoint(x: centerX, y: centerY + CGFloat(scores[1] * 20))
@@ -27,20 +26,19 @@ struct ScoreBoard: View {
                         path.closeSubpath()
                     }
                     .stroke(lineWidth: 5) // 设置连线宽度
-                    .foregroundColor(K.AppColor.ThemeColor) // 设置连线颜色
+                    .foregroundColor(K.AppColor.ThemeColor)
                     
                     CirclePoint(point: topPoint)
                     CirclePoint(point: rightPoint)
                     CirclePoint(point: bottomPoint)
                     CirclePoint(point: leftPoint)
                 }
-            } // END: ZStack
+            }
             .frame(width: 460, height: 460)
         }
     }
-    /// 粉色圆点
+
     struct CirclePoint: View {
-        // 定点
         var point: CGPoint
         
         var body: some View {
