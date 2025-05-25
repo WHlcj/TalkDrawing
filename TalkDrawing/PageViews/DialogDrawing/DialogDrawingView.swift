@@ -2,8 +2,7 @@ import SwiftUI
 import PencilKit
 
 struct DialogDrawingView: View {
-    @ObservedObject private var navigationManager = NavigationManager.shared
-    @StateObject var vm = DrawingGameVM()
+    @StateObject var vm = DrawingGameVM.shared
     
     @State private var drawings = [PKDrawing(), PKDrawing(), PKDrawing(), PKDrawing()]
     @State var canvaseIndex = 0
@@ -60,20 +59,49 @@ extension DialogDrawingView {
 
     var voiceToImageSection: some View {
         VStack {
-            AsyncImage(url: URL(string: vm.img)) { image in
-                image
-                    .resizable()
-                    .overlay(Text(voiceText))
-                    .aspectRatio(1, contentMode: .fit)
-            } placeholder: {
-                Color.gray.opacity(0.3)
-                    .overlay(Text(voiceText == "" ? "按住上方语言按钮说话,说完后点击我可生成图片" : voiceText))
-                    .aspectRatio(1, contentMode: .fit)
+            Group {
+                if let url = URL(string: vm.imgUrl) {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .empty:
+                            Color.gray.opacity(0.3)
+                                .overlay(
+                                    Text(voiceText == "" ? "按住上方语言按钮说话,说完后点击我可生成图片" : "正在加载图片...")
+                                )
+                                .aspectRatio(1, contentMode: .fit)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .overlay(Text(voiceText))
+                                .aspectRatio(1, contentMode: .fit)
+                        case .failure(let error):
+                            Color.gray.opacity(0.3)
+                                .overlay(
+                                    VStack {
+                                        Text("图片加载失败，请重试")
+                                        Text(error.localizedDescription)
+                                            .font(.caption)
+                                    }
+                                )
+                                .aspectRatio(1, contentMode: .fit)
+                        @unknown default:
+                            Color.gray.opacity(0.3)
+                                .overlay(Text("未知状态"))
+                                .aspectRatio(1, contentMode: .fit)
+                        }
+                    }
+                } else {
+                    Color.gray.opacity(0.3)
+                        .overlay(
+                            Text(voiceText == "" ? "按住上方语言按钮说话,说完后点击我可生成图片" : voiceText)
+                        )
+                        .aspectRatio(1, contentMode: .fit)
+                }
             }
             .onTapGesture {
                 if voiceText != "" {
                     vm.fetchImage(text: voiceText)
-                    voiceText = ""
+                    voiceText = "等待中..."
                 }
             }
         }

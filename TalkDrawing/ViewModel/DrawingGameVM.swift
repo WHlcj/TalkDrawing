@@ -1,33 +1,40 @@
-
 import Foundation
 import UIKit
 import AVFAudio
 
 class DrawingGameVM: ObservableObject {
     static let shared = DrawingGameVM()
-    /// 游戏模组
     @Published var model = createDrawingGame()
     
     private static func createDrawingGame() -> DrawingGameModel {
         DrawingGameModel()
     }
-    /// 画板
+
     var canvas = ["何时", "何地", "何人", "何事"]
-    /// 图片链接
-    @Published var img = ""
-    /// 信号量
+
+    @Published var imgUrl = ""
     private var semaphore = DispatchSemaphore(value: 0)
-    /// 文字请求图片
-    func fetchImage(text: String) {
+    
+    func fetchImage(text: String, style: String = "卡通画", resolution: String = "1024*1024") {
+        self.imgUrl = ""
         model.performAskImage(text: text, semaphore: semaphore)
-        DispatchQueue.global().async {
-            // 等待图片回传成功
-            self.semaphore.wait()
-            self.img = self.model.img
-            print("当前的img为: \(self.img)")
+        DispatchQueue.global().async { [weak self] in
+            self?.semaphore.wait()
+            if let self = self {
+                let newImgUrl = self.model.imgUrl
+                if let url = URL(string: newImgUrl) {
+                    print("[DrawingGameVM] URL 有效性检查通过: \(url)")
+                    DispatchQueue.main.async {
+                        self.imgUrl = newImgUrl
+                        print("[DrawingGameVM] 当前的img为: \(self.imgUrl)")
+                    }
+                } else {
+                    print("[DrawingGameVM] 无效的 URL: \(newImgUrl)")
+                }
+            }
         }
     }
-    /// 保存连环画到软件文件内
+
     func saveComics(images: [UIImage]) {
         model.saveComics(images: images)
     }

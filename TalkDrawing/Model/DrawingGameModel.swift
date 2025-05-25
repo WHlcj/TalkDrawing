@@ -1,17 +1,23 @@
-
 import Foundation
 import UIKit
 
-class DrawingGameModel {
-    /// 生成的图片链接
-    private(set) var img = ""
-    /// 密钥access_token
-    private let access_token = "Your Key"
-    /// 文字生成图片请求url
-    private let textToImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/txt2img?access_token="
-    /// 查询生成图片请求url
-    private let getImageURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1/getImg?access_token="
+enum DrawingGameError: Error {
+    case jsonSerializationFailed
+    case networkError(Error)
+    case invalidResponse
+    case taskFailed(String)
+}
 
+struct DrawingConfig {
+    static let baseURL = "https://aip.baidubce.com/rpc/2.0/ernievilg/v1"
+    static let textToImage = "/txt2img"
+    static let getImage = "/getImg"
+}
+
+class DrawingGameModel {
+    private var accessToken = ""
+    private(set) var imgUrl = ""
+    
     func saveComics(images: [UIImage]) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let folderURL = documentsDirectory.appendingPathComponent("SavedImages")
@@ -26,11 +32,10 @@ class DrawingGameModel {
         do {
             for (index, image) in images.enumerated() {
                 let timestamp = Date().timeIntervalSince1970
-
                 let fileURL = folderURL.appendingPathComponent("image\(timestamp)_\(index).png")
                 if let data = image.pngData() {
                     try data.write(to: fileURL)
-                    print("[DrawingGameModel] Image saved successful")
+                    print("[DrawingGameModel] Image saved successfully")
                 }
             }
         } catch {
@@ -39,125 +44,126 @@ class DrawingGameModel {
     }
 }
 
-// MARK: - BaiDuAlImage
+// MARK: - 百度AI绘画API
 extension DrawingGameModel {
-    /// 请求文字生成图片
     func performAskImage(text: String, semaphore: DispatchSemaphore) {
-        print("调用AskImage成功")
         let parameters: [String: Any] = [
-            // 输入内容
             "text": text,
-            // 图片分辨率，可支持1024*1024、1024*1536、1536*1024
             "resolution": "1024*1024",
-            // 支持风格有：探索无限、古风、二次元、写实风格、浮世绘、low poly 、未来主义、像素风格、概念艺术、赛博朋克、洛丽塔风格、巴洛克风格、超现实主义、水彩画、蒸汽波艺术、油画、卡通画
             "style": "卡通画",
-            // 图片生成数量，支持1-6张
             "num": 1
         ]
-        var request = URLRequest(url: URL(string: textToImageURL+access_token)!)
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
-            print("Error: Failed to serialize JSON data.")
-            return
-        }
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("请求文字转换图片时错误: \(error)")
-                return
-            }
+        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.textToImage)?access_token=\(accessToken)"
+        guard let url = URL(string: urlString) else { return }
+        
+        var request = URLRequest(url: url)
+        do {
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
             
-            if let safeData = data {
-                if let taskId = self.parseAskImageJSON(safeData) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 7){
-                        self.performGetImage(id: taskId, semaphore: semaphore)
-                    }
+            let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+                if let error = error {
+                    print("请求文字转换图片时错误: \(error)")
+                    semaphore.signal()
+                    return
+                }
+                guard let data = data else {
+                    print("请求文字转图片返回的 data = nil")
+                    return
+                }
+                guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("请求文字转图片，解析data失败")
+                    return
+                }
+
+                        
+                guard let taskData = json["data"] as? [String: Any],
+                let taskId = taskData["taskId"] as? Int else {
+                      print("请求文字转图片，解析taskId失败，json = \(json)")
+                      semaphore.signal()
+                      return
+                  }
+                
+                print("解析 ImageRequestData 成功，taskId = \(taskId)")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self?.performGetImage(id: String(taskId), semaphore: semaphore)
                 }
             }
+            task.resume()
+        } catch {
+            print("创建请求失败: \(error)")
+            semaphore.signal()
         }
-        task.resume()
     }
-    /// 请求回调图片url
-    private func performGetImage(id: String, semaphore: DispatchSemaphore) {
-        let parameters: [String: Any] = [
-            "taskId": id
-        ]
+    
+    private func performGetImage(id: String, semaphore: DispatchSemaphore, retryCount: Int = 0) {
+        let maxRetries = 3
+        let parameters: [String: Any] = ["taskId": id]
+        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.getImage)?access_token=\(accessToken)"
         
-        var request = URLRequest(url: URL(string: getImageURL+access_token)!)
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
-            print("Error: Failed to serialize JSON data.")
+        guard let url = URL(string: urlString) else {
+            semaphore.signal()
             return
         }
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("请求返回图片时错误: \(error)")
-                return
-            }
+        var request = URLRequest(url: url)
+        do {
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
             
-            if let safeData = data {
-                if let imageURL = self.parseGetImageJSON(safeData) {
-                    if imageURL != "" {
-                        self.img = imageURL
-                        // 释放信号量
-                        semaphore.signal()
-                    } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.performGetImage(id: id, semaphore: semaphore)
-                        }
+            let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+                if let error = error {
+                    print("请求返回图片时错误: \(error)")
+                    semaphore.signal()
+                    return
+                }
+                
+                guard let data = data,
+                      let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let responseData = json["data"] as? [String: Any] else {
+                    print("解析返回数据失败")
+                    semaphore.signal()
+                    return
+                }
+                
+                let status = responseData["status"] as? Int ?? 0
+                let waiting = responseData["waiting"] as? String ?? "3s"
+                print("图片生成状态: \(status), waiting: \(waiting)")
+                
+                // 尝试获取图片URL
+                var imageUrl: String? = nil
+                if let imgUrls = responseData["imgUrls"] as? [[String: Any]], !imgUrls.isEmpty {
+                    imageUrl = imgUrls[0]["image"] as? String
+                }
+                if imageUrl == nil {
+                    imageUrl = responseData["img"] as? String
+                }
+                
+                if status == 1, let finalUrl = imageUrl {
+                    // 将 http 替换为 https
+                    let secureUrl = finalUrl.replacingOccurrences(of: "http://", with: "https://")
+                    self?.imgUrl = secureUrl
+                    semaphore.signal()
+                } else if retryCount < maxRetries {
+                    let waitingSeconds = Int(waiting.replacingOccurrences(of: "s", with: "")) ?? 3
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(waitingSeconds)) {
+                        print("重试获取图片，waiting: \(waitingSeconds)")
+                        self?.performGetImage(id: id, semaphore: semaphore, retryCount: retryCount + 1)
                     }
+                } else {
+                    print("达到最大重试次数，图片生成可能失败")
+                    semaphore.signal()
                 }
             }
-        }
-        task.resume()
-    }
-    /// 解析文字请求图片数据
-    private func parseAskImageJSON(_ backData: Data) -> String? {
-        let decoder = JSONDecoder()
-        do {
-            let imageData = try decoder.decode(ImageRequestData.self, from: backData)
-            return String(imageData.data.taskId)
+            task.resume()
         } catch {
-            print("解析 ImageRequestData 失败：\(error)")
-            return nil
+            print("创建请求失败: \(error)")
+            semaphore.signal()
         }
     }
-    /// 解析返回图片数据
-    private func parseGetImageJSON(_ backData: Data) -> String? {
-        let decoder = JSONDecoder()
-        do {
-            let backImageData = try decoder.decode(BackImage.self, from: backData)
-            return backImageData.data.img
-        } catch {
-            print("解析 BackImage 失败：\(error)")
-            return nil
-        }
-    }
-}
-
-
-// MARK: - 数据模型
-// 画图请求
-struct ImageRequestData: Decodable {
-    let data: TaskId
-}
-
-struct TaskId: Decodable {
-    let taskId: Int
-}
-
-// 返回图片请求
-struct BackImage: Decodable {
-    let data: ImageUrl
-}
-
-struct ImageUrl: Decodable {
-    let img: String
 }
