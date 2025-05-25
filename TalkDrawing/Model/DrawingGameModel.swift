@@ -3,7 +3,6 @@ import Foundation
 import UIKit
 
 class DrawingGameModel {
-    private(set) var canvas = ["何时", "何地", "何人", "何事"]
     /// 生成的图片链接
     private(set) var img = ""
     /// 密钥access_token

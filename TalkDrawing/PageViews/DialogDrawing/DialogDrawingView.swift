@@ -21,7 +21,7 @@ struct DialogDrawingView: View {
             
             VStack(spacing: 0) {
                 TDThemeNavigationBar(image: K.AppIcon.HomeItemPencil, title: "语音日记式涂鸦")
-                DrawingFunctionBar(vm: self.vm, drawings: $drawings, canvaseIndex: $canvaseIndex)
+                DrawingFunctionBar(drawings: $drawings, canvaseIndex: $canvaseIndex)
                 
                 HStack {
                     DrawingBoard(

@@ -4,9 +4,7 @@ import UIKit
 import AVFAudio
 
 class DrawingGameVM: ObservableObject {
-    
-    /// 播放故事提示音
-    @Published var voicePlayer: AVAudioPlayer!
+    static let shared = DrawingGameVM()
     /// 游戏模组
     @Published var model = createDrawingGame()
     
@@ -14,29 +12,11 @@ class DrawingGameVM: ObservableObject {
         DrawingGameModel()
     }
     /// 画板
-    var canvas: [String] {
-        model.canvas
-    }
+    var canvas = ["何时", "何地", "何人", "何事"]
     /// 图片链接
     @Published var img = ""
     /// 信号量
     private var semaphore = DispatchSemaphore(value: 0)
-    
-    /// 播放音频
-    func playVoice(_ sound: String?) {
-        if sound == "" { return }
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            voicePlayer = try AVAudioPlayer(contentsOf: url)
-            voicePlayer.play()
-        } catch let error {
-            print("[DrawingGameVM] play sound failed with error: \(error)")
-        }
-    }
-    /// 停止播放音频
-    func stopVoice() {
-        voicePlayer.stop()
-    }
     /// 文字请求图片
     func fetchImage(text: String) {
         model.performAskImage(text: text, semaphore: semaphore)

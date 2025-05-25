@@ -3,13 +3,12 @@ import SwiftUI
 import PencilKit
 
 struct DrawingFunctionBar: View {
-    @ObservedObject var vm: DrawingGameVM
     @Binding var drawings: [PKDrawing]
     @Binding var canvaseIndex: Int
     
     var body: some View {
         HStack {
-            sectionChooseSection
+            sceneChooseSection
             Spacer()
             buttonsSection
         }
@@ -17,7 +16,7 @@ struct DrawingFunctionBar: View {
         .padding(.horizontal)
         .background(Rectangle().fill(K.AppColor.ThemeColor).opacity(0.4))
         .onAppear {
-            self.vm.playVoice(vm.canvas[0])
+            AudioManager.shared.playSound(DrawingGameVM.shared.canvas[0])
         }
         .navigationDestination(for: String.self) { destination in
             if destination == "VictoryView" {
@@ -30,22 +29,22 @@ struct DrawingFunctionBar: View {
 }
 
 extension DrawingFunctionBar {
-    var sectionChooseSection: some View {
+    var sceneChooseSection: some View {
         HStack(spacing: 0) {
-            ForEach(self.vm.canvas, id: \.self) { item in
+            ForEach(DrawingGameVM.shared.canvas, id: \.self) { item in
                 Button {
-                    self.canvaseIndex = self.vm.canvas.firstIndex(of: item)!
-                    self.vm.stopVoice()
-                    self.vm.playVoice(self.vm.canvas[self.canvaseIndex])
+                    self.canvaseIndex = DrawingGameVM.shared.canvas.firstIndex(of: item)!
+                    AudioManager.shared.stopSound()
+                    AudioManager.shared.playSound(DrawingGameVM.shared.canvas[self.canvaseIndex])
                 } label: {
                     Rectangle()
                         .fill(K.AppColor.ThemeButtonColor)
                         .frame(width: 56, height: 56)
-                        .opacity(self.canvaseIndex == self.vm.canvas.firstIndex(of: item) ? 1 : 0.6)
+                        .opacity(self.canvaseIndex == DrawingGameVM.shared.canvas.firstIndex(of: item) ? 1 : 0.6)
                         .overlay {
                             Text(item)
-                                .font(.system(size: self.canvaseIndex == self.vm.canvas.firstIndex(of: item) ? 25 : 20))
-                                .bold(self.canvaseIndex == self.vm.canvas.firstIndex(of: item))
+                                .font(.system(size: self.canvaseIndex == DrawingGameVM.shared.canvas.firstIndex(of: item) ? 25 : 20))
+                                .bold(self.canvaseIndex == DrawingGameVM.shared.canvas.firstIndex(of: item))
                                 .foregroundColor(.white)
                         }
                 }
@@ -87,11 +86,11 @@ extension DrawingFunctionBar {
     }
 
     private func increaseIndex() {
-        if self.canvaseIndex < self.vm.canvas.count - 1 {
+        if self.canvaseIndex < DrawingGameVM.shared.canvas.count - 1 {
             self.canvaseIndex += 1
-            self.vm.playVoice(self.vm.canvas[self.canvaseIndex])
+            AudioManager.shared.playSound(DrawingGameVM.shared.canvas[self.canvaseIndex])
         } else {
-            self.vm.stopVoice()
+            AudioManager.shared.stopSound()
             NavigationManager.shared.path.append("VictoryView")
         }
     }
@@ -124,17 +123,16 @@ extension DrawingFunctionBar {
         let image = renderer.image { _ in
             view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
         }
-        self.vm.saveComics(images: [image])
+        DrawingGameVM.shared.saveComics(images: [image])
         TDToast.show("连环画保存成功！")
     }
 }
 
 struct DrawingFunctionBar_Previews: PreviewProvider {
     static var previews: some View {
-        @StateObject var vm = DrawingGameVM()
         @State var drawings = [PKDrawing(), PKDrawing(), PKDrawing(), PKDrawing()]
         @State var index = 0
         @State var showSheets = false
-        DrawingFunctionBar(vm: vm, drawings: $drawings, canvaseIndex: $index)
+        DrawingFunctionBar(drawings: $drawings, canvaseIndex: $index)
     }
 }
