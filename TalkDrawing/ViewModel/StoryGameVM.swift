@@ -4,9 +4,8 @@ import AVKit
 class StoryGameVM: ObservableObject {
     static let shared = StoryGameVM()
     
-    @Published var videoPlayer = AVPlayer()
     @Published private(set) var model = createStoryGame()
-
+    
     private static func createStoryGame() -> StoryGameModel {
         StoryGameModel()
     }
@@ -34,8 +33,6 @@ class StoryGameVM: ObservableObject {
         }
     }
     
-    private var videoURL: URL?
-    
     func chooseChallenge(_ challenge: StoryChallenge) {
         self.model.ChooseChallenge(challenge: challenge)
     }
@@ -47,24 +44,19 @@ class StoryGameVM: ObservableObject {
 
     func initVideoPlayer() {
         if let challengeIndex = model.indexOfSelectedChallenge, let storyIndex = model.indexOfSelectedStory {
-            if let videoURL = challenges[challengeIndex].stories[storyIndex].url {
-                self.videoPlayer = AVPlayer(url: videoURL)
-            } else {
-                self.videoPlayer = AVPlayer()
-            }
+            VideoManager.shared.initPlayer(url: challenges[challengeIndex].stories[storyIndex].videoUrl)
         }
     }
     
     func playVideo() {
-        self.videoPlayer.play()
+        VideoManager.shared.play()
     }
     
     func stopVideo() {
-        self.videoPlayer.pause()
+        VideoManager.shared.pause()
     }
     
     func finishedGame() {
         self.model.FinishStory()
-        print("当前选择故事的self.selectedStory?.isFinished = \(self.selectedStory?.isFinished ?? false)")
     }
 }

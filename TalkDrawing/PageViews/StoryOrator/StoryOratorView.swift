@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct StoryOratorView: View {
-    @StateObject var vm = SpeakingGameVM()
+    @StateObject var vm = SpeakingGameVM.shared
     @State var selectedModel = "故事绘本"
+    @State var selectIndex = -1
 
     var body: some View {
         ZStack {
@@ -11,12 +12,17 @@ struct StoryOratorView: View {
             VStack {
                 TDThemeNavigationBar(image: K.AppIcon.HomeItemMicrophone, title: "我是故事演说家")
                 HStack {
-                    sideBar
+                    modelSelectionTabs
                     Rectangle()
                         .frame(width: 15)
                         .foregroundColor(.white)
                     storyCollection
                 }
+            }
+        }
+        .navigationDestination(for: String.self) { destination in
+            if destination == "SpeakingShowcaseView" {
+                SpeakingShowcaseView()
             }
         }
         .onAppear {
@@ -26,8 +32,7 @@ struct StoryOratorView: View {
 }
 
 extension StoryOratorView {
-    /// 侧栏
-    var sideBar: some View {
+    var modelSelectionTabs: some View {
         VStack(alignment: .leading, spacing: 50) {
             Spacer()
             ForEach (["故事绘本", "我的作品"], id: \.self) { item in
@@ -48,7 +53,7 @@ extension StoryOratorView {
             Spacer()
         }
     }
-    /// 故事集
+
     var storyCollection: some View {
         ZStack {
             TDThemeCollectionBackGround()
@@ -58,12 +63,10 @@ extension StoryOratorView {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: width), spacing: 0)]) {
                         if selectedModel == "我的作品" {
-                            // 连环画
-                            ComicCells(vm: vm, width: width)
+                            ComicCells(width: width)
                         }
                         else if selectedModel == "故事绘本" {
-                            // 故事集
-                            TaleCells(vm: vm, width: width)
+                            TaleCells(width: width)
                         }
                     }
                     .padding()

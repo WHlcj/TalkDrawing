@@ -2,25 +2,14 @@ import SwiftUI
 import AVKit
 
 struct SpeakingShowcaseView: View {
-    
-    // SpeakingGameVM
-    @ObservedObject var vm: SpeakingGameVM
-    // 是否正在播放故事
-    @State var isPlaying = false
-    // 语音文本
+    @State var isPlayingVideo = false
     @State var voiceText = ""
     // 正在录音
     @State var isDecording = false
     // 录音成功
     @State var finishedDecording = false
-    // 弹窗
     @State var showSheets = false
-    // 弹出语言能力分析报告
     @State var showResult = false
-    // 故事资源
-    @State var story: Story?
-    // 连环画资源
-    @State var image: Image?
     
     var body: some View {
         ZStack {
@@ -47,12 +36,7 @@ struct SpeakingShowcaseView: View {
                 .zIndex(2)
             }
             if self.showResult {
-                LanguageTrainingBaseView(scores: vm.scores)
-            }
-        }
-        .onAppear {
-            if story != nil {
-                vm.initVideoPlayer(story: story!)
+                LanguageTrainingBaseView(scores: SpeakingGameVM.shared.scores)
             }
         }
     }
@@ -62,8 +46,8 @@ extension SpeakingShowcaseView {
     /// 媒体区
     var mediaSection: some View {
         VStack {
-            if story != nil {
-                VideoPlayer(player: vm.videoPlayer)
+            if SpeakingGameVM.shared.selectedStory != nil {
+                VideoPlayer(player: VideoManager.shared.player)
                     .aspectRatio(144.0/81.0, contentMode: .fit)
                     .padding(.horizontal)
                     .disabled(true) // 隐藏视频控件
@@ -73,7 +57,7 @@ extension SpeakingShowcaseView {
                             .opacity(0.4)
                     )
             } else {
-                image!
+                Image(uiImage: SpeakingGameVM.shared.selectedComic!)
                     .resizable()
                     .aspectRatio(144.0/81.0, contentMode: .fit)
                     .padding(.horizontal)
@@ -99,7 +83,7 @@ extension SpeakingShowcaseView {
             .disabled(!isDecording)
         }
     }
-    /// 功能按键区
+
     var functionButtons: some View {
         VStack(spacing: 50) {
             CustomButton(title: "故事情节回顾") { playStory() }
@@ -110,7 +94,6 @@ extension SpeakingShowcaseView {
     }
 
     struct CustomButton: View {
-        
         let title: String
         var active: (() -> Void)?
         
@@ -134,35 +117,35 @@ extension SpeakingShowcaseView {
             }
         }
     }
-    
 }
 
 // MARK: - Functions
 extension SpeakingShowcaseView {
-    /// 播放故事
     private func playStory() {
-        if story != nil {
-            if isPlaying {
-                vm.stopStory()
-                isPlaying = false
+        if let story = SpeakingGameVM.shared.selectedStory {
+            if isPlayingVideo {
+                VideoManager.shared.pause()
+                AudioManager.shared.stopSound()
+                isPlayingVideo = false
             } else {
-                vm.playStory(story: story!.storySoundUrl)
-                isPlaying = true
+                VideoManager.shared.play()
+                AudioManager.shared.playSound(story.soundUrl)
+                isPlayingVideo = true
             }
         }
     }
     /// 分享乐园
     private func startDecording() {
         if !isDecording {
-            voiceText = "" // 开始录音前设置当前文本为空
-            isDecording = true // 开启录音
-            vm.startDecording() // 开始计时
-            finishedDecording = false // 重置finishedDecording属性
+            voiceText = ""
+            isDecording = true
+            SpeakingGameVM.shared.startDecording()
+            finishedDecording = false
         } else {
-            isDecording = false // 停止录音
-            vm.calculateScore(text: voiceText) // 根据录音文本计算分数
-            vm.stopDecording() // 停止计时
-            finishedDecording = true  // 完成录音，可以生成语言能力报告
+            isDecording = false
+            SpeakingGameVM.shared.calculateScore(text: voiceText)
+            SpeakingGameVM.shared.stopDecording()
+            finishedDecording = true
         }
     }
     /// 查看语言分析报告
@@ -179,8 +162,7 @@ extension SpeakingShowcaseView {
 
 struct SpeakingShowcaseView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var path = NavigationPath()
-        @State var vm = SpeakingGameVM()
-        SpeakingShowcaseView(vm: vm, story: Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4")))
+        SpeakingGameVM.shared.selectedStory = StoryGameVM.shared.challenges[0].stories[0]
+        return SpeakingShowcaseView()
     }
 }

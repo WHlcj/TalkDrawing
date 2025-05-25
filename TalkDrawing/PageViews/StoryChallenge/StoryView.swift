@@ -42,7 +42,7 @@ extension StoryView {
             Text("《\(StoryGameVM.shared.selectedStory!.title)》")
                 .font(.system(size: 42).bold())
                 .foregroundColor(K.AppColor.ThemeColor)
-            TDPromptSpeakingButton(soundName:StoryGameVM.shared.selectedStory!.storySoundUrl)
+            TDPromptSpeakingButton(soundName:StoryGameVM.shared.selectedStory!.soundUrl)
             Spacer()
         }
         .padding(.vertical)
@@ -51,7 +51,7 @@ extension StoryView {
     var videoSection: some View {
         VStack(spacing: 20) {
             headerButtons
-            VideoPlayer(player: StoryGameVM.shared.videoPlayer)
+            VideoPlayer(player: VideoManager.shared.player)
                 .aspectRatio(144.0/81.0, contentMode: .fit)
                 .disabled(true) // 隐藏视频控件
             Text(voiceText)

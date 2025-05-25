@@ -2,13 +2,27 @@ import Foundation
 import AVKit
 
 class SpeakingGameVM: ObservableObject{
+    static let shared = SpeakingGameVM()
+    @Published var model = createSpeakingGame()
+    
     var comics: [UIImage] {
         self.model.comics
     }
-    /// 播放故事视频
-    @Published var videoPlayer = AVPlayer()
-    // 游戏模组
-    @Published var model = createSpeakingGame()
+    
+    var selectedStory: Story?
+    var selectedComic: UIImage?
+    
+    func chooseStory(_ story: Story) {
+        self.selectedComic = nil
+        self.selectedStory = story
+        VideoManager.shared.initPlayer(url: story.videoUrl)
+    }
+    
+    func chooseComic(_ comic: UIImage) {
+        self.selectedStory = nil
+        self.selectedComic = comic
+    }
+
     /// 能力分析得分
     var scores: [Int] {
         self.model.scores
@@ -27,24 +41,6 @@ class SpeakingGameVM: ObservableObject{
     
     private static func createSpeakingGame() -> SpeakingGameModel {
         SpeakingGameModel()
-    }
-    
-    func initVideoPlayer(story: Story) {
-        if let videoURL = story.url {
-            self.videoPlayer = AVPlayer(url: videoURL)
-        } else {
-            self.videoPlayer = AVPlayer()
-        }
-    }
-
-    func playStory(story: String) {
-        self.videoPlayer.play()
-        AudioManager.shared.playSound(story)
-    }
-    
-    func stopStory() {
-        self.videoPlayer.pause()
-        AudioManager.shared.stopSound()
     }
     
     func startDecording() {

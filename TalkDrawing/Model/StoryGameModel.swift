@@ -23,8 +23,8 @@ struct StoryGameModel {
 
     private(set) var challenges = [
         StoryChallenge(title: "经典儿歌", age: [.zeroToThree, .foreToSix, .SixPlus], isLocked: false, stories: [
-            Story(title: "门前大桥下", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", storySoundUrl: "A-数鸭子"),
-            Story(title: "小燕子", parentTitle: "经典儿歌", url: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", storySoundUrl: "A-小燕子"),
+            Story(title: "门前大桥下", parentTitle: "经典儿歌", videoUrl: Bundle.main.url(forResource: "门前大桥下", withExtension: "mp4"), keyWord: "桥", targetFigure: "duck", targetColor: Color(red: 0.98, green: 0.87, blue: 0.30), welcomeSound: "A-河流上有什么", actionTintSound: "A-拖拽", soundUrl: "A-数鸭子"),
+            Story(title: "小燕子", parentTitle: "经典儿歌", videoUrl: Bundle.main.url(forResource: "小燕子", withExtension: "mp4"), keyWord: "", targetFigure: "swallow", targetColor: Color.black, welcomeSound: "", actionTintSound: "A-天上飞过什么", soundUrl: "A-小燕子"),
             Story(title: "两只老虎", parentTitle: "经典儿歌"),
             Story(title: "丢手绢", parentTitle: "经典儿歌"),
         ], figures: ["pig", "monkey", "frog", "sheep", "duck", "swallow"]),//"deer", "chicken", "panda", "lion", "monkey", "horse""/
@@ -38,7 +38,7 @@ struct StoryGameModel {
         StoryChallenge(title: "山海经", age: [.SixPlus]),
         StoryChallenge(title: "风雅颂", age: [.SixPlus]),
         StoryChallenge(title: "四大名著", age: [.SixPlus], isLocked: false, stories: [
-            Story(title: "石猴出世", parentTitle: "四大名著", url: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", storySoundUrl: "A-石猴出世"), // 橙
+            Story(title: "石猴出世", parentTitle: "四大名著", videoUrl: Bundle.main.url(forResource: "西游记", withExtension: "mp4"), keyWord: "裂开", targetFigure: "孙悟空", targetColor: Color(red: 0.93, green: 0.46, blue: 0.18), welcomeSound: "A-仙石发生了什么", actionTintSound: "A-蹦出什么", soundUrl: "A-石猴出世"), // 橙
             Story(title: "美猴王学艺", parentTitle: "四大名著"),
             Story(title: "龙宫寻宝", parentTitle: "四大名著"),
             Story(title: "大闹天宫", parentTitle: "四大名著")
@@ -87,7 +87,7 @@ struct Story: Identifiable {
     // 是否是当前被选中的故事
     var isSelected = false
     // 故事视频资源URL
-    private(set) var url: URL?
+    private(set) var videoUrl: URL?
     // 故事语音关键词口令
     var keyWord = ""
     // 故事动物
@@ -99,7 +99,7 @@ struct Story: Identifiable {
     // 游戏动作提示音
     var actionTintSound = ""
     // 故事语音资源
-    var storySoundUrl = ""
+    var soundUrl = ""
 }
 
 struct StoryChallenge: Identifiable {
