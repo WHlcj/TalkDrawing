@@ -135,24 +135,25 @@ struct TDVoiceRecordButton: View {
         Button {
             if mode == .tapToToggle {
                 if audioRecorder.isRecording {
+                    print("停止录音")
                     audioRecorder.stopRecording()
                     onRecordingStop?()
                 } else {
+                    print("开始录音")
                     audioRecorder.startRecording()
                     onRecordingStart?()
                 }
             }
         } label: {
-            ZStack {
-                Circle()
-                    .fill(audioRecorder.isRecording ? Color.red : Color.blue)
-                    .frame(width: 60, height: 60)
-                    .scaleEffect(scale)
-                
-                Image(systemName: audioRecorder.isRecording ? "stop.fill" : "mic.fill")
-                    .foregroundColor(.white)
-                    .font(.system(size: 24))
-            }
+            Circle()
+                .fill(audioRecorder.isRecording ? Color.red : Color.blue)
+                .frame(width: 60, height: 60)
+                .scaleEffect(scale)
+                .overlay {
+                    Image(systemName: audioRecorder.isRecording ? "stop.fill" : "mic.fill")
+                        .foregroundColor(.white)
+                        .font(.system(size: 24))
+                }
         }
         .simultaneousGesture(
             mode == .holdToRecord ?

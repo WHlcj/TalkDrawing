@@ -29,6 +29,7 @@ struct StoryView: View {
             }
         }
         .onDisappear {
+            print("StoryView will disappear")
             AudioManager.shared.stopSound()
         }
     }
@@ -65,12 +66,6 @@ extension StoryView {
         TDVoiceRecordButton(
             mode: .holdToRecord,
             recognizedText: $voiceText,
-            onRecordingStart: {
-                print("开始录音")
-            },
-            onRecordingStop: {
-                print("停止录音")
-            }
         )
         .onChange(of: voiceText) { newValue in
             // 当检测到语音识别到故事关键词时，播放第一段动画

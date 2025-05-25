@@ -18,12 +18,10 @@ struct StoryChallengeView: View {
             if destination == "StoriesListView" {
                 StoriesListView()
             }
-            
-            if destination == "StoryView" {
+            else if destination == "StoryView" {
                 StoryView()
             }
-            
-            if destination == "VictoryView" {
+            else if destination == "VictoryView" {
                 VictoryView(soundName: "A-完成", starNumber: 1, title: "故事闯关成功")
             }
         }

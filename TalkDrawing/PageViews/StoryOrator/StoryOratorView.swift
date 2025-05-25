@@ -24,9 +24,12 @@ struct StoryOratorView: View {
             if destination == "SpeakingShowcaseView" {
                 SpeakingShowcaseView()
             }
+            else if destination == "LanguageTrainingBaseView" {
+                LanguageTrainingBaseView()
+            }
         }
         .onAppear {
-            vm.loaComics()
+            vm.loadComics()
         }
     }
 }

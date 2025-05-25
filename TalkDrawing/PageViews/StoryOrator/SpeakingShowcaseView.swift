@@ -9,7 +9,6 @@ struct SpeakingShowcaseView: View {
     // 录音成功
     @State var finishedDecording = false
     @State var showSheets = false
-    @State var showResult = false
     
     var body: some View {
         ZStack {
@@ -34,9 +33,6 @@ struct SpeakingShowcaseView: View {
                     buttonText: "好的"
                 )
                 .zIndex(2)
-            }
-            if self.showResult {
-                LanguageTrainingBaseView(scores: SpeakingGameVM.shared.scores)
             }
         }
     }
@@ -73,12 +69,6 @@ extension SpeakingShowcaseView {
             TDVoiceRecordButton(
                 mode: .tapToToggle,
                 recognizedText: $voiceText,
-                onRecordingStart: {
-                    print("开始录音")
-                },
-                onRecordingStop: {
-                    print("停止录音")
-                }
             )
             .disabled(!isDecording)
         }
@@ -151,7 +141,7 @@ extension SpeakingShowcaseView {
     /// 查看语言分析报告
     private func getResult() {
         if finishedDecording {
-            showResult = true
+            NavigationManager.shared.navigateTo("LanguageTrainingBaseView")
         } else {
             showSheets = true
         }

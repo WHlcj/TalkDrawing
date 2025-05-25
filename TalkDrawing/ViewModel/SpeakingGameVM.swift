@@ -1,13 +1,10 @@
 import Foundation
-import AVKit
+import UIKit
 
-class SpeakingGameVM: ObservableObject{
+class SpeakingGameVM: ObservableObject {
     static let shared = SpeakingGameVM()
     @Published var model = createSpeakingGame()
-    
-    var comics: [UIImage] {
-        self.model.comics
-    }
+    @Published private(set) var comics: [UIImage] = []
     
     var selectedStory: Story?
     var selectedComic: UIImage?
@@ -28,12 +25,14 @@ class SpeakingGameVM: ObservableObject{
         self.model.scores
     }
     
-    func loaComics() {
+    func loadComics() {
         self.model.loadComics()
+        self.comics = self.model.comics
     }
 
     func deleteComics(at index: Int) {
         self.model.deleteComics(at: index)
+        self.comics.remove(at: index)
     }
 
     private var timer: Timer?

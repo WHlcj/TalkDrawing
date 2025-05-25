@@ -2,8 +2,6 @@
 import SwiftUI
 
 struct LanguageTrainingBaseView: View {
-    var scores: [Int]
-    
     var body: some View {
         ZStack {
             TDThemeBackground()
@@ -42,13 +40,13 @@ extension LanguageTrainingBaseView {
 
     var scoreBoard: some View {// 语言清晰度、语言逻辑性、言语情商能力、语汇能力
         HStack {
-            Text("言语情商能力\(scores[2])分")
+            Text("言语情商能力\(SpeakingGameVM.shared.scores[2])分")
             VStack {
-                Text("语言清晰度\(scores[0])分")
-                ScoreBoard(scores: scores)
-                Text("语言逻辑性\(scores[1])分")
+                Text("语言清晰度\(SpeakingGameVM.shared.scores[0])分")
+                ScoreBoard(scores: SpeakingGameVM.shared.scores)
+                Text("语言逻辑性\(SpeakingGameVM.shared.scores[1])分")
             }
-            Text("语汇能力\(scores[3])分")
+            Text("语汇能力\(SpeakingGameVM.shared.scores[3])分")
         }
         .font(.system(size: 25))
     }
@@ -57,7 +55,6 @@ extension LanguageTrainingBaseView {
 
 struct LanguageTrainingBaseView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var showResult = false
-        LanguageTrainingBaseView(scores: [9,6,6,8])
+        LanguageTrainingBaseView()
     }
 }

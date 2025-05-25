@@ -39,12 +39,6 @@ struct DrawingTools: View {
             TDVoiceRecordButton(
                 mode: .holdToRecord,
                 recognizedText: $voiceText,
-                onRecordingStart: {
-                    print("开始录音")
-                },
-                onRecordingStop: {
-                    print("停止录音")
-                }
             )
         }
     }

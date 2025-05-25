@@ -43,7 +43,7 @@ class SpeakingGameModel {
             if index < imageFileURLs.count {
                 let fileURLToDelete = imageFileURLs[index]
                 try FileManager.default.removeItem(at: fileURLToDelete)
-                self.loadComics()
+                self.comics.remove(at: index)
             }
         } catch {
             print("[SpeakingGameModel] Error deleting image: \(error)")

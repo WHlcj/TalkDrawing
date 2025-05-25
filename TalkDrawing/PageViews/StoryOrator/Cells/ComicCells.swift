@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct ComicCells: View {
+    @StateObject var vm = SpeakingGameVM.shared
     let width: CGFloat
     
     var body: some View {

@@ -17,7 +17,9 @@ struct VictoryView: View {
                 functionButtons
             }
             .onAppear {
-                AudioManager.shared.playSound(soundName)
+                delay(by: 1) {
+                    AudioManager.shared.playSound(soundName)
+                }
             }
             .onDisappear {
                 AudioManager.shared.stopSound()
