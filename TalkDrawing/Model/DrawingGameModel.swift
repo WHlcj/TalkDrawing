@@ -54,7 +54,7 @@ extension DrawingGameModel {
             "num": 1
         ]
         
-        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.textToImage)?access_token=\(accessToken)"
+        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.textToImage)?access_token=\(self.accessToken)"
         guard let url = URL(string: urlString) else { return }
         
         var request = URLRequest(url: url)
@@ -102,7 +102,7 @@ extension DrawingGameModel {
     private func performGetImage(id: String, semaphore: DispatchSemaphore, retryCount: Int = 0) {
         let maxRetries = 3
         let parameters: [String: Any] = ["taskId": id]
-        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.getImage)?access_token=\(accessToken)"
+        let urlString = "\(DrawingConfig.baseURL)\(DrawingConfig.getImage)?access_token=\(self.accessToken)"
         
         guard let url = URL(string: urlString) else {
             semaphore.signal()

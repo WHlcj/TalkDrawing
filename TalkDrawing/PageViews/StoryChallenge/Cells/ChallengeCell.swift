@@ -6,7 +6,7 @@ struct ChallengeCell: View {
     
     var body: some View {
         Button {
-            StoryGameVM.shared.chooseChallenge(StoryGameVM.shared.challenges[index])
+            StoryGameVM.shared.chooseChallenge(at: index)
             NavigationManager.shared.navigateTo("StoriesListView")
         } label: {
             VStack {

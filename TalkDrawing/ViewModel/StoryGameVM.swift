@@ -1,6 +1,7 @@
 import Foundation
 import AVKit
 
+@MainActor
 class StoryGameVM: ObservableObject {
     static let shared = StoryGameVM()
     
@@ -34,6 +35,12 @@ class StoryGameVM: ObservableObject {
     }
     
     func chooseChallenge(_ challenge: StoryChallenge) {
+        self.model.ChooseChallenge(challenge: challenge)
+    }
+    
+    func chooseChallenge(at index: Int) {
+        guard index < self.model.challenges.count else { return }
+        let challenge = self.model.challenges[index]
         self.model.ChooseChallenge(challenge: challenge)
     }
     
